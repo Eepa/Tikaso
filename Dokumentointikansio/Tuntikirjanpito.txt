@@ -1,5 +1,10 @@
 Tuntikirjanpito
 
-15.03.2013, 2h
-Projektin valmistelu, tarvittavat ohjelmat, aihemaarittely, 
-relaatiokaavio.
+ti 12.03.2013, 1,5h
+Kokeiluja, tietokannan luominen, nettisivun avaus.
+
+pe 15.03.2013, 2h
+Projektin valmistelu, tarvittavat ohjelmat, aihemaarittely.
+
+la 16.03.2013, 1,5h
+Aihemaarittelyn kirjoitus, relaatiokaavio.

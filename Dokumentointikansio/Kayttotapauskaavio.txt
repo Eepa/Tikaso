@@ -1,0 +1,10 @@
+KAYTTOTAPAUKSIEN JA KAYTTOTAPAUSKAAVION KUVAUS
+==============================================
+
+Kayttotapaukset
+
+Kayttajat
+
+Kayttajaryhmat
+
+Kayttotapauskaavion kuvaus
