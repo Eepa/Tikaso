@@ -15,17 +15,15 @@
   <graph edgedefault="directed" id="G">
     <data key="d7"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="96.0" width="86.0" x="257.0" y="302.0"/>
           <y:Fill color="#FFFF99" color2="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFCC00" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="47.359375" x="19.3203125" y="4.0">Kayttaja</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" modelName="custom" textColor="#000000" visible="true" width="78.056640625" x="2.0" y="30.701171875">henkilotunnus
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="78.056640625" x="2.0" y="30.701171875">henkilotunnus
 etunimi
-sukunimi
-ika<y:LabelModel>
+sukunimi<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -39,7 +37,6 @@ ika<y:LabelModel>
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="90.0" width="80.0" x="260.0" y="455.0"/>
@@ -62,7 +59,6 @@ sahkoposti<y:LabelModel>
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="90.0" width="80.0" x="510.0" y="-45.0"/>
@@ -85,7 +81,6 @@ lajikuvaus<y:LabelModel>
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="90.0" width="128.0" x="486.0" y="105.0"/>
@@ -107,7 +102,6 @@ tavoiteHarjoitusmaara<y:LabelModel>
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="113.0" width="112.0" x="244.0" y="93.5"/>
@@ -133,7 +127,6 @@ sanallinenKuvaus<y:LabelModel>
     </node>
     <node id="n5">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="103.0" width="128.0" x="-14.0" y="98.5"/>
@@ -157,7 +150,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </node>
     <edge id="e0" source="n3" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="45.0" tx="43.0" ty="-0.0">
@@ -174,7 +166,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </edge>
     <edge id="e1" source="n0" target="n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="48.0" tx="0.0" ty="-45.0"/>
@@ -189,7 +180,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </edge>
     <edge id="e2" source="n0" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-48.0" tx="0.0" ty="56.5"/>
@@ -204,7 +194,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </edge>
     <edge id="e3" source="n5" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="64.0" sy="-0.0" tx="-56.0" ty="-0.0"/>
@@ -219,7 +208,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </edge>
     <edge id="e4" source="n2" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="45.0" tx="0.0" ty="-45.0"/>
@@ -234,7 +222,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </edge>
     <edge id="e5" source="n3" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-64.0" sy="-0.0" tx="56.0" ty="-0.0"/>
@@ -249,7 +236,6 @@ sanallinenArvio<y:LabelModel>
       </data>
     </edge>
     <edge id="e6" source="n5" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
