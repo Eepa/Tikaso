@@ -8,3 +8,6 @@ Projektin valmistelu, tarvittavat ohjelmat, aihemaarittely.
 
 la 16.03.2013, 1,5h
 Aihemaarittelyn kirjoitus, relaatiokaavio.
+
+ma 18.03.2013, 2,5h
+CreateTable-lauseita.
