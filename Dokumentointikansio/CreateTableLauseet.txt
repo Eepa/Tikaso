@@ -35,7 +35,7 @@ lajiprofiiliin kukin omalle rivilleen.
 CREATE TABLE lajiprofiili (
     lajitunnus         INt4 NOT NULL,  -- lajin tunnus
     tavoitekuvaus      VARCHAR(2000),  -- tavoitteen sanallinen kuvaus
-    tavoiteharjmaara   INT4,           -- kayttajan tavoiteharjoitusmaara
+    tavoiteharjmaara   INT4,           -- kayttajan tavoiteharjoitusmaara viikossa
     PRIMARY KEY (hetu, lajitunnus),
     FOREIGN KEY (hetu) REFERENCES kayttaja,
     FOREIGN KEY (lajitunnus) REFERENCES lajit
