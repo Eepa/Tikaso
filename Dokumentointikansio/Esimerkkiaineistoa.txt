@@ -1,0 +1,15 @@
+ESIMERKKIAINEISTOA ENSIMMAISEEN TIETOKANTAAN
+============================================
+
+kayttaja
+
+INSERT INTO kayttaja (hetu, kayttajanimi, etunimi, sukunimi, salasana)
+	VALUES (1, 'MIMA', 'Mikko', 'Mallikas', 'mima1');
+
+INSERT INTO kayttaja (hetu, etunimi, sukunimi)
+	VALUES (2, 'MAPA', 'Maija', 'Paastainen', 'mapa2');
+
+
+INSERT INTO kayttaja (hetu, etunimi, sukunimi)
+	VALUES (3, 'HEKU', 'Henri', 'Kurki', 'heku3');
+

@@ -1,5 +1,5 @@
-Tietokantasovellus AIHEMAARITTELY
-=================================
+Tietokantasovellus - Harjoituskirjanpito aihemaarittely
+=======================================================
 
 Jarjestelman tarkoitus
 

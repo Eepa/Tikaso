@@ -1,28 +1,16 @@
-CREATE TABLE LAUSEET
-====================
+CREATE TABLE -LAUSEET
+=====================
 
 //Taulu jarjestelman kayttajasta. Kertoo kayttajan nimen ja
 henkilotunnuksen.
 
 CREATE TABLE kayttaja (
-    hetu            int not null,  -- kayttajan henkilotunnus
-    etunimi         varchar(30),   -- kayttajan etunimi
-    sukunimi        varchar(30),   -- kayttajan sukunimi
-    primary key (hetu)
-);
-
-
-
-//Jos kayttaja on luonut jarjestelmaan profiilin, sisaltaa 
-taulu tiedot kayttajan kayttajaprofiilista.
-
-CREATE TABLE kayttajaprofiili (
-    hetu            int not null,  -- kayttajan henkilotunnus
-    kayttajanimi    varchar(30),   -- kayttajan kayttajanimi
-    salasana        varchar(30),   -- kayttajan salasana
-    sahkoposti      varchar(50),   -- kayttajan sahkoposti
-    primary key (hetu),
-    foreign key (hetu) references kayttaja
+    hetu            INT4 NOT NULL,           -- kayttajan henkilotunnus
+    kayttajanimi    VARCHAR(30) NOT NULL,    -- kayttajan kayttajanimi
+    etunimi         VARCHAR(30),             -- kayttajan etunimi
+    sukunimi        VARCHAR(30),             -- kayttajan sukunimi
+    salasana        VARCHAR(30),             -- kayttajan salasana
+    PRIMARY KEY (hetu, kayttajanimi)
 );
 
 
@@ -31,10 +19,10 @@ CREATE TABLE kayttajaprofiili (
 on mahdollista lisata jarjestelmaan uusi harjoituskerta.
 
 CREATE TABLE laji (
-    lajitunnus      int not null,  -- lajin tunnus
-    lajinimi        varchar(30),   -- lajin nimi
-    lajikuvaus      varchar(1000), -- lajin sanallinen kuvaus
-    primary key (lajitunnus),
+    lajitunnus      INT4 NOT NULL,  -- lajin tunnus
+    lajinimi        VARCHAR(30),    -- lajin nimi
+    lajikuvaus      VARCHAR(1000),  -- lajin sanallinen kuvaus
+    PRIMARY KEY (lajitunnus),
 );
 
 
@@ -45,13 +33,12 @@ Jokaisella kayttajalla voi olla useampi laji
 lajiprofiiliin kukin omalle rivilleen.
 
 CREATE TABLE lajiprofiili (
-    hetu               int not null,  -- kayttajan henkilotunnus
-    lajitunnus         int not null,  -- lajin tunnus
-    tavoitekuvaus      varchar(2000), -- tavoitteen sanallinen kuvaus
-    tavoiteharjmaara   int,           -- kayttajan tavoiteharjoitusmaara
-    primary key (hetu, lajitunnus),
-    foreign key (hetu) references kayttaja
-    foreign key (lajitunnus) references lajit
+    lajitunnus         INt4 NOT NULL,  -- lajin tunnus
+    tavoitekuvaus      VARCHAR(2000),  -- tavoitteen sanallinen kuvaus
+    tavoiteharjmaara   INT4,           -- kayttajan tavoiteharjoitusmaara
+    PRIMARY KEY (hetu, lajitunnus),
+    FOREIGN KEY (hetu) REFERENCES kayttaja,
+    FOREIGN KEY (lajitunnus) REFERENCES lajit
 );
 
 
@@ -63,15 +50,15 @@ alkamisaika. Lisaksi voidaan merkita harjoituksen kesto,
 vaikeusaste ja kirjoittaa sanallinen kuvaus.
 
 CREATE TABLE harjoituskerta (
-    hetu               int not null,  -- kayttajan henkilotunnus
-    lajitunnus         int not null,  -- lajin tunnus
-    harjpvm            date not null, -- harjoituskerran paivays (vvvv-kk-pp)
-    harjalku           time not null, -- harjoituskerran alkamisaika (HH:MM:SS)
-    harjkesto          int,           -- harjoituksen kesto minuutteina
-    vaikeusaste        int,           -- harjoituksen vaikeusaste numerona
-    harjkuvaus         varchar(2000), -- harjoituksen sanallinen kuvaus
-    primary key (hetu, lajitunnus, harjpvm, harjalku),
-    foreign key (hetu, lajitunnus) references lajiprofiili
+    hetu               INT4 NOT NULL,  -- kayttajan henkilotunnus
+    lajitunnus         INT4 NOT NULL,  -- lajin tunnus
+    harjpvm            DATE NOT NULL,  -- harjoituskerran paivays (vvvv-kk-pp)
+    harjalku           TIME NOT NULL,  -- harjoituskerran alkamisaika (HH:MM:SS.MS)
+    harjkesto          INT4,           -- harjoituksen kesto minuutteina
+    vaikeusaste        INT4,           -- harjoituksen vaikeusaste numerona
+    harjkuvaus         VARCHAR(2000),  -- harjoituksen sanallinen kuvaus
+    PRIMARY KEY (hetu, lajitunnus, harjpvm, harjalku),
+    FOREIGN KEY (hetu, lajitunnus) REFERENCES lajiprofiili
 );
 
 
@@ -84,16 +71,15 @@ merkita yleisarvosana harjoituksesta, tyytyvaisyysarvosana,
 ja sanallinen arvio.
 
 CREATE TABLE arvio (
-    hetu               int not null,  -- kayttajan henkilotunnus
-    lajitunnus         int not null,  -- lajin tunnus
-    harjpvm            date not null, -- harjoituskerran paivays (vvvv-kk-pp)
-    harjalku           time not null, -- harjoituskerran alkamisaika (HH:MM:SS)
-    arviopvm           date not null, -- arvion paivays (vvvv-kk-pp)
-    arvioijahetu       int not null,  -- arvioijan henkilotunnus
-    yleisarvosana      int,           -- yleisarvosana harjoituksesta
-    tyytyvaisyysarvo   int,           -- arvosana tyytyvaisyydesta harjoitukseen
-    sanallinenarvio    varchar(2000), -- arvion sanallinen kuvaus
-    primary key (hetu, lajitunnus, harjpvm, harjalku, arviopvm, arvioijahetu),
-    foreign key (hetu, lajitunnus, harjpvm, harjalku) references harjoituskerta
-    foreign key (arvioijahetu) references kayttaja
+    hetu               INT4 NOT NULL,  -- kayttajan henkilotunnus
+    lajitunnus         INT4 NOT NULL,  -- lajin tunnus
+    harjpvm            DATE NOT NULL,  -- harjoituskerran paivays (vvvv-kk-pp)
+    harjalku           TIME NOT NULL,  -- harjoituskerran alkamisaika (HH:MM:SS)
+    arvioijahetu       INT4 NOT NULL,  -- arvioijan henkilotunnus
+    yleisarvosana      INT4,           -- yleisarvosana harjoituksesta
+    tyytyvaisyysarvo   INT4,           -- arvosana tyytyvaisyydesta harjoitukseen
+    sanallinenarvio    VARCHAR(2000),  -- arvion sanallinen kuvaus
+    PRIMARY KEY (hetu, lajitunnus, harjpvm, harjalku, arvioijahetu),
+    FOREIGN KEY (hetu, lajitunnus, harjpvm, harjalku) REFERENCES harjoituskerta,
+    FOREIGN KEY (arvioijahetu) REFERENCES kayttaja
 );
