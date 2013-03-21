@@ -1,0 +1,72 @@
+﻿CREATETABLET-users
+
+evpa=> CREATE TABLE kayttaja (
+evpa(>     kayttajanimi    VARCHAR(30) NOT NULL,    -- kayttajan kayttajanimi
+evpa(>     etunimi         VARCHAR(30),             -- kayttajan etunimi
+evpa(>     sukunimi        VARCHAR(30),             -- kayttajan sukunimi
+evpa(>     salasana        VARCHAR(30),             -- kayttajan salasana
+evpa(>     PRIMARY KEY (kayttajanimi)
+evpa(> );
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "kayttaja_pkey" f                                                                                                                or table "kayttaja"
+CREATE TABLE
+evpa=>
+
+================================
+
+evpa=> CREATE TABLE laji (
+evpa(>     lajitunnus      INT4 NOT NULL,  -- lajin tunnus
+evpa(>     lajinimi        VARCHAR(30),    -- lajin nimi
+evpa(>     lajikuvaus      VARCHAR(1000),  -- lajin sanallinen kuvaus
+evpa(>     PRIMARY KEY (lajitunnus)
+evpa(> );
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "laji_pkey" for table "laji"
+CREATE TABLE
+
+=======================================
+
+evpa=> CREATE TABLE lajiprofiili (
+evpa(>     kayttajanimi       VARCHAR(30) NOT NULL,    -- kayttajan kayttajanimi
+evpa(>     lajitunnus         INt4 NOT NULL,           -- lajin tunnus
+evpa(>     tavoitekuvaus      VARCHAR(2000),           -- tavoitteen sanallinen kuvaus
+evpa(>     tavoiteharjmaara   INT4,                    -- kayttajan tavoiteharjoitusmaara viikossa
+evpa(>     PRIMARY KEY (kayttajanimi, lajitunnus),
+evpa(>     FOREIGN KEY (kayttajanimi) REFERENCES kayttaja,
+evpa(>     FOREIGN KEY (lajitunnus) REFERENCES laji
+evpa(> );
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "lajiprofiili_pkey" for table "lajiprofiili"
+CREATE TABLE
+evpa=>
+
+=====================================
+
+evpa=> CREATE TABLE harjoituskerta (
+evpa(>     kayttajanimi       VARCHAR(30) NOT NULL,    -- kayttajan kayttajanimi
+evpa(>     lajitunnus         INT4 NOT NULL,           -- lajin tunnus
+evpa(>     harjpvm            DATE NOT NULL,           -- harjoituskerran paivays (vvvv-kk-pp)
+evpa(>     harjalku           TIME NOT NULL,           -- harjoituskerran alkamisaika (HH:MM:SS.MS)
+evpa(>     harjkesto          INT4,                    -- harjoituksen kesto minuutteina
+evpa(>     vaikeusaste        INT4,                    -- harjoituksen vaikeusaste numerona
+evpa(>     harjkuvaus         VARCHAR(2000),           -- harjoituksen sanallinen kuvaus
+evpa(>     PRIMARY KEY (kayttajanimi, lajitunnus, harjpvm, harjalku),
+evpa(>     FOREIGN KEY (kayttajanimi, lajitunnus) REFERENCES lajiprofiili
+evpa(> );
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "harjoituskerta_pkey" for table "harjoituskerta"
+CREATE TABLE
+
+=================================
+
+evpa=> CREATE TABLE arvio (
+evpa(>     kayttajanimi       VARCHAR(30) NOT NULL,    -- kayttajan kayttajanimi
+evpa(>     lajitunnus         INT4 NOT NULL,           -- lajin tunnus
+evpa(>     harjpvm            DATE NOT NULL,           -- harjoituskerran paivays (vvvv-kk-pp)
+evpa(>     harjalku           TIME NOT NULL,           -- harjoituskerran alkamisaika (HH:MM:SS)
+evpa(>     arvioijakaytnimi   VARCHAR(30) NOT NULL,    -- arvioijan kayttajanimi
+evpa(>     yleisarvosana      INT4,                    -- yleisarvosana harjoituksesta
+evpa(>     tyytyvaisyysarvo   INT4,                    -- arvosana tyytyvaisyydesta harjoitukseen
+evpa(>     sanallinenarvio    VARCHAR(2000),           -- arvion sanallinen kuvaus
+evpa(>     PRIMARY KEY (kayttajanimi, lajitunnus, harjpvm, harjalku, arvioijakaytnimi),
+evpa(>     FOREIGN KEY (kayttajanimi, lajitunnus, harjpvm, harjalku) REFERENCES harjoituskerta,
+evpa(>     FOREIGN KEY (arvioijakaytnimi) REFERENCES kayttaja
+evpa(> );
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "arvio_pkey" for table "arvio"
+CREATE TABLE

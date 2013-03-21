@@ -15,3 +15,6 @@ CreateTable-lauseita.
 
 ke 20.03.2013, 1h
 Tietokannan luominen ja esimerkkisisaltoa.
+
+to 21.03.2013, 1,5h
+Nettisivun suunnittelua, tietokannan rakentamista.
