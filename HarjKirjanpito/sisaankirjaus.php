@@ -14,7 +14,7 @@
         <div> 
             <h3>Kirjaudu järjestelmään</h3>
 
-            <form action="etusivu.html" method="post">
+            <form action="etusivu.php" method="post">
                 <p>Syötä tunnuksesi ja salasanasi:</p>
                 <fieldset>
                     
