@@ -6,27 +6,26 @@ class Sessio{
         session_start();
     }
     
-    public function __set($kayttajatunnus, $salasana) {
-        $_SESSION[$kayttajatunnus] = $salasana;
+    public function __set($hetu, $arvo) {
+        $_SESSION[$hetu] = $arvo;
     }
     
-    public function __get($kayttajatunnus) {
-        if($this->__isset($kayttajatunnus)){
-            return $_SESSION[$kayttajatunnus];
+    public function __get($hetu) {
+        if($this->__isset($hetu)){
+            return $_SESSION[$hetu];
         }
         return null;
     }
     
-    public function __isset($kayttajatunnus) {
-        return isset($_SESSION[$kayttajatunnus]);
+    public function __isset($hetu) {
+        return isset($_SESSION[$hetu]);
     }
     
-    public function __unset($kayttajatunnus) {
-        unset($_SESSION[$kayttajatunnus]);
+    public function __unset($hetu) {
+        unset($_SESSION[$hetu]);
     }
         
 }
-
 
 $sessio = new Sessio();
 

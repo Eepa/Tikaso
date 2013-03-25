@@ -1,30 +1,33 @@
 <?php
 
 class Kyselyja {
-    
+
     private $_pdo;
 
     public function __construct($pdo) {
         $this->_pdo = $pdo;
     }
-    
-    public function tunnistus($kayttajatunnus, $salasana){
-        $kysely = valmistelut('SELECT hetu FROM kayttaja WHERE kayttajanimi = ? AND salasana = ?');
-        
-        if($kysely->execute(array($kayttajatunnus, $salasana))){
+
+    public function tunnistus($kayttajatunnus, $salasana) {
+        $kysely = $this->valmistelut('SELECT hetu FROM kayttaja WHERE kayttajanimi = ? AND salasana = ?');
+
+        if ($kysely->execute(array($kayttajatunnus, $salasana))) {
             return $kysely->fetchObject();
         } else {
             return null;
         }
-        
     }
-    
-    private function valmistelut($kyselylause){
+
+    private function valmistelut($kyselylause) {
         return $this->_pdo->prepare($kyselylause);
     }
 
 }
 
 require 'palvelinasetukset.php';
-$kyselija = new Kyselyt($pdo);
+//$pdo = new PDO('pgsql:host=localhost;dbname=evpa',
+//                'evpa', '895589284dd26243');
+
+$kyselyja = new Kyselyja($pdo);
 ?>
+
