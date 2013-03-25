@@ -21,3 +21,6 @@ Nettisivun suunnittelua, tietokannan rakentamista.
 
 pe 22.03.2013, 2h
 Sivujen koodaamisen aloittaminen, sisaankirjautuminen.
+
+ma 25.03.2013, 1,5h
+Sisaankirjautumisen jatkoa, tietokannan muutos.

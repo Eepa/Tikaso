@@ -1,3 +1,5 @@
+<?php require_once 'tarkastus.php'; ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +11,7 @@
     <body>
         <h1>Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
         <div>TODO write content</div>
-    
+              
     </body>
     
     
