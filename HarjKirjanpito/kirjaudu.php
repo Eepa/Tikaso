@@ -1,8 +1,6 @@
 <?php
 
 require_once 'tarkastus.php';
-require_once 'kyselyja.php';
-require_once 'sessio.php';
 
 if (isset($_GET['sis'])) {
 
@@ -15,11 +13,10 @@ if (isset($_GET['sis'])) {
     } else {
         ohjaa('sisaankirjaus.php');
     }
+} elseif (isset($_GET['ulos'])) {
+    unset($sessio->hetu);
+    ohjaa('sisaankirjaus.php');
+} else {
+    die('Jotain hämärää tapahtui..');
 }
-//elseif (isset($_GET['ulos'])) {
-//    unset($sessio->hetu);
-//    ohjaa('index.php');
-//} else {
-//    die('Jotain hämärää tapahtui?');
-//}
 ?>

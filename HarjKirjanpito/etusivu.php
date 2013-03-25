@@ -12,8 +12,17 @@ varmista_kirjautuminen();?>
     
     <body>
         <h1>Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
-        <div>TODO write content</div>
-              
+        
+        <?php require 'linkkilista.php';?>
+        
+        
+        <div>
+            <h2>Sisältö</h2>
+            <p>Harjoituskirjanpitojärjestelmässä voit merkata ylös omat treenikertasi
+            ja antaa arvioita treeneistä itsellesi ja muille käyttäjille.</p>
+        </div>
+        
+        
     </body>
     
     
