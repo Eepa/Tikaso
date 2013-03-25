@@ -21,12 +21,9 @@ class Kyselyja {
     private function valmistelut($kyselylause) {
         return $this->_pdo->prepare($kyselylause);
     }
-
 }
 
 require 'palvelinasetukset.php';
-//$pdo = new PDO('pgsql:host=localhost;dbname=evpa',
-//                'evpa', '895589284dd26243');
 
 $kyselyja = new Kyselyja($pdo);
 ?>
