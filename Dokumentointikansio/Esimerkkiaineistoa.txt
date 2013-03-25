@@ -3,14 +3,14 @@ ESIMERKKIAINEISTOA ENSIMMAISEEN TIETOKANTAAN
 
 kayttaja
 
-INSERT INTO kayttaja (kayttajanimi, etunimi, sukunimi, salasana)
-	VALUES ('MIMA', 'Mikko', 'Mallikas', 'mima1');
+INSERT INTO kayttaja (hetu, kayttajanimi, etunimi, sukunimi, salasana)
+	VALUES (1, 'MIMA', 'Mikko', 'Mallikas', 'mima1');
 
-INSERT INTO kayttaja (kayttajanimi, etunimi, sukunimi, salasana)
-	VALUES ('MAPA', 'Maija', 'Paastainen', 'mapa2');
+INSERT INTO kayttaja (hetu, kayttajanimi, etunimi, sukunimi, salasana)
+	VALUES (2, 'MAPA', 'Maija', 'Paastainen', 'mapa2');
 
-INSERT INTO kayttaja (kayttajanimi, etunimi, sukunimi, salasana)
-	VALUES ('HEKU', 'Henri', 'Kurki', 'heku3');
+INSERT INTO kayttaja (hetu, kayttajanimi, etunimi, sukunimi, salasana)
+	VALUES (3, 'HEKU', 'Henri', 'Kurki', 'heku3');
 
 
 lajit
@@ -29,31 +29,31 @@ INSERT INTO laji (lajitunnus, lajinimi, lajikuvaus)
 
 lajiprofiili
 
-INSERT INTO lajiprofiili (kayttajanimi, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
-	VALUES ('MIMA', 1, 'oppia lukkoja', 2);
+INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
+	VALUES (1, 1, 'oppia lukkoja', 2);
 
-INSERT INTO lajiprofiili (kayttajanimi, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
-	VALUES ('MIMA', 2, 'oppia painia ilman pukua', 3);
+INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
+	VALUES (1, 2, 'oppia painia ilman pukua', 3);
 
-INSERT INTO lajiprofiili (kayttajanimi, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
-	VALUES ('HEKU', 2, 'parantaa potkujen nopeutta', 5);
+INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
+	VALUES (3, 2, 'parantaa potkujen nopeutta', 5);
 
-INSERT INTO lajiprofiili (kayttajanimi, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
-	VALUES ('MAPA', 3, 'voimaa potkuihin', 4);
+INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
+	VALUES (2, 3, 'voimaa potkuihin', 4);
 
 
 harjoituskerta
 
-INSERT INTO harjoituskerta (kayttajanimi, lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
-	VALUES ('MIMA', 2, '2013-03-21', '19:30:00.00', 90, 5, 'Harjoiteltiin alasvienteja');
+INSERT INTO harjoituskerta (hetu, lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
+	VALUES (1, 2, '2013-03-21', '19:30:00.00', 90, 5, 'Harjoiteltiin alasvienteja');
 
-INSERT INTO harjoituskerta (kayttajanimi, lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
-	VALUES ('MAPA', 3, '2013-02-25', '17:00:00.00', 75, 3, 'Kuristuksia ja lukkoja');
+INSERT INTO harjoituskerta (hetu, lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
+	VALUES (2, 3, '2013-02-25', '17:00:00.00', 75, 3, 'Kuristuksia ja lukkoja');
 
 arvio
 
-INSERT INTO arvio (kayttajanimi, lajitunnus, harjpvm, harjalku, arvioijakaytnimi, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio)
-	VALUES ('MIMA', 2, '2013-03-21', '19:30:00.00', 'MIMA', 4, 3, 'Ei onnistunut kunnolla');
+INSERT INTO arvio (hetu, lajitunnus, harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio)
+	VALUES (1, 2, '2013-03-21', '19:30:00.00', 1, 4, 3, 'Ei onnistunut kunnolla');
 
-INSERT INTO arvio (kayttajanimi, lajitunnus, harjpvm, harjalku, arvioijakaytnimi, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio)
-	VALUES ('MIMA', 2, '2013-03-21', '19:30:00.00', 'HEKU', 5, 4, 'Onnistui hyvin');
+INSERT INTO arvio (hetu, lajitunnus, harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio)
+	VALUES (1, 2, '2013-03-21', '19:30:00.00', 3, 5, 4, 'Onnistui hyvin');
