@@ -18,7 +18,7 @@ class Kyselyja {
         }
     }
 
-    public function haelajit() {
+    public function haeKaikkiLajit() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji');
         $kysely->execute();
         
@@ -30,9 +30,24 @@ class Kyselyja {
             $lajit[$indeksi] = $rivi['lajinimi'];
             $indeksi++;
         }
+                
+        return $lajit;
+    }
+    
+    public function haeKayttajanLajit($kayttajatunnus) {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ' . $kayttajatunnus 
+                . ' AND lajiprofiili.lajitunnus = laji.lajitunnus');
+        $kysely->execute();
+        
+        $lajit = array();
+        $indeksi = 0;
 
-        
-        
+        while ($rivi = $kysely->fetch()) {
+            
+            $lajit[$indeksi] = $rivi['lajinimi'];
+            $indeksi++;
+        }
+                
         return $lajit;
     }
 
