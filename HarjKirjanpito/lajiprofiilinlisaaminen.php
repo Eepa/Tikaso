@@ -1,5 +1,5 @@
 <?php
-require_once 'tarkastus.php';
+require_once 'kirjautuminen/tarkastus.php';
 varmista_kirjautuminen();
 ?>
 <!DOCTYPE html>
@@ -16,18 +16,20 @@ varmista_kirjautuminen();
         <?php echo 'Kaikki lajit: <br>';
         ?>
         <?php
-        require 'muokkaalistoja.php';
-        $listojenMuokkaaja = new ListojenMuokkaaja();
-
-        $yhdistetytnumeroin = $listojenMuokkaaja->muodostaYhdistetytNumeroin();
-        for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
+//        require 'muokkaalistoja.php';
+        
+        $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php';
+        
+        echo 'Lajit joita ei vielä käyttäjällä <br>';
+        
+        for($x = 0; $x < count($yhdistetytnumeroin); $x++){
             echo $yhdistetytnumeroin[$x] . '<br>';
-            echo 'MOI';
         }
-//        
+        
+
 //        $kaikkilajit = $kyselyita->haeKaikkiLajitNumeroindekseillä();
 //        $kaikkilajitkirjaimin = $kyselyita->haeKaikkiLajit();
-//                        
+////                        
 //        echo $kaikkilajit[0] . " " . $kaikkilajit[1] . " " . $kaikkilajit[2] . ' ' . $kaikkilajit[3] . '<br>';
 //        
 //        

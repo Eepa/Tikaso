@@ -1,6 +1,6 @@
 <?php
 
-require_once 'kyselyja.php';
+require_once 'apuphpt/kyselyja.php';
 require_once 'sessio.php';
 
 function ohjaa($osoite){

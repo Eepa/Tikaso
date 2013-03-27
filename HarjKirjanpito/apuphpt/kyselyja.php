@@ -33,7 +33,7 @@ class Kyselyja {
         return $lajit;
     }
     
-    public function haeKaikkiLajitNumeroindekseillä() {
+    public function haeKaikkiLajitNumeroindekseilla() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji');
         $kysely->execute();
         
@@ -41,6 +41,23 @@ class Kyselyja {
         $indeksi = 0;
 
         while ($rivi = $kysely->fetch()) {
+            $lajit[$indeksi] = $rivi['lajinimi'];
+            $indeksi++;
+        }
+                
+        return $lajit;
+    }
+    
+     public function haeKayttajanLajitNumeroindeksilla($kayttajatunnus) {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ' . $kayttajatunnus 
+                . ' AND lajiprofiili.lajitunnus = laji.lajitunnus');
+        $kysely->execute();
+        
+        $lajit = array();
+        $indeksi = 0;
+
+        while ($rivi = $kysely->fetch()) {
+            
             $lajit[$indeksi] = $rivi['lajinimi'];
             $indeksi++;
         }
