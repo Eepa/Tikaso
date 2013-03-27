@@ -1,7 +1,7 @@
 <?php
 
 require_once 'apuphpt/kyselyja.php';
-require_once 'HarjKirjanpito/sessio.php';
+require_once 'sessio.php';
 
 function ohjaa($osoite){
     header("Location: $osoite");

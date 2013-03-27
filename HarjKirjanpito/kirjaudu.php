@@ -1,6 +1,6 @@
 <?php
 
-require_once 'kirjautuminen/tarkastus.php';
+require_once 'tarkastus.php';
 
 if (isset($_GET['sis'])) {
 
@@ -9,11 +9,11 @@ if (isset($_GET['sis'])) {
         $sessio->hetu = $kayttaja->hetu;
         ohjaa('etusivu.php');
     } else {
-        ohjaa('kirjautuminen/sisaankirjaus.php');
+        ohjaa('sisaankirjaus.php');
     }
 } elseif (isset($_GET['ulos'])) {
     unset($sessio->hetu);
-    ohjaa('kirjautuminen/sisaankirjaus.php');
+    ohjaa('sisaankirjaus.php');
 } else {
     die('Jotain hämärää tapahtui..');
 }
