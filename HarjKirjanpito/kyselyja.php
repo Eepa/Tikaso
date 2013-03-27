@@ -23,10 +23,24 @@ class Kyselyja {
         $kysely->execute();
         
         $lajit = array();
+        
+
+        while ($rivi = $kysely->fetch()) {
+            $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+            
+        }
+                
+        return $lajit;
+    }
+    
+    public function haeKaikkiLajitNumeroindekseillä() {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji');
+        $kysely->execute();
+        
+        $lajit = array();
         $indeksi = 0;
 
         while ($rivi = $kysely->fetch()) {
-            
             $lajit[$indeksi] = $rivi['lajinimi'];
             $indeksi++;
         }
@@ -40,12 +54,12 @@ class Kyselyja {
         $kysely->execute();
         
         $lajit = array();
-        $indeksi = 0;
+        
 
         while ($rivi = $kysely->fetch()) {
             
-            $lajit[$indeksi] = $rivi['lajinimi'];
-            $indeksi++;
+            $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+            
         }
                 
         return $lajit;

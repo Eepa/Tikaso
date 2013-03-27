@@ -1,4 +1,5 @@
-<?php require_once 'tarkastus.php';
+<?php
+require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
 <!DOCTYPE html>
@@ -8,73 +9,64 @@ varmista_kirjautuminen();
         <title>Lajiprofiilin lisääminen</title>
     </head>
     <body>
-        
-        <h1>Lajiprofiilin lisääminen</h1>
-        
-        <?php require 'linkkilista.php';?>
-        <?php echo 'MOI <br>';
-         ?>
-        <?php 
-        
-        $kaikkilajit = $kyselyita->haeKaikkiLajit();
-        
-        $arrlength = count($kaikkilajit);
 
-        for ($x = 0; $x < $arrlength; $x++) {
-            echo $kaikkilajit[$x];
-            echo "<br>";
-        }
-        $kaikkilajit[4] = 'LP';
-        
-        echo 'Välikirjoitus <br>';
-        
-        $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
-        $kayttajanlajit[1] = 'SW';
-        $pituus = count($kayttajanlajit);
-        for ($x = 0; $x < $pituus; $x++) {
-            echo $kayttajanlajit[$x];
-            echo "<br>";
-        }
-        
-        
-        
-        $uudetlajit = array();
-        $indeksi = 0;
-        
-        $uudetlajit = array_diff($kaikkilajit, $kayttajanlajit);
-            
-            
-//            if(array_key_exists('SW', $kayttajanlajit) != TRUE){
-//               $uudetlajit[$indeksi] = $yksilaji;
-//                $indeksi++;
-//                echo 'lisatty ' . $yksilaji . '<br>';
-//            }
-            
-//            for($y = 0; $y < count($kayttajanlajit); $y++){
-//                
-//                if($kayttajanlajit[$y] === $yksilaji){
-//                    break;
-//                }
-//                
-//                
-//                $uudetlajit[$indeksi] = $yksilaji;
-//                $indeksi++;
-//            }
-           
-        
-        
-        echo 'toinen väli <br>';
-        
-        for ($x = 0; $x < count($uudetlajit); $x++) {
-            echo $uudetlajit[$x];
-            echo "<br>";
-        }
-        
-        echo 'LOPPU';
+        <h1>Lajiprofiilin lisääminen</h1>
+
+        <?php require 'linkkilista.php'; ?>
+        <?php echo 'Kaikki lajit: <br>';
         ?>
-        
-        
-        
-        
+        <?php
+        require 'muokkaalistoja.php';
+        $listojenMuokkaaja = new ListojenMuokkaaja();
+
+        $yhdistetytnumeroin = $listojenMuokkaaja->muodostaYhdistetytNumeroin();
+        for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
+            echo $yhdistetytnumeroin[$x] . '<br>';
+            echo 'MOI';
+        }
+//        
+//        $kaikkilajit = $kyselyita->haeKaikkiLajitNumeroindekseillä();
+//        $kaikkilajitkirjaimin = $kyselyita->haeKaikkiLajit();
+//                        
+//        echo $kaikkilajit[0] . " " . $kaikkilajit[1] . " " . $kaikkilajit[2] . ' ' . $kaikkilajit[3] . '<br>';
+//        
+//        
+//        
+//    
+//
+//                
+//        echo 'Käyttäjän lajit <br>';
+//        
+//        $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
+//        
+//        
+//        $yhdistetyt = array_diff($kaikkilajitkirjaimin, $kayttajanlajit);
+//        $yhdistetytnumeroin = array();
+//        $indeksi = 0;
+//        
+//        for($int = 0; $int < count($kaikkilajit); $int++){
+//            if(array_key_exists($kaikkilajit[$int], $yhdistetyt)){
+//                echo $yhdistetyt[$kaikkilajit[$int]] . '<br>';
+//                $yhdistetytnumeroin[$indeksi] = $yhdistetyt[$kaikkilajit[$int]];
+//                $indeksi++;
+//            }
+//        }
+//        
+//        echo 'juttuja <br>';
+//        
+//        for($x = 0; $x < count($yhdistetytnumeroin); $x++){
+//            echo $yhdistetytnumeroin[$x] . '<br>';
+//        }
+//        
+//        
+//        
+//        
+//        echo 'LOPPU';
+//        
+        ?>
+
+
+
+
     </body>
 </html>

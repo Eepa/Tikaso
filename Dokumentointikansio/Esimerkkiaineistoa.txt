@@ -24,7 +24,10 @@ INSERT INTO laji (lajitunnus, lajinimi, lajikuvaus)
 
 
 INSERT INTO laji (lajitunnus, lajinimi, lajikuvaus)
-	VALUES (3, 'TKD', 'potkuja ja itsepuolustusta');
+	VALUES (3, 'Taekwondo', 'potkuja ja itsepuolustusta');
+
+INSERT INTO laji (lajitunnus, lajinimi, lajikuvaus)
+	VALUES (4, 'Karate', 'kataa');
 
 
 lajiprofiili
@@ -40,6 +43,9 @@ INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
 
 INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
 	VALUES (2, 3, 'voimaa potkuihin', 4);
+
+INSERT INTO lajiprofiili (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara)
+	VALUES (2, 1, 'jotain painimista', 4);
 
 
 harjoituskerta
