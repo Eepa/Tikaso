@@ -16,57 +16,56 @@ varmista_kirjautuminen();
         <?php echo 'Kaikki lajit: <br>';
         ?>
         <?php
-//        require 'muokkaalistoja.php';
-        
+
         $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php';
-        
+
         echo 'Lajit joita ei vielä käyttäjällä <br>';
-        
-        for($x = 0; $x < count($yhdistetytnumeroin); $x++){
+
+        for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
             echo $yhdistetytnumeroin[$x] . '<br>';
         }
-        
-
-//        $kaikkilajit = $kyselyita->haeKaikkiLajitNumeroindekseillä();
-//        $kaikkilajitkirjaimin = $kyselyita->haeKaikkiLajit();
-////                        
-//        echo $kaikkilajit[0] . " " . $kaikkilajit[1] . " " . $kaikkilajit[2] . ' ' . $kaikkilajit[3] . '<br>';
-//        
-//        
-//        
-//    
-//
-//                
-//        echo 'Käyttäjän lajit <br>';
-//        
-//        $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
-//        
-//        
-//        $yhdistetyt = array_diff($kaikkilajitkirjaimin, $kayttajanlajit);
-//        $yhdistetytnumeroin = array();
-//        $indeksi = 0;
-//        
-//        for($int = 0; $int < count($kaikkilajit); $int++){
-//            if(array_key_exists($kaikkilajit[$int], $yhdistetyt)){
-//                echo $yhdistetyt[$kaikkilajit[$int]] . '<br>';
-//                $yhdistetytnumeroin[$indeksi] = $yhdistetyt[$kaikkilajit[$int]];
-//                $indeksi++;
-//            }
-//        }
-//        
-//        echo 'juttuja <br>';
-//        
-//        for($x = 0; $x < count($yhdistetytnumeroin); $x++){
-//            echo $yhdistetytnumeroin[$x] . '<br>';
-//        }
-//        
-//        
-//        
-//        
-//        echo 'LOPPU';
-//        
         ?>
 
+        <div> 
+            <form action="lisaalajiprofiili.php" id="lajiprofiililisays" method="POST">
+
+                <fieldset> 
+                    <h3>Lisää uusi lajiprofiili:</h3>
+                    
+                    <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu?>">
+
+                    <label for="laji">Lajivalinta:</label>
+
+                    <select name="laji" required>
+                        <?php for ($x = 0; $x < count($yhdistetytnumeroin); $x++) { ?>
+                            <option value="<?php echo $yhdistetytnumeroin[$x] ?>">
+                                <?php echo $yhdistetytnumeroin[$x] ?></option>
+                        <?php }
+                        ?>
+                    </select>
+                    
+                    <br>
+                    
+                    <label for="tavoitekuvaus">Tavoitekuvaus:<br></label>
+                    <textarea  name="tavoitekuvaus" form="lajiprofiililisays"
+                           rows="4" cols="50" maxlength="2000" required></textarea>
+                    
+                    <br>
+                    
+                    <label for="tavoiteharjmaara">Tavoiteharjoitusmäärä viikossa:</label>
+                    <input type="number" name="tavoitharjmaara" id="tavoiteharjmaara" 
+                           min="1" max="30" required>
+                    
+                    <br>
+                    
+                    <input type="submit" value="Lisää">
+                    
+                </fieldset>
+
+
+            </form>
+
+        </div>
 
 
 

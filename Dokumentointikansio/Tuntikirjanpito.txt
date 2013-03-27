@@ -25,5 +25,5 @@ Sivujen koodaamisen aloittaminen, sisaankirjautuminen.
 ma 25.03.2013, 1,5h
 Sisaankirjautumisen jatkoa, tietokannan muutos.
 
-ke 27.03.2013, 1,5h
+ke 27.03.2013, 5h
 Kyselyharjoittelua ja tulostelua.
