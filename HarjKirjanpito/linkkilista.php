@@ -7,8 +7,13 @@
     </head>
     <body>
         <?php if (on_kirjautunut()) { ?>
-            <p><a href="kirjaudu.php?ulos"> Uloskirjautuminen</a></p>
+            <p>
+                <a href="kirjaudu.php?ulos">Uloskirjautuminen</a>
+                <a href="etusivu.php">Etusivu</a>
+                <a href="lajiprofiilinlisaaminen.php">Lajiprofiilin lisääminen</a>
+            </p>
         <?php } ?>
+            
 
     </body>
 </html>

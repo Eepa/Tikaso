@@ -19,10 +19,10 @@ varmista_kirjautuminen();?>
         <div>
             <h2>Sisältö</h2>
             <p>Harjoituskirjanpitojärjestelmässä voit merkata ylös omat treenikertasi
-            ja antaa arvioita treeneistä itsellesi ja muille käyttäjille.</p>
+            ja antaa treeniarvioita itsellesi. Lisäksi voit lisätä itsellesi lajiprofiileita.</p>
         </div>
         
-        
+               
     </body>
     
     

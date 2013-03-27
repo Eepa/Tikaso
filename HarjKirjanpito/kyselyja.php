@@ -18,13 +18,32 @@ class Kyselyja {
         }
     }
 
+    public function haelajit() {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji');
+        $kysely->execute();
+        
+        $lajit = array();
+        $indeksi = 0;
+
+        while ($rivi = $kysely->fetch()) {
+            
+            $lajit[$indeksi] = $rivi['lajinimi'];
+            $indeksi++;
+        }
+
+        
+        
+        return $lajit;
+    }
+
     private function valmistelut($kyselylause) {
         return $this->_pdo->prepare($kyselylause);
     }
+
 }
 
 require 'palvelinasetukset.php';
 
-$kyselyja = new Kyselyja($pdo);
+$kyselyita = new Kyselyja($pdo);
 ?>
 

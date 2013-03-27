@@ -5,9 +5,9 @@ require_once 'tarkastus.php';
 if (isset($_GET['sis'])) {
 
 
-    $kayttaja = $kyselyja->tunnistus($_POST['kayttajatunnus'], $_POST['salasana']);
+    $kayttaja = $kyselyita->tunnistus($_POST['kayttajatunnus'], $_POST['salasana']);
     if ($kayttaja) {
-
+        
         $sessio->hetu = $kayttaja->hetu;
         ohjaa('etusivu.php');
     } else {
