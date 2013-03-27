@@ -1,4 +1,4 @@
-<?php require_once 'kirjautuminen/tarkastus.php'; ?>
+<?php require_once 'tarkastus.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>

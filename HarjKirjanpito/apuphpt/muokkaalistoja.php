@@ -1,6 +1,6 @@
 <?php
 
-require_once 'kirjautuminen/tarkastus.php';
+require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
 
