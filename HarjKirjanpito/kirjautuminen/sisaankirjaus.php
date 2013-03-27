@@ -14,7 +14,7 @@
         <div> 
             <h3>Kirjaudu järjestelmään</h3>
 
-            <form action="kirjautuminen/kirjaudu.php?sis" method="POST">
+            <form action="kirjaudu.php?sis" method="POST">
                 <p>Syötä tunnuksesi ja salasanasi:</p>
                 <fieldset>
                     
