@@ -1,7 +1,7 @@
 <?php
 
 require_once 'apuphpt/kyselyja.php';
-require_once 'apuphpt/sessio.php';
+require_once 'sessio.php';
 
 function ohjaa($osoite){
     header("Location: $osoite");
@@ -15,7 +15,7 @@ function on_kirjautunut(){
 
 function varmista_kirjautuminen(){
     if(!on_kirjautunut()){
-        ohjaa('sisaankirjaus.php');
+        ohjaa('kirjautuminen/sisaankirjaus.php');
     }
 }
 
