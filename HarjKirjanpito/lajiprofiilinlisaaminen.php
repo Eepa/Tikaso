@@ -48,12 +48,12 @@ varmista_kirjautuminen();
                     
                     <label for="tavoitekuvaus">Tavoitekuvaus:<br></label>
                     <textarea  name="tavoitekuvaus" form="lajiprofiililisays"
-                           rows="4" cols="50" maxlength="2000" required></textarea>
+                           rows="4" cols="50" maxlength="2000" id="tavoitekuvaus" required></textarea>
                     
                     <br>
                     
                     <label for="tavoiteharjmaara">Tavoiteharjoitusmäärä viikossa:</label>
-                    <input type="number" name="tavoitharjmaara" id="tavoiteharjmaara" 
+                    <input type="number" name="tavoiteharjmaara" id="tavoiteharjmaara" 
                            min="1" max="30" required>
                     
                     <br>

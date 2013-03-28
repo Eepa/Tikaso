@@ -89,6 +89,22 @@ class Kyselyja {
         }
         return null;
     }
+    
+    public function lisaaLajiprofiili($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara){
+//        $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
+//            (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (' . $hetu . ',' .
+//                $lajitunnus . ',' 
+//                . $tavoitekuvaus . ','.
+//                $tavoiteharjmaara . ')');
+        
+        $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
+            (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (?, ?, ?, ?)');
+        if($kysely->execute(array($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara))){
+            return true;
+        }
+        
+        return false;
+    }
 
 }
 

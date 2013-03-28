@@ -41,7 +41,7 @@ varmista_kirjautuminen();
 
                     <label for="lajiprofiili">Lajiprofiilin valinta:</label>
 
-                    <select name="lajiprofiili" required>
+                    <select name="lajiprofiili" id="lajiprofiili" required>
                         <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
                             <option value="<?php echo $kayttajanlajitnumero[$x] ?>">
                                 <?php echo $kayttajanlajitnumero[$x] ?></option>
