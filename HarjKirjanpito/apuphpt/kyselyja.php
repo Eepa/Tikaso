@@ -105,6 +105,17 @@ class Kyselyja {
         
         return false;
     }
+    
+    public function poistaLajiprofiili($hetu, $lajitunnus){
+        
+        $kysely = $this->valmistelut('DELETE FROM lajiprofiili WHERE hetu = ? and lajitunnus = ?');
+        
+        if($kysely->execute(array($hetu, $lajitunnus))){
+            return true;
+        }
+        return false;
+        
+    }
 
 }
 

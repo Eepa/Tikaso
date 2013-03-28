@@ -24,15 +24,18 @@ varmista_kirjautuminen();
         <?php
         $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
-        echo 'Käyttjän lajit <br>';
+        echo 'Käyttäjän lajit: <br>';
 
         for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
             echo $kayttajanlajitnumero[$x] . '<br>';
         }
+        
+        echo '<br>';
+        
         ?>
 
         <div> 
-            <form action="poistalajiprofiili.php" id="lajiprofiilipoisto" method="POST">
+            <form action="apuphpt/poistalajiprofiili.php" id="lajiprofiilipoisto" method="POST">
 
                 <fieldset> 
                     <h3>Poista lajiprofiili:</h3>

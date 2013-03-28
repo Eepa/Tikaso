@@ -24,18 +24,19 @@ varmista_kirjautuminen();
 $kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
 $kaikkiLajit = $kyselyita->haeKaikkiLajit();
 
-echo $kaikkiLajitNumeroindeksi[0] . " " . $kaikkiLajitNumeroindeksi[1] . " " . $kaikkiLajitNumeroindeksi[2] . ' ' . $kaikkiLajitNumeroindeksi[3] . '<br>';
+for($int = 0; $int < count($kaikkiLajitNumeroindeksi); $int++){
+    echo $kaikkiLajitNumeroindeksi[$int] . '<br>';
+}
 
-
-
-
-echo 'Käyttäjän lajit <br>';
+echo '<br> Käyttäjän lajit: <br>';
 
 $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
 $kayttajanLajitNumeroindeksi = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
-echo $kayttajanLajitNumeroindeksi[0] . " " . $kayttajanLajitNumeroindeksi[1] . " " .
- $kayttajanLajitNumeroindeksi[2] . ' <br>';
+for($int = 0; $int < count($kayttajanLajitNumeroindeksi); $int++){
+    echo $kayttajanLajitNumeroindeksi[$int] . '<br>';
+}
+
 
 $yhdistetyt = array_diff($kaikkiLajit, $kayttajanlajit);
 

@@ -19,11 +19,14 @@ varmista_kirjautuminen();
 
         $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php';
 
-        echo 'Lajit joita ei vielä käyttäjällä <br>';
+        echo '<br> Lajit joita ei vielä käyttäjällä <br>';
 
         for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
             echo $yhdistetytnumeroin[$x] . '<br>';
         }
+        
+        echo '<br>';
+        
         ?>
 
         <div> 
