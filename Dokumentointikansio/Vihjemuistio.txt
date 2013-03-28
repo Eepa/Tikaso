@@ -1,0 +1,13 @@
+You need something like echo $obj->columnname 
+Or just to see what's inside var_dump($obj) 
+
+Errorlog:
+
+tail -f /home/userlogs/$USER.error
+
+
+echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Succesfully Updated');
+        window.location.href='<URL to redirect to>';
+        </SCRIPT>");
+tai myös document.location.href

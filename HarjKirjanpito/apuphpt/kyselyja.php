@@ -8,6 +8,10 @@ class Kyselyja {
         $this->_pdo = $pdo;
     }
 
+    private function valmistelut($kyselylause) {
+        return $this->_pdo->prepare($kyselylause);
+    }
+
     public function tunnistus($kayttajatunnus, $salasana) {
         $kysely = $this->valmistelut('SELECT hetu FROM kayttaja WHERE kayttajanimi = ? AND salasana = ?');
 
@@ -20,70 +24,70 @@ class Kyselyja {
 
     public function haeKaikkiLajit() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji');
-        $kysely->execute();
 
-        $lajit = array();
-
-        while ($rivi = $kysely->fetch()) {
-            $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+        if ($kysely->execute()) {
+            $lajit = array();
+            while ($rivi = $kysely->fetch()) {
+                $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+            }
+            return $lajit;
         }
-        return $lajit;
+        return null;
     }
 
-    public function haeKaikkiLajitNumeroindekseilla() {
+    public function haeKaikkiLajitNumeroindeksi() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji');
-        $kysely->execute();
+        if ($kysely->execute()) {
+            $lajit = array();
+            $indeksi = 0;
 
-        $lajit = array();
-        $indeksi = 0;
-
-        while ($rivi = $kysely->fetch()) {
-            $lajit[$indeksi] = $rivi['lajinimi'];
-            $indeksi++;
+            while ($rivi = $kysely->fetch()) {
+                $lajit[$indeksi] = $rivi['lajinimi'];
+                $indeksi++;
+            }
+            return $lajit;
         }
-
-        return $lajit;
+        return null;
     }
 
-    public function haeKayttajanLajitNumeroindeksilla($kayttajatunnus) {
+    public function haeKayttajanLajitNumeroindeksi($kayttajatunnus) {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ' . $kayttajatunnus
                 . ' AND lajiprofiili.lajitunnus = laji.lajitunnus');
-        $kysely->execute();
+        if ($kysely->execute()) {
+            $lajit = array();
+            $indeksi = 0;
 
-        $lajit = array();
-        $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $lajit[$indeksi] = $rivi['lajinimi'];
+                $indeksi++;
+            }
 
-        while ($rivi = $kysely->fetch()) {
-            $lajit[$indeksi] = $rivi['lajinimi'];
-            $indeksi++;
+            return $lajit;
         }
-
-        return $lajit;
+        return null;
     }
 
     public function haeKayttajanLajit($kayttajatunnus) {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ' . $kayttajatunnus
                 . ' AND lajiprofiili.lajitunnus = laji.lajitunnus');
-        $kysely->execute();
+        if ($kysely->execute()) {
+            $lajit = array();
 
-        $lajit = array();
+            while ($rivi = $kysely->fetch()) {
+                $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+            }
 
-        while ($rivi = $kysely->fetch()) {
-            $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+            return $lajit;
         }
-
-        return $lajit;
+        return null;
     }
 
     public function lajiIndeksi($lajinimi) {
-        $kysely = $this->valmistelut('SELECT lajitunnus FROM laji WHERE lajinimi = ?' );
-        if($kysely->execute(array($lajinimi))){
+        $kysely = $this->valmistelut('SELECT lajitunnus FROM laji WHERE lajinimi = ?');
+        if ($kysely->execute(array($lajinimi))) {
             return $kysely->fetchObject();
         }
-    }
-
-    private function valmistelut($kyselylause) {
-        return $this->_pdo->prepare($kyselylause);
+        return null;
     }
 
 }

@@ -7,15 +7,22 @@ varmista_kirjautuminen();
 <?php
 
 $lajinimi = $_POST['laji'];
-echo $lajinimi;
+//echo $lajinimi;
 
-$kayttaja = $kyselyita->lajiIndeksi($lajinimi);
-//$kyselyita->laji($_POST['laji']);
+$laji = $kyselyita->lajiIndeksi($lajinimi);
 
-if($kayttaja){
-//    echo var_dump($kayttaja);
-    echo $kayttaja->lajitunnus;
+if($laji){
+    echo "<script language='JavaScript'>window.alert('Lisäys onnistui!'); 
+        window.location.href = 'lajiprofiilinlisaaminen.php';</script> <br>";
+} else {
+    die('Outo virhe ilmaantui');
 }
+
+
+//if($kayttaja){
+////    echo var_dump($kayttaja);
+//    echo $kayttaja->lajitunnus;
+//}
 //else {
 //    ohjaa('lajiprofiilinlisaaminen.php');
 //}

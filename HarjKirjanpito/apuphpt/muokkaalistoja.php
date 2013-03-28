@@ -8,21 +8,21 @@ varmista_kirjautuminen();
 <?php
 
 
-$kaikkilajit = $kyselyita->haeKaikkiLajitNumeroindekseilla();
-$kaikkilajitkirjaimin = $kyselyita->haeKaikkiLajit();
+$kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
+$kaikkiLajit = $kyselyita->haeKaikkiLajit();
 
-echo $kaikkilajit[0] . " " . $kaikkilajit[1] . " " . $kaikkilajit[2] . ' ' . $kaikkilajit[3] . '<br>';
+echo $kaikkiLajitNumeroindeksi[0] . " " . $kaikkiLajitNumeroindeksi[1] . " " . $kaikkiLajitNumeroindeksi[2] . ' ' . $kaikkiLajitNumeroindeksi[3] . '<br>';
 
 
 echo 'Käyttäjän lajit <br>';
 
 $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
-$kayttajanlajitnumeroindekseilla = $kyselyita->haeKayttajanLajitNumeroindeksilla($sessio->hetu);
+$kayttajanLajitNumeroindeksi = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
-echo $kayttajanlajitnumeroindekseilla[0] . " " . $kayttajanlajitnumeroindekseilla[1] . " " .
- $kayttajanlajitnumeroindekseilla[2] . ' <br>';
+echo $kayttajanLajitNumeroindeksi[0] . " " . $kayttajanLajitNumeroindeksi[1] . " " .
+ $kayttajanLajitNumeroindeksi[2] . ' <br>';
 
-$yhdistetyt = array_diff($kaikkilajitkirjaimin, $kayttajanlajit);
+$yhdistetyt = array_diff($kaikkiLajit, $kayttajanlajit);
 
 function muodostaYhdistetytNumeroin($yhdistetyt, $kaikkilajit) {
 
@@ -50,5 +50,5 @@ function muodostaYhdistetytNumeroin($yhdistetyt, $kaikkilajit) {
 
 
 
-return muodostaYhdistetytNumeroin($yhdistetyt, $kaikkilajit);
+return muodostaYhdistetytNumeroin($yhdistetyt, $kaikkiLajitNumeroindeksi);
 ?>
