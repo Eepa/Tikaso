@@ -9,11 +9,11 @@ if (isset($_GET['sis'])) {
         $sessio->hetu = $kayttaja->hetu;
         ohjaa('etusivu.php');
     } else {
-        ohjaa('sisaankirjaus.php');
+        ohjaa('kirjautuminen/sisaankirjaus.php');
     }
 } elseif (isset($_GET['ulos'])) {
     unset($sessio->hetu);
-    ohjaa('sisaankirjaus.php');
+    ohjaa('kirjautuminen/sisaankirjaus.php');
 } else {
     die('Jotain hämärää tapahtui..');
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'tarkastus.php';
+require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
 
@@ -13,7 +13,7 @@ $kyselynsuoritus = $kyselyita->poistaLajiprofiili($_POST['hetu'], $laji->lajitun
 
 if($kyselynsuoritus){
    echo "<script language='JavaScript'>window.alert('Poisto onnistui!'); 
-        window.location.href = './lajiprofiilinpoistaminen.php';</script> <br>";
+        window.location.href = '../lajiprofiilinpoistaminen.php';</script> <br>";
 } else {
     die('Ei onnistunut poisto.');
 }

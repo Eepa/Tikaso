@@ -14,7 +14,7 @@
         <div> 
             <h3>Kirjaudu järjestelmään</h3>
 
-            <form action="kirjaudu.php?sis" method="POST">
+            <form action="../kirjaudu.php?sis" method="POST">
                 <p>Syötä tunnuksesi ja salasanasi:</p>
                 <fieldset>
                     
@@ -34,7 +34,7 @@
         
         <div>
             <p>
-                <a href="index.html">Etusivulle</a>
+                <a href="../index.html">Etusivulle</a>
             </p>
         </div>
         

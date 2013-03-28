@@ -30,7 +30,7 @@ varmista_kirjautuminen();
         ?>
 
         <div> 
-            <form action="lisaalajiprofiili.php" id="lajiprofiililisays" method="POST">
+            <form action="apuphpt/lisaalajiprofiili.php" id="lajiprofiililisays" method="POST">
 
                 <fieldset> 
                     <h3>Lisää uusi lajiprofiili:</h3>
