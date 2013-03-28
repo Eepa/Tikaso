@@ -38,11 +38,11 @@ varmista_kirjautuminen();
                     <label for="laji">Lajivalinta:</label>
 
                     <select name="laji" required>
-<?php for ($x = 0; $x < count($yhdistetytnumeroin); $x++) { ?>
+                        <?php for ($x = 0; $x < count($yhdistetytnumeroin); $x++) { ?>
                             <option value="<?php echo $yhdistetytnumeroin[$x] ?>">
-                            <?php echo $yhdistetytnumeroin[$x] ?></option>
-                            <?php }
-                            ?>
+                                <?php echo $yhdistetytnumeroin[$x] ?></option>
+                        <?php }
+                        ?>
                     </select>
 
                     <br>

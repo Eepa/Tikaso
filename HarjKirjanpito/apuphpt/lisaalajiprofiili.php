@@ -13,11 +13,11 @@ $laji = $kyselyita->lajiIndeksi($lajinimi);
 $kyselynsuoritus = $kyselyita->lisaaLajiprofiili($_POST['hetu'], $laji->lajitunnus, $_POST['tavoitekuvaus'], $_POST['tavoiteharjmaara']);
 
 if ($kyselynsuoritus) {
-
     echo "<script language='JavaScript'>window.alert('Lisäys onnistui!'); 
         window.location.href = '../lajiprofiilinlisaaminen.php';</script> <br>";
 } else {
-    die('Outo virhe ilmaantui lisättäessä');
+    die("<script language='JavaScript'>window.alert('Lisäys epäonnistui'); 
+        window.location.href = '../lajiprofiilinlisaaminen.php';</script> <br>");
 }
 
 

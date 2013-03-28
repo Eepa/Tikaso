@@ -116,6 +116,32 @@ class Kyselyja {
         return false;
     }
 
+    public function haeLajiprofiilinSisalto($hetu, $lajitunnus) {
+        $kysely = $this->valmistelut('SELECT tavoitekuvaus, tavoiteharjmaara FROM lajiprofiili WHERE 
+            hetu = ? AND lajitunnus = ?');
+
+        if ($kysely->execute(array($hetu, $lajitunnus))) {
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+
+            return $sisalto;
+        }
+        return null;
+    }
+
+    public function muokkaaLajiprofiilia($tavoitekuvaus, $tavoiteharjmaara, $hetu, $lajitunnus) {
+        $kysely = $this->valmistelut('UPDATE lajiprofiili SET tavoitekuvaus = ?, tavoiteharjmaara = ? 
+            WHERE hetu = ? AND lajitunnus = ?');
+        if ($kysely->execute(array($tavoitekuvaus, $tavoiteharjmaara, $hetu, $lajitunnus))) {
+            return true;
+        }
+        return false;
+    }
+
 }
 
 require 'palvelinasetukset.php';

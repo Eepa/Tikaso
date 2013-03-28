@@ -15,6 +15,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Poisto onnistui!'); 
         window.location.href = '../lajiprofiilinpoistaminen.php';</script> <br>";
 } else {
-    die('Ei onnistunut poisto.');
+    die("<script language='JavaScript'>window.alert('Poisto epäonnistui'); 
+        window.location.href = '../lajiprofiilinpoistaminen.php';</script> <br>");
 }
 ?>
