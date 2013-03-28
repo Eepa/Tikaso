@@ -11,11 +11,10 @@ $laji = $kyselyita->lajiIndeksi($lajinimi);
 
 $kyselynsuoritus = $kyselyita->poistaLajiprofiili($_POST['hetu'], $laji->lajitunnus);
 
-if($kyselynsuoritus){
-   echo "<script language='JavaScript'>window.alert('Poisto onnistui!'); 
+if ($kyselynsuoritus) {
+    echo "<script language='JavaScript'>window.alert('Poisto onnistui!'); 
         window.location.href = '../lajiprofiilinpoistaminen.php';</script> <br>";
 } else {
     die('Ei onnistunut poisto.');
 }
-
 ?>

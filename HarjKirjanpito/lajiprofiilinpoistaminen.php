@@ -29,9 +29,8 @@ varmista_kirjautuminen();
         for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
             echo $kayttajanlajitnumero[$x] . '<br>';
         }
-        
+
         echo '<br>';
-        
         ?>
 
         <div> 
@@ -48,8 +47,8 @@ varmista_kirjautuminen();
                         <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
                             <option value="<?php echo $kayttajanlajitnumero[$x] ?>">
                                 <?php echo $kayttajanlajitnumero[$x] ?></option>
-                        <?php }
-                        ?>
+                            <?php }
+                            ?>
                     </select>
 
                     <br>

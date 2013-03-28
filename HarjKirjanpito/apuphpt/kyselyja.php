@@ -89,32 +89,31 @@ class Kyselyja {
         }
         return null;
     }
-    
-    public function lisaaLajiprofiili($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara){
+
+    public function lisaaLajiprofiili($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara) {
 //        $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
 //            (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (' . $hetu . ',' .
 //                $lajitunnus . ',' 
 //                . $tavoitekuvaus . ','.
 //                $tavoiteharjmaara . ')');
-        
+
         $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
             (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (?, ?, ?, ?)');
-        if($kysely->execute(array($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara))){
+        if ($kysely->execute(array($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara))) {
             return true;
         }
-        
+
         return false;
     }
-    
-    public function poistaLajiprofiili($hetu, $lajitunnus){
-        
+
+    public function poistaLajiprofiili($hetu, $lajitunnus) {
+
         $kysely = $this->valmistelut('DELETE FROM lajiprofiili WHERE hetu = ? and lajitunnus = ?');
-        
-        if($kysely->execute(array($hetu, $lajitunnus))){
+
+        if ($kysely->execute(array($hetu, $lajitunnus))) {
             return true;
         }
         return false;
-        
     }
 
 }
