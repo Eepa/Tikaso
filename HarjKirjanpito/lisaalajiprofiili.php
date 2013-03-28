@@ -9,13 +9,15 @@ varmista_kirjautuminen();
 $lajinimi = $_POST['laji'];
 echo $lajinimi;
 
-$kayttaja = $kyselyita->tunnistus('MIMA', 'mima1');
+$kayttaja = $kyselyita->lajiIndeksi($lajinimi);
 //$kyselyita->laji($_POST['laji']);
 
 if($kayttaja){
-    echo $kayttaja;
-} else {
-    ohjaa('lajiprofiilinlisaaminen.php');
+//    echo var_dump($kayttaja);
+    echo $kayttaja->lajitunnus;
 }
+//else {
+//    ohjaa('lajiprofiilinlisaaminen.php');
+//}
 echo 'lisäyssivy';
 ?>

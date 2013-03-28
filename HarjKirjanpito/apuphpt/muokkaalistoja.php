@@ -20,7 +20,7 @@ $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
 $kayttajanlajitnumeroindekseilla = $kyselyita->haeKayttajanLajitNumeroindeksilla($sessio->hetu);
 
 echo $kayttajanlajitnumeroindekseilla[0] . " " . $kayttajanlajitnumeroindekseilla[1] . " " .
- $kayttajanlajitnumeroindekseilla[2] . ' ' . $kayttajanlajitnumeroindekseilla[3] . '<br>';
+ $kayttajanlajitnumeroindekseilla[2] . ' <br>';
 
 $yhdistetyt = array_diff($kaikkilajitkirjaimin, $kayttajanlajit);
 
