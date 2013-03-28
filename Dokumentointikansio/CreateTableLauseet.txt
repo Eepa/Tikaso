@@ -59,7 +59,8 @@ CREATE TABLE harjoituskerta (
     vaikeusaste        INT4,                 -- harjoituksen vaikeusaste numerona
     harjkuvaus         VARCHAR(2000),        -- harjoituksen sanallinen kuvaus
     PRIMARY KEY (hetu,lajitunnus, harjpvm, harjalku),
-    FOREIGN KEY (hetu, lajitunnus) REFERENCES lajiprofiili
+    FOREIGN KEY (hetu) REFERENCES kayttaja,
+    FOREIGN KEY (lajitunnus) REFERENCES laji
 );
 
 
@@ -69,7 +70,8 @@ harjoituksesta. Kayttaja voi lisata arvion itselleen tai jollekin
 muulle kayttajalle. Arvioista merkitaan vahintaan harjoituskerta, 
 johon arvio liittyy, arviopaivamaara ja arvioija. Lisaksi voidaan 
 merkita yleisarvosana harjoituksesta, tyytyvaisyysarvosana, 
-ja sanallinen arvio.
+ja sanallinen arvio. Jos arvioon liittyva harjoituskerta poistetaan
+poistetaan samalla myos siihen liittyva arvio.
 
 CREATE TABLE arvio (
     hetu               INT4 NOT NULL,           -- kayttajan tunnistusnumero
@@ -81,6 +83,6 @@ CREATE TABLE arvio (
     tyytyvaisyysarvo   INT4,                    -- arvosana tyytyvaisyydesta harjoitukseen
     sanallinenarvio    VARCHAR(2000),           -- arvion sanallinen kuvaus
     PRIMARY KEY (hetu, lajitunnus, harjpvm, harjalku, arvioijahetu),
-    FOREIGN KEY (hetu, lajitunnus, harjpvm, harjalku) REFERENCES harjoituskerta,
+    FOREIGN KEY (hetu, lajitunnus, harjpvm, harjalku) REFERENCES harjoituskerta ON DELETE CASCADE,
     FOREIGN KEY (arvioijahetu) REFERENCES kayttaja
 );
