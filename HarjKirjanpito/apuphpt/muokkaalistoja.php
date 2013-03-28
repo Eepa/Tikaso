@@ -4,14 +4,29 @@ require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
 
-
 <?php
 
+//if (isset($_GET['kaytlajitnumero'])) {
+////    echo 'testi';
+//    $kayttajanLajitNumeroindeksi = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
+//    
+//    if($kayttajanLajitNumeroindeksi){
+//        return $kayttajanLajitNumeroindeksi;
+//    } else {
+//        echo 'Epäonnistui';
+//    }
+//    
+//}
+//?>
+
+<?php
 
 $kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
 $kaikkiLajit = $kyselyita->haeKaikkiLajit();
 
 echo $kaikkiLajitNumeroindeksi[0] . " " . $kaikkiLajitNumeroindeksi[1] . " " . $kaikkiLajitNumeroindeksi[2] . ' ' . $kaikkiLajitNumeroindeksi[3] . '<br>';
+
+
 
 
 echo 'Käyttäjän lajit <br>';

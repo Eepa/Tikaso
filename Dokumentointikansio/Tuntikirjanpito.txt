@@ -27,3 +27,6 @@ Sisaankirjautumisen jatkoa, tietokannan muutos.
 
 ke 27.03.2013, 5h
 Kyselyharjoittelua ja tulostelua.
+
+to 28.03.2013, 2h
+Poiston ja lisaamisen valmistelua lajiprofiili.

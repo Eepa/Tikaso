@@ -15,7 +15,7 @@ if($laji){
     echo "<script language='JavaScript'>window.alert('Lisäys onnistui!'); 
         window.location.href = 'lajiprofiilinlisaaminen.php';</script> <br>";
 } else {
-    die('Outo virhe ilmaantui');
+    die('Outo virhe ilmaantui lisättäessä');
 }
 
 
@@ -26,5 +26,4 @@ if($laji){
 //else {
 //    ohjaa('lajiprofiilinlisaaminen.php');
 //}
-echo 'lisäyssivy';
 ?>

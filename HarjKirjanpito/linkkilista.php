@@ -11,6 +11,7 @@
                 <a href="kirjaudu.php?ulos">Uloskirjautuminen</a>
                 <a href="etusivu.php">Etusivu</a>
                 <a href="lajiprofiilinlisaaminen.php">Lajiprofiilin lisääminen</a>
+                <a href="lajiprofiilinpoistaminen.php">Lajiprofiilin poistaminen</a>
             </p>
         <?php } ?>
             

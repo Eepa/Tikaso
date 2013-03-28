@@ -11,3 +11,4 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='<URL to redirect to>';
         </SCRIPT>");
 tai myös document.location.href
+http://stackoverflow.com/questions/5443568/javascript-windows-alert-with-redirect-function
