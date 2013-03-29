@@ -133,12 +133,55 @@ class Kyselyja {
         }
         return false;
     }
-    
-    public function haeKayttajanHarjoituskerrat($hetu){
+
+    public function haeKayttajanHarjoituskerrat($hetu) {
         $kysely = $this->valmistelut('SELECT lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste,
             harjkuvaus FROM harjoituskerta WHERE hetu = ?');
-        
-        if($kysely->execute(array($hetu))){
+
+        if ($kysely->execute(array($hetu))) {
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
+    }
+
+    public function lisaaHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto, $vaikeusaste, $harjkuvaus) {
+
+        $kysely = $this->valmistelut('INSERT INTO harjoituskerta (hetu,
+            lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
+	VALUES (?, ?, ?, ?, ?, ?, ?)');
+
+        if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku,
+                    $harjkesto, $vaikeusaste, $harjkuvaus))) {
+            return true;
+        }
+        return false;
+    }
+
+    public function haeKayttajanHarjoituskertalajit($hetu) {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, harjoituskerta 
+            WHERE harjoituskerta.hetu = ? AND harjoituskerta.lajitunnus = laji.lajitunnus');
+
+        if ($kysely->execute(array($hetu))) {
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
+    }
+
+    public function haeHarjoituskerranPaivamaarat($hetu, $lajitunnus) {
+        $kysely = $this->valmistelut('SELECT harjpvm FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?');
+        if ($kysely->execute(array($hetu, $lajitunnus))) {
             $sisalto = array();
             $indeksi = 0;
             while ($rivi = $kysely->fetch()) {
@@ -150,19 +193,7 @@ class Kyselyja {
         return null;
     }
     
-    public function lisaaHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku, 
-            $harjkesto, $vaikeusaste, $harjkuvaus){
-        
-        $kysely = $this->valmistelut('INSERT INTO harjoituskerta (hetu,
-            lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
-	VALUES (?, ?, ?, ?, ?, ?, ?)');
-        
-        if($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku, 
-            $harjkesto, $vaikeusaste, $harjkuvaus))){
-            return true;
-        }
-        return false;        
-    }
+    
 
 }
 
