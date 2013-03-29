@@ -149,6 +149,20 @@ class Kyselyja {
         }
         return null;
     }
+    
+    public function lisaaHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku, 
+            $harjkesto, $vaikeusaste, $harjkuvaus){
+        
+        $kysely = $this->valmistelut('INSERT INTO harjoituskerta (hetu,
+            lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
+	VALUES (?, ?, ?, ?, ?, ?, ?)');
+        
+        if($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku, 
+            $harjkesto, $vaikeusaste, $harjkuvaus))){
+            return true;
+        }
+        return false;        
+    }
 
 }
 

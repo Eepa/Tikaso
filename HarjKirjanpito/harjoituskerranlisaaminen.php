@@ -85,7 +85,7 @@ varmista_kirjautuminen();
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 
                                value="<?php echo $laji->lajitunnus ?>">
 
-                        <laber for="harjoitusaika">Harjoituspäivä ja harjoituksen alkamisaika</laber>
+                        <laber for="harjoitusaika">Harjoituspäivä ja harjoituksen alkamisaika:</laber>
                         <input type="datetime-local" name="harjoitusaika" id="harjoitusaika" 
                                 required>
 
