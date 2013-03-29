@@ -91,23 +91,15 @@ class Kyselyja {
     }
 
     public function lisaaLajiprofiili($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara) {
-//        $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
-//            (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (' . $hetu . ',' .
-//                $lajitunnus . ',' 
-//                . $tavoitekuvaus . ','.
-//                $tavoiteharjmaara . ')');
-
         $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
             (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (?, ?, ?, ?)');
         if ($kysely->execute(array($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara))) {
             return true;
         }
-
         return false;
     }
 
     public function poistaLajiprofiili($hetu, $lajitunnus) {
-
         $kysely = $this->valmistelut('DELETE FROM lajiprofiili WHERE hetu = ? and lajitunnus = ?');
 
         if ($kysely->execute(array($hetu, $lajitunnus))) {
@@ -140,6 +132,22 @@ class Kyselyja {
             return true;
         }
         return false;
+    }
+    
+    public function haeKayttajanHarjoituskerrat($hetu){
+        $kysely = $this->valmistelut('SELECT lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste,
+            harjkuvaus FROM harjoituskerta WHERE hetu = ?');
+        
+        if($kysely->execute(array($hetu))){
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
     }
 
 }

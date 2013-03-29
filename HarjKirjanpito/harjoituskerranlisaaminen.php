@@ -2,15 +2,17 @@
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lajiprofiilin muokkaaminen</title>
+        <title>Harjoituskerran lisääminen</title>
     </head>
     <body>
 
-        <h1>Lajiprofiilin muokkaaminen</h1>
+        <h1>Harjoituskerran lisääminen</h1>
 
         <?php require 'linkkilista.php'; ?>
 
@@ -26,9 +28,23 @@ varmista_kirjautuminen();
         echo '<br>';
         ?>
 
+        <?php
+        $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
+        echo 'Käyttäjän harjoituskerrat: <br>';
+
+        for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
+            echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
+            $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
+            $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+
+            echo '<br>';
+        }
+
+        echo '<br>';
+        ?>
 
         <div>
-            <form action="lajiprofiilinmuokkaaminen.php" id="lajiprofiilinvalinta" method="POST">
+            <form action="harjoituskerranlisaaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
 
                     <h3>Lajiprofiilin valinta:</h3>
@@ -54,35 +70,46 @@ varmista_kirjautuminen();
         if (isset($_POST['lajiprofiili'])) {
             $lajinimi = $_POST['lajiprofiili'];
             $laji = $kyselyita->lajiIndeksi($lajinimi);
-            $lajiprofiilinsisalto = $kyselyita->haeLajiprofiilinSisalto($sessio->hetu, $laji->lajitunnus);
             ?>
 
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
 
 
             <div> 
-                <form action="apuphpt/muokkaaprofiilia.php" id="lajiprofiilinmuokkaaminen" method="POST">
+                <form action="apuphpt/lisaaharjoituskerta.php" id="harjoituskerranlisaaminen" method="POST">
 
                     <fieldset> 
-                        <h3>Muokkaa lajiprofiilia:</h3>
+                        <h3>Lisää harjoituskerta:</h3>
                         <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 
                                value="<?php echo $laji->lajitunnus ?>">
 
-                        <label for="tavoitekuvaus">Tavoitekuvaus:<br></label>
-                        <textarea  name="tavoitekuvaus" form="lajiprofiilinmuokkaaminen"
-                                   rows="4" cols="50" maxlength="2000" id="tavoitekuvaus" 
-                                   required><?php echo $lajiprofiilinsisalto[0][0]; ?></textarea>
-                        <br>
-
-                        <label for="tavoiteharjmaara">Tavoiteharjoitusmäärä viikossa:</label>
-                        <input type="number" name="tavoiteharjmaara" id="tavoiteharjmaara" 
-                               min="1" max="30" value="<?php echo $lajiprofiilinsisalto[0][1] ?>"required>
+                        <laber for="harjoitusaika">Harjoituspäivä ja harjoituksen alkamisaika</laber>
+                        <input type="datetime-local" name="harjoitusaika" id="harjoitusaika" 
+                                required>
 
                         <br>
 
-                        <input type="submit" value="Muokkaa">
+                        <label for="harjkesto">Harjoituksen kesto minuutteina:</label>
+                        <input type="number" name="harjkesto" id="harjkesto" 
+                               min="0" max="1500" required>
+
+                        <br>
+
+                        <label for="vaikeusaste">Harjoituksen vaikeusaste:</label>
+                        <input type="number" name="vaikeusaste" id="vaikeusaste" 
+                               min="1" max="10" required>
+
+                        <br>
+
+                        <label for="harjkuvaus">Harjoituskuvaus:<br></label>
+                        <textarea  name="harjkuvaus" form="harjoituskerranlisaaminen"
+                                   rows="4" cols="50" maxlength="2000" id="harjkuvaus" 
+                                   required></textarea>
+                        <br>
+
+                        <input type="submit" value="Lisää">
 
                     </fieldset>
 
@@ -92,6 +119,8 @@ varmista_kirjautuminen();
             <?php
         }
         ?>
+
+
 
 
     </body>
