@@ -100,11 +100,10 @@ varmista_kirjautuminen();
 
                     <fieldset> 
                         <h3>Valitse poistettavan harjoituksen päivämäärä:</h3>
-                        <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 
                                value="<?php echo $laji->lajitunnus ?>">
-                        
+
                         <input type="hidden" name="laji" id="laji" 
                                value="<?php echo $_POST['lajiprofiili'] ?>">
 
@@ -128,6 +127,14 @@ varmista_kirjautuminen();
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
+
+            $harjoituskerrat = $kyselyita->haeHarjoituskerta($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+
+            for ($int = 0; $int < count($harjoituskerrat); $int++) {
+                echo $harjoituskerrat[$int][0] . " " . $harjoituskerrat[$int][1] . " " .
+                $harjoituskerrat[$int][2] . " " .
+                $harjoituskerrat[$int][3];
+            }
             ?>
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
 
@@ -144,7 +151,19 @@ varmista_kirjautuminen();
                         <input type="hidden" name="harjpvm" id="harjpvm" 
                                value="<?php echo $_POST['harjpvm'] ?>">
 
+                        <?php for ($int = 0; $int < count($harjoituskerrat); $int++) { ?>
 
+                            <input type="radio" name="harjoituskerta" id="harjoituskerta"
+                                   value="<?php
+                    echo $harjoituskerrat[$int][0] . "§" . $harjoituskerrat[$int][1] . "§" .
+                    $harjoituskerrat[$int][2] . "§" . $harjoituskerrat[$int][3];
+                            ?>" required> Alkamisaika: <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
+                            Kesto: <?php echo $harjoituskerrat[$int][1] . " " ?>
+                            Vaikeusaste: <?php echo $harjoituskerrat[$int][2] . " " ?>
+                            Kuvaus: <?php echo $harjoituskerrat[$int][3] . " " ?>
+                            <br>    
+                        <?php } ?>
+                        <br>
 
                         <input type="submit" name="poista" value="Poista">
 

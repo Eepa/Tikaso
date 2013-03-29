@@ -164,7 +164,7 @@ class Kyselyja {
     }
 
     public function haeKayttajanHarjoituskertalajit($hetu) {
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, harjoituskerta 
+        $kysely = $this->valmistelut('SELECT DISTINCT lajinimi FROM laji, harjoituskerta 
             WHERE harjoituskerta.hetu = ? AND harjoituskerta.lajitunnus = laji.lajitunnus');
 
         if ($kysely->execute(array($hetu))) {
@@ -180,7 +180,7 @@ class Kyselyja {
     }
 
     public function haeHarjoituskerranPaivamaarat($hetu, $lajitunnus) {
-        $kysely = $this->valmistelut('SELECT harjpvm FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?');
+        $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?');
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             $sisalto = array();
             $indeksi = 0;
@@ -192,8 +192,22 @@ class Kyselyja {
         }
         return null;
     }
-    
-    
+
+    public function haeHarjoituskerta($hetu, $lajitunnus, $harjpvm) {
+        $kysely = $this->valmistelut('SELECT harjalku, harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta
+            WHERE hetu = ? AND lajitunnus =? AND harjpvm =?');
+
+        if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm))) {
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
+    }
 
 }
 

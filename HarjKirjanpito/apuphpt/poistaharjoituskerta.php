@@ -25,5 +25,9 @@ varmista_kirjautuminen();
 
 
 <?php
-echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " ";
+
+
+
+
+echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $_POST['harjoituskerta'];
 ?>
