@@ -23,6 +23,8 @@ varmista_kirjautuminen();
                 ja antaa treeniarvioita itsellesi. Lisäksi voit lisätä itsellesi lajiprofiileita.</p>
         </div>
 
+        
+        <?php require 'apuphpt/footer.php';?>
 
     </body>
 

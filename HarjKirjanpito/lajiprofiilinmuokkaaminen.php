@@ -93,6 +93,6 @@ varmista_kirjautuminen();
         }
         ?>
 
-
+        <?php require 'apuphpt/footer.php'; ?>
     </body>
 </html>

@@ -3,6 +3,17 @@ require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
 
+<?php
+if (isset($_POST['harjpvm'])) {
+    $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaaratIndeksein($sessio->hetu, $_POST['lajitunnus']);
+
+    if (!array_key_exists($_POST['harjpvm'], $paivamaarat)) {
+        echo "<script language='JavaScript'>window.alert('Ei harjoituskertoja kyseiselle päivälle'); 
+        window.location.href = 'harjoituskerranpoistaminen.php';</script> <br>";
+    }
+}
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -154,9 +165,7 @@ varmista_kirjautuminen();
                         <?php for ($int = 0; $int < count($harjoituskerrat); $int++) { ?>
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php
-                    echo $harjoituskerrat[$int][0] . "§" . $harjoituskerrat[$int][1] . "§" .
-                    $harjoituskerrat[$int][2] . "§" . $harjoituskerrat[$int][3];
+                                   value="<?php echo $harjoituskerrat[$int][0];
                             ?>" required> Alkamisaika: <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
                             Kesto: <?php echo $harjoituskerrat[$int][1] . " " ?>
                             Vaikeusaste: <?php echo $harjoituskerrat[$int][2] . " " ?>
@@ -181,6 +190,7 @@ varmista_kirjautuminen();
         ?>
 
 
+        <?php require 'apuphpt/footer.php'; ?>
 
     </body>
 </html>

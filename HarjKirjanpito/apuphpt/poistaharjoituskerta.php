@@ -25,9 +25,17 @@ varmista_kirjautuminen();
 
 
 <?php
-
-
-
-
 echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $_POST['harjoituskerta'];
+
+$kyselynsuoritus = $kyselyita->poistaHarjoituskerta(
+        $_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
+
+if ($kyselynsuoritus) {
+
+    echo "<script language='JavaScript'>window.alert('Poistaminen onnistui!'); 
+        window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>";
+} else {
+    die("<script language='JavaScript'>window.alert('Poistaminen epäonnistui'); 
+        window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>");
+}
 ?>

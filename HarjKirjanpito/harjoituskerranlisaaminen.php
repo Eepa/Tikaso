@@ -87,7 +87,7 @@ varmista_kirjautuminen();
 
                         <laber for="harjoitusaika">Harjoituspäivä ja harjoituksen alkamisaika:</laber>
                         <input type="datetime-local" name="harjoitusaika" id="harjoitusaika" 
-                                required>
+                               required>
 
                         <br>
 
@@ -120,7 +120,7 @@ varmista_kirjautuminen();
         }
         ?>
 
-
+        <?php require 'apuphpt/footer.php'; ?>
 
 
     </body>

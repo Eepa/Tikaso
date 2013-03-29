@@ -68,7 +68,7 @@ varmista_kirjautuminen();
 
         </div>
 
-
+        <?php require 'apuphpt/footer.php'; ?>
 
     </body>
 </html>
