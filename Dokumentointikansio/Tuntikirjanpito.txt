@@ -34,4 +34,7 @@ tietokantaan, tietokannan arvio taulun muutos, lajiprofiilin
 muokkaus.
 
 pe 29.03.2012, 4h
-Harjoituskerran lisayksen aloitus.
+Harjoituskerran lisayksen aloitus ja poiston valmistus.
+
+la 30.03.2013, 2h
+Muokkaamisen valmistus ja lisayksen muokkausta.

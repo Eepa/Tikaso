@@ -30,6 +30,7 @@
                 <a href="lajiprofiilinmuokkaaminen.php">Lajiprofiilin muokkaaminen</a>
                 <a href="harjoituskerranlisaaminen.php">Harjoituskerran lisääminen</a>
                 <a href="harjoituskerranpoistaminen.php">Harjoituskerran poistaminen</a>
+                <a href="harjoituskerranmuokkaaminen.php">Harjoituskerran muokkaaminen</a>
             </p>
         <?php } ?>
 

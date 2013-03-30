@@ -209,7 +209,7 @@ class Kyselyja {
         return null;
     }
 
-    public function haeHarjoituskerta($hetu, $lajitunnus, $harjpvm) {
+    public function haeHarjoituskerratIlmanHarjalkua($hetu, $lajitunnus, $harjpvm) {
         $kysely = $this->valmistelut('SELECT harjalku, harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta
             WHERE hetu = ? AND lajitunnus =? AND harjpvm =? ORDER BY harjalku');
 
@@ -230,6 +230,35 @@ class Kyselyja {
             AND harjpvm = ? AND harjalku = ?');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku))) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function haeHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku) {
+        $kysely = $this->valmistelut('SELECT harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta
+            WHERE hetu = ? AND lajitunnus =? AND harjpvm =? AND harjalku = ?');
+
+        if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku))) {
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
+    }
+    
+    
+    public function muokkaaHarjoituskertaa($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto,
+            $vaikeusaste, $harjkuvaus) {
+        $kysely = $this->valmistelut('UPDATE harjoituskerta SET harjkesto = ?, vaikeusaste = ? , 
+            harjkuvaus = ?
+            WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ?');
+        if ($kysely->execute(array($harjkesto,$vaikeusaste, $harjkuvaus , 
+            $hetu, $lajitunnus, $harjpvm, $harjalku))) {
             return true;
         }
         return false;
