@@ -118,7 +118,8 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="laji" id="laji" 
                                value="<?php echo $_POST['lajiprofiili'] ?>">
 
-                        <laber for="harjpvm">Harjoitusaika:</laber>
+                        <laber for="harjpvm">Harjoituspäivä (valitse listasta
+                            tai anna muodossa vvvv-kk-pp):</laber>
                         <input type="date" name="harjpvm" id="harjpvm" 
                                list="paivamaaralista" required>
 

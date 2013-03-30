@@ -31,6 +31,7 @@
                 <a href="harjoituskerranlisaaminen.php">Harjoituskerran lisääminen</a>
                 <a href="harjoituskerranpoistaminen.php">Harjoituskerran poistaminen</a>
                 <a href="harjoituskerranmuokkaaminen.php">Harjoituskerran muokkaaminen</a>
+                <a href="arvionlisaaminen.php">Arvion lisääminen</a>
             </p>
         <?php } ?>
 

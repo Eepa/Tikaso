@@ -7,16 +7,14 @@ varmista_kirjautuminen();
 
 <?php
 
-$jaetut = explode("T", $_POST['harjoitusaika']);
-$paiva = $jaetut[0];
-$aika = $jaetut[1] . ":00.00";
+$aika = $_POST['harjalku'] . ":00.00";
 
 //echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $paiva  . " "
 //        . $aika . " " . $_POST['harjkesto'] . " " . 
 //        $_POST['vaikeusaste'] . " " . $_POST['harjkuvaus']  ;
 
 $kyselynsuoritus = $kyselyita->lisaaHarjoituskerta(
-       $_POST['hetu'] , $_POST['lajitunnus'] , $paiva ,
+       $_POST['hetu'] , $_POST['lajitunnus'] , $_POST['harjpvm'] ,
         $aika ,$_POST['harjkesto'] , 
         $_POST['vaikeusaste'] ,$_POST['harjkuvaus'] );
 
