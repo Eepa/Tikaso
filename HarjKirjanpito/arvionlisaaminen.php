@@ -95,7 +95,7 @@ if (isset($_POST['harjpvm'])) {
             $lajinimi = $_POST['lajiprofiili'];
             $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-            $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
+            $paivamaarat = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $laji->lajitunnus);
 
             for ($x = 0; $x < count($paivamaarat); $x++) {
                 echo $paivamaarat[$x][0] . '<br>';

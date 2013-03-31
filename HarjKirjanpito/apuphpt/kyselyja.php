@@ -264,7 +264,8 @@ class Kyselyja {
     public function haeKayttajanArvioidenTiedot($hetu) {
 
         $kysely = $this->valmistelut('SELECT lajitunnus, harjpvm, harjalku, yleisarvosana, 
-            tyytyvaisyysarvo, sanallinenarvio FROM arvio WHERE hetu = ? AND arvioijahetu = ?');
+            tyytyvaisyysarvo, sanallinenarvio FROM arvio WHERE hetu = ? AND arvioijahetu = ? ORDER BY
+            lajitunnus, harjpvm, harjalku');
 
         if ($kysely->execute(array($hetu, $hetu))) {
             $sisalto = array();
@@ -289,6 +290,24 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
             return true;
         }
         return false;
+    }
+    
+    
+    public function harjoituksetJoillaEiVielaArviota($hetu, $lajitunnus){
+        $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?
+            AND harjpvm NOT IN (SELECT DISTINCT harjpvm FROM arvio WHERE hetu = ? AND lajitunnus = ? AND
+            arvioijahetu = ?)');
+        
+        if($kysely->execute(array($hetu, $lajitunnus))){
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
     }
 
 }
