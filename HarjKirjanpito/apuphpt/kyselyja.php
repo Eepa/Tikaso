@@ -199,10 +199,9 @@ class Kyselyja {
             AND lajitunnus = ? ORDER BY harjpvm');
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             $sisalto = array();
-            
+
             while ($rivi = $kysely->fetch()) {
                 $sisalto[$rivi['harjpvm']] = $rivi['harjpvm'];
-               
             }
             return $sisalto;
         }
@@ -234,7 +233,7 @@ class Kyselyja {
         }
         return false;
     }
-    
+
     public function haeHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku) {
         $kysely = $this->valmistelut('SELECT harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta
             WHERE hetu = ? AND lajitunnus =? AND harjpvm =? AND harjalku = ?');
@@ -250,15 +249,43 @@ class Kyselyja {
         }
         return null;
     }
-    
-    
-    public function muokkaaHarjoituskertaa($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto,
-            $vaikeusaste, $harjkuvaus) {
+
+    public function muokkaaHarjoituskertaa($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto, $vaikeusaste, $harjkuvaus) {
         $kysely = $this->valmistelut('UPDATE harjoituskerta SET harjkesto = ?, vaikeusaste = ? , 
             harjkuvaus = ?
             WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ?');
-        if ($kysely->execute(array($harjkesto,$vaikeusaste, $harjkuvaus , 
-            $hetu, $lajitunnus, $harjpvm, $harjalku))) {
+        if ($kysely->execute(array($harjkesto, $vaikeusaste, $harjkuvaus,
+                    $hetu, $lajitunnus, $harjpvm, $harjalku))) {
+            return true;
+        }
+        return false;
+    }
+
+    public function haeKayttajanArvioidenTiedot($hetu) {
+
+        $kysely = $this->valmistelut('SELECT lajitunnus, harjpvm, harjalku, yleisarvosana, 
+            tyytyvaisyysarvo, sanallinenarvio FROM arvio WHERE hetu = ? AND arvioijahetu = ?');
+
+        if ($kysely->execute(array($hetu, $hetu))) {
+            $sisalto = array();
+            $indeksi = 0;
+            while ($rivi = $kysely->fetch()) {
+                $sisalto[$indeksi] = $rivi;
+                $indeksi++;
+            }
+            return $sisalto;
+        }
+        return null;
+    }
+
+    public function lisaaKayttajalleArvio($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
+
+        $kysely = $this->valmistelut('INSERT INTO arvio (hetu, lajitunnus, 
+harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio) VALUES (?, ?,
+?, ?, ?, ?, ?, ?)');
+
+        if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana,
+                    $tyytyvaisyysarvo, $sanallinenarvio))) {
             return true;
         }
         return false;

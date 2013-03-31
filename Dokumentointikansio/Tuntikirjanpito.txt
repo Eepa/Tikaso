@@ -38,3 +38,6 @@ Harjoituskerran lisayksen aloitus ja poiston valmistus.
 
 la 30.03.2013, 2h
 Muokkaamisen valmistus ja lisayksen muokkausta.
+
+su 31.03.2013, 2h
+Arvion lisaamisen kanssa tappelua, harjoituksen poiston korjailu.

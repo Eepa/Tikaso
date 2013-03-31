@@ -168,10 +168,12 @@ if (isset($_POST['harjpvm'])) {
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
                                    value="<?php echo $harjoituskerrat[$int][0];
-                            ?>" required> Alkamisaika: <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
-                            Kesto: <?php echo $harjoituskerrat[$int][1] . " " ?>
-                            Vaikeusaste: <?php echo $harjoituskerrat[$int][2] . " " ?>
-                            Kuvaus: <?php echo $harjoituskerrat[$int][3] . " " ?>
+                            ?>" required> <label for="harjoituskerta">
+                                Alkamisaika: <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
+                                Kesto: <?php echo $harjoituskerrat[$int][1] . " " ?>
+                                Vaikeusaste: <?php echo $harjoituskerrat[$int][2] . " " ?>
+                                Kuvaus: <?php echo $harjoituskerrat[$int][3] . " " ?>
+                            </label>
                             <br>    
                         <?php } ?>
                         <br>
@@ -226,7 +228,7 @@ if (isset($_POST['harjpvm'])) {
 
                         <label for="harjkesto">Harjoituksen kesto minuutteina:</label>
                         <input type="number" name="harjkesto" id="harjkesto" 
-                               min="0" max="1500" value="<?php echo $harjoituskerransisalto[0][0]?>"required>
+                               min="0" max="1500" value="<?php echo $harjoituskerransisalto[0][0] ?>"required>
 
                         <br>
 
