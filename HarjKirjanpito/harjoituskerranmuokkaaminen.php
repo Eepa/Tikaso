@@ -109,7 +109,7 @@ if (isset($_POST['harjpvm'])) {
                 <form action="harjoituskerranmuokkaaminen.php" id="ajanvalinta" method="POST">
 
                     <fieldset> 
-                        <h3>Valitse poistettavan harjoituksen päivämäärä:</h3>
+                        <h3>Valitse muokattavan harjoituksen päivämäärä:</h3>
 
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 
                                value="<?php echo $laji->lajitunnus ?>">

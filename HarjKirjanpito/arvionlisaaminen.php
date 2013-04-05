@@ -98,7 +98,7 @@ if (isset($_POST['harjpvm'])) {
             $paivamaarat = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $laji->lajitunnus);
 
             for ($x = 0; $x < count($paivamaarat); $x++) {
-                echo $paivamaarat[$x][0] . '<br>';
+                echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
             }
 
             echo '<br>';

@@ -41,3 +41,6 @@ Muokkaamisen valmistus ja lisayksen muokkausta.
 
 su 31.03.2013, 2h
 Arvion lisaamisen kanssa tappelua, harjoituksen poiston korjailu.
+
+pe 05.04.2013, 0,5h
+Arvion lisaamista paranneltu.

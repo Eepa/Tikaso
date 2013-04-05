@@ -294,11 +294,11 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
     
     
     public function harjoituksetJoillaEiVielaArviota($hetu, $lajitunnus){
-        $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?
-            AND harjpvm NOT IN (SELECT DISTINCT harjpvm FROM arvio WHERE hetu = ? AND lajitunnus = ? AND
+        $kysely = $this->valmistelut('SELECT DISTINCT harjpvm, harjalku FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?
+            AND (harjpvm, harjalku) NOT IN (SELECT DISTINCT harjpvm, harjalku FROM arvio WHERE hetu = ? AND lajitunnus = ? AND
             arvioijahetu = ?)');
         
-        if($kysely->execute(array($hetu, $lajitunnus))){
+        if($kysely->execute(array($hetu, $lajitunnus, $hetu, $lajitunnus, $hetu))){
             $sisalto = array();
             $indeksi = 0;
             while ($rivi = $kysely->fetch()) {
