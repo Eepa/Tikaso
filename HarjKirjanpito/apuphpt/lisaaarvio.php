@@ -7,9 +7,9 @@ varmista_kirjautuminen();
 
 $aika = $_POST['harjalku'] . ".00";
 
-echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $aika . " "
-        
-    . $_POST['yleisarvosana'] . " "  . $_POST['tyytyvaisyysarvo'] . " " . $_POST['sanallinenarvio'];
+//echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $aika . " "
+//        
+//    . $_POST['yleisarvosana'] . " "  . $_POST['tyytyvaisyysarvo'] . " " . $_POST['sanallinenarvio'];
 
 
 $kyselynsuoritus = $kyselyita->lisaaKayttajalleArvio($_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'],

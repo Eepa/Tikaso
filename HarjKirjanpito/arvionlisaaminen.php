@@ -95,7 +95,7 @@ if (isset($_POST['harjpvm'])) {
             $lajinimi = $_POST['lajiprofiili'];
             $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-            $paivamaarat = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $laji->lajitunnus);
+            $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
 
             for ($x = 0; $x < count($paivamaarat); $x++) {
                 echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
@@ -149,12 +149,12 @@ if (isset($_POST['harjpvm'])) {
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
-            $harjoituskerrat = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+            $arviot = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
 
-            for ($int = 0; $int < count($harjoituskerrat); $int++) {
-                echo $harjoituskerrat[$int][0] . " " . $harjoituskerrat[$int][1] . " " .
-                $harjoituskerrat[$int][2] . " " .
-                $harjoituskerrat[$int][3];
+            for ($int = 0; $int < count($arviot); $int++) {
+                echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
+                $arviot[$int][2] . " " .
+                $arviot[$int][3];
             }
             ?>
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
@@ -175,15 +175,15 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="laji" id="laji" 
                                value="<?php echo $_POST['laji'] ?>">
 
-                        <?php for ($int = 0; $int < count($harjoituskerrat); $int++) { ?>
+                        <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php echo $harjoituskerrat[$int][0];
+                                   value="<?php echo $arviot[$int][0];
                             ?>" required> <label for="harjoituskerta">
-                                Alkamisaika: <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
-                                Kesto: <?php echo $harjoituskerrat[$int][1] . " " ?>
-                                Vaikeusaste: <?php echo $harjoituskerrat[$int][2] . " " ?>
-                                Kuvaus: <?php echo $harjoituskerrat[$int][3] . " " ?></label>
+                                Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
+                                Kesto: <?php echo $arviot[$int][1] . " " ?>
+                                Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
+                                Kuvaus: <?php echo $arviot[$int][3] . " " ?></label>
                             <br>    
                         <?php } ?>
                         <br>
