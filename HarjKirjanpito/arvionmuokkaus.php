@@ -9,7 +9,7 @@ if (isset($_POST['harjpvm'])) {
 
     if (!array_key_exists($_POST['harjpvm'], $paivamaarat)) {
         echo "<script language='JavaScript'>window.alert('Ei harjoituskertoja kyseiselle päivälle'); 
-        window.location.href = 'arvionpoistaminen.php';</script> <br>";
+        window.location.href = 'arvionmuokkaus.php';</script> <br>";
     }
 }
 ?>
@@ -18,10 +18,11 @@ if (isset($_POST['harjpvm'])) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Arvion poistaminen</title>
+        <title>Arvion muokkaaminen</title>
     </head>
     <body>
-        <h1>Arvion poistaminen</h1>
+
+        <h1>Arvion muokkaaminen</h1>
 
         <?php require 'linkkilista.php'; ?>
 
@@ -67,7 +68,7 @@ if (isset($_POST['harjpvm'])) {
         ?>
 
         <div>
-            <form action="arvionpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
+            <form action="arvionmuokkaus.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
 
                     <h3>Lajiprofiilin valinta:</h3>
@@ -88,6 +89,7 @@ if (isset($_POST['harjpvm'])) {
         </div>
 
         <br>
+
 
         <?php
         if (isset($_POST['lajiprofiili'])) {
@@ -116,7 +118,7 @@ if (isset($_POST['harjpvm'])) {
             </datalist>
 
             <div> 
-                <form action="arvionpoistaminen.php" id="ajanvalinta" method="POST">
+                <form action="arvionmuokkaus.php" id="ajanvalinta" method="POST">
 
                     <fieldset> 
                         <h3>Valitse päivämäärä arvioille:</h3>
@@ -147,8 +149,8 @@ if (isset($_POST['harjpvm'])) {
 
 
         <?php
-        if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
-            
+        if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['arvio'])) {
+
             $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
 
             for ($int = 0; $int < count($arviot); $int++) {
@@ -160,10 +162,10 @@ if (isset($_POST['harjpvm'])) {
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
 
             <div> 
-                <form action="apuphpt/poistaarvio.php" id="arvionpoistaminen" method="POST">
+                <form action="arvionmuokkaus.php" id="arvionvalinta" method="POST">
 
                     <fieldset> 
-                        <h3>Valitse poistettava arvio:</h3>
+                        <h3>Valitse muokattava arvio:</h3>
                         <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 
@@ -178,17 +180,18 @@ if (isset($_POST['harjpvm'])) {
                         <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
                             <input type="radio" name="arvio" id="arvio"
-                                   value="<?php echo $arviot[$int][0];
+                                   value="<?php echo $arviot[$int][0]."§".
+                                    $arviot[$int][1] ."§". $arviot[$int][2] ."§". $arviot[$int][3];
                             ?>" required> <label for="arvio">
                                 Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                                Yleisarvosana: <?php echo $arviot[$int][1] . " " ?>
-                                Tyytyväisyysarvo: <?php echo $arviot[$int][2] . " " ?>
-                                Sanallinen arvio: <?php echo $arviot[$int][3] . " " ?></label>
+                                Kesto: <?php echo $arviot[$int][1] . " " ?>
+                                Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
+                                Kuvaus: <?php echo $arviot[$int][3] . " " ?></label>
                             <br>    
                         <?php } ?>
                         <br>
 
-                        <input type="submit" name="poistettuarvio" value="Poista arvio">
+                        <input type="submit" name="arviovalittu" value="Valitse arvio">
 
 
 
@@ -202,6 +205,61 @@ if (isset($_POST['harjpvm'])) {
             <?php
         }
         ?>
+
+        <?php if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['arvio'])) {
+            ?>
+            
+            <?php $arvio = explode("§", $_POST['arvio']); ?>
+
+            <h3>Lajiprofiili: <?php echo $_POST['laji']; ?></h3>
+            <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']); ?></h3>
+            <h3>Alkamisaika: <?php echo date('H:i', $arvio[0]); ?></h3>
+
+
+            <div> 
+                <form action="apuphpt/muokkaaarviota.php" id="arvionmuokkaaminen" method="POST">
+
+                    <fieldset> 
+                        <h3>Muokkaa arviota:</h3>
+                        <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
+
+                        <input type="hidden" name="lajitunnus" id="lajitunnus" 
+                               value="<?php echo $_POST['lajitunnus'] ?>">
+
+                        <input type="hidden" name="harjpvm" id="harjpvm" 
+                               value="<?php echo $_POST['harjpvm'] ?>">
+
+                        <input type="hidden" name="harjalku" id="harjalku" 
+                               value="<?php echo $arvio[0] ?>">
+
+                        <label for="yleisarvosana">Yleisarvosana:</label>
+                        <input type="number" name="yleisarvosana" id="yleisarvosana" 
+                               min="1" max="10" value="<?php echo $arvio[1]?>" required>
+
+                        <br>
+
+                        <label for="tyytyvaisyysarvo">Tyytyväisyysarvosana:</label>
+                        <input type="number" name="tyytyvaisyysarvo" id="tyytyvaisyysarvo" 
+                               min="1" max="10" value="<?php echo $arvio[2]?>" required>
+                        <br>
+
+                        <label for="sanallinenarvio">Sanallinenarvio:<br></label>
+                        <textarea  name="sanallinenarvio" form="arvionmuokkaaminen"
+                                   rows="4" cols="50" maxlength="2000" id="sanallinenarvio" 
+                                   required><?php echo $arvio[3]?></textarea>
+                        <br>
+
+
+                        <input type="submit" name="muokkaa" value="Muokkaa">
+
+                    </fieldset>
+
+                </form>
+
+            </div>
+
+        <?php } ?>
+
 
 
         <?php require 'apuphpt/footer.php'; ?>

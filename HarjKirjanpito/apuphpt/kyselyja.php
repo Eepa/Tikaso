@@ -351,6 +351,21 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
         }
         return false;
     }
+    
+    public function muokkaaArviota($hetu, $lajitunnus, $harjpvm, $harjalku, $yleisarvosana, $tyytyvaisyysarvo,
+            $sanallinenarvio){
+        
+         $kysely = $this->valmistelut('UPDATE arvio SET yleisarvosana = ?, tyytyvaisyysarvo = ? , 
+            sanallinenarvio = ?
+            WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ? AND arvioijahetu = ?');
+        if ($kysely->execute(array($yleisarvosana, $tyytyvaisyysarvo,
+            $sanallinenarvio,
+                    $hetu, $lajitunnus, $harjpvm, $harjalku, $hetu))) {
+            return true;
+        }
+        return false;
+        
+    }
 
 }
 

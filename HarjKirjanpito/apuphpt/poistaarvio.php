@@ -7,7 +7,7 @@ varmista_kirjautuminen();
 
 $aika = $_POST['arvio'] . ".00";
 
-echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $aika;
+//echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $aika;
 
 $kyselynsuoritus = $kyselyita->poistaKayttajanArvio($_POST['hetu'], $_POST['lajitunnus'],
         $_POST['harjpvm'], $aika);
@@ -18,7 +18,7 @@ if ($kyselynsuoritus) {
         window.location.href = '../arvionpoistaminen.php';</script> <br>";
 } else {
     die("<script language='JavaScript'>window.alert('Poistaminen epäonnistui'); 
-        window.location.href = '../arvionlpoistaminen.php';</script> <br>");
+        window.location.href = '../arvionpoistaminen.php';</script> <br>");
 }
 
 

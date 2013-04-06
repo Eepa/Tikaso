@@ -44,3 +44,7 @@ Arvion lisaamisen kanssa tappelua, harjoituksen poiston korjailu.
 
 pe 05.04.2013, 0,5h
 Arvion lisaamista paranneltu.
+
+la 06.04.2013, 1,5h
+Arvion muokkaaminen ja lisaaminen lisatty, paivitetty dokumentaatiota, 
+kayttotapaukset.
