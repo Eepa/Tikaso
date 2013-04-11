@@ -48,3 +48,6 @@ Arvion lisaamista paranneltu.
 la 06.04.2013, 1,5h
 Arvion muokkaaminen ja lisaaminen lisatty, paivitetty dokumentaatiota, 
 kayttotapaukset.
+
+ke 10.04.2013, 1h
+Kasitekaavion, relaatiokaavion ja kayttotapauskaavion kuvaukset.

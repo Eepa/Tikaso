@@ -1,2 +1,52 @@
 RELAATIOKAAVION KUVAUS
+======================
+
+Relaatiokaavion tietokohteet ja niiden kuvaukset:
+
+1. Kayttaja
+
+Paaavain: hetu
+
+Kayttaja kuvaa harjoitustietokannan kayttajaa. Kayttajan ominaisuudet ovat samat 
+kuin kasitekaavion kuvauksessa kuvaillut ominaisuudet. Myoskaan kayttajan 
+attribuuttien nimia ei ole relaatiokaaviota varten muutettu.
+
+
+2. Laji
+
+Paaavain: lajitunnus
+
+Laji kuvaa yhta harjoiteltavaa lajia. Lajin ominaisuudet ovat samat kuin 
+kasitekaavion kuvauksessa kuvaillut ominaisuudet. Lajin attribuuttien nimia ei ole 
+relaatikaaviota varten muokattu.
+
+
+3. Lajiprofiili
+
+Paaavain: hetu, lajitunnus
+
+Viiteavaimet: hetu -> Kayttaja(hetu)
+              lajitunnus -> Laji(lajitunnus)
+
+Lajiprofiili on tietyn kayttajan tiettyyn lajiin liittyva profiili, joka kuvaa 
+kayttajan tavoitteita tassa lajissa. Lajiprofiilin ominaisuudet ovat samat kuin 
+kasitekaavion kuvauksessa mainitut ominaisuudet. Lajiprofiilin attribuuttien nimia 
+on lyhennetty relaatiokaaviota ja tietokantaa varten. Lisaksi kasitekaaviossa 
+yhteyksina esitetyt viiteavaimet on merkitty relaatiokaavioon attribuutteina.
+
+
+4. Harjoituskerta
+
+Paaavain: hetu, lajitunnus, harjpvm, harjalku
+
+Viiteavaimet: hetu -> Kayttaja(hetu)
+              lajitunnus -> Laji(lajitunnus)
+
+5. Arvio
+
+Paaavain: hetu, lajitunnus, harjpvm, harjalku, arvioijahetu
+
+Viiteavaimet: arvioijahetu -> Kayttaja(hetu)
+              hetu, lajitunnus, harjpvm, harjalku -> Harjoituskerta(hetu, lajitunnus, 
+              harjpvm, harjalku)
 

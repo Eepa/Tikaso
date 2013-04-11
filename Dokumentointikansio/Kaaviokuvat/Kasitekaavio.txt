@@ -1,2 +1,43 @@
 KASITE-/TIETOSISALTOKAAVION KUVAUS
 ==================================
+
+Tietokohteet ja niiden kuvaukset:
+
+1. Kayttaja
+
+Kayttaja maarittelee yhden harjoituskirjanpitojarjestelman kayttajan 
+kayttajaprofiilin. Kayttajaan liittyy kayttajan oma kayttajatunnus ja tietty 
+id-arvo hetu, joita kaytetaan kayttajan identifioimiseen. Kayttajan 
+kayttajaprofiiliin liittyy siis tietty salasana, jonka avulla kayttaja voi 
+kirjautua jarjestelmaan. 
+
+
+2. Laji
+
+Laji maarittelee jonkun tietyn harjoituskirjanpitojarjestelmaan kuuluvan lajin 
+tiedot. Lajeja voidaan lisata kayttajien omiin lajiprofiileihin. Laji tunnistetaan 
+lajitunnuksen avulla. Lajiin liittyy tietty nimi ja kuvaus.
+
+
+3. Lajiprofiili 
+
+Lajiprofiili on tietyn kayttajan oma tiettyyn lajiin liittyva profiilikuvaus, joka 
+kertoo kayttajan tavoitteet kyseisessa lajissa. Tavoitteet voi maaritella sanallisesti 
+ja numeroarvolla.
+
+
+4. Harjoituskerta
+
+Harjoituskerta on harjoituskirjanpitojarjestelman paatietokohde. Harjoituskerta 
+kuvaa yhden harjoituksen sisaltoa. Harjoituskerta kuuluu jollekin kayttajalle ja 
+liittyy tiettyyn lajiin. Lisaksi harjoituskerta liittyy tiettyyn paivamaaraan ja 
+kellonaikaan. Harjoituksella on myos tietty pituus ja sille voi antaa vaikeusasteen.
+Harjoitukseen voi liittaa myos kuvauksen, joka kertoo harjoituksen sisallosta. 
+
+
+5. Arvio
+
+Arvio on jarjestelman toinen paatietokohde. Arvio kuvailee jotakin tiettya 
+harjoituskertaa. Arvioon siis liittyy joku tietty laji ja kayttaja. Arviossa 
+voi arvioida harjoitusta yleisesti ja antaa harjoitukselle tyytyvaisyysarvosanan. 
+Lisaksi arviossa pystyy antamaan harjoituksesta sanallisen arvion.

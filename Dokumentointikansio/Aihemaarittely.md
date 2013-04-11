@@ -6,7 +6,8 @@ Jarjestelman tarkoitus
 Harjoituskirjanpitojarjestelman avulla kayttaja pystyy pitamaan 
 kirjaa omista treeneistaan, joissa han kay. Kayttajan 
 on mahdollista luoda itselleen omia lajiprofiileita ja lisata niiden 
-perusteella itselleen harjoituskertoja.
+perusteella itselleen harjoituskertoja. Jarjestelman tavoite on siis 
+yllapitaa rekisteria kayttajan harjoituksista ja treenaamisesta.
 
 Tietokannassa lajit on listattu omassa lajitaulussaan. Kayttaja 
 pystyy luomaan itselleen myos oman kayttajaprofiilin, jolla han 
@@ -27,4 +28,6 @@ Toteutus ja toimintaymparisto
 
 Tietokanta toteutetaan PostreSQL-tietokantana users.cs.helsinki.fi -
 palvelimelle. Tietokanta toimii samalla palvelimella 
-web-sovelluksena, joka toteutetaan php- ja html-kielilla.
+web-sovelluksena, joka toteutetaan php- ja html-kielilla. Lisaksi 
+joitain ominaisuuksia toteutetaan JavaScript-kielella, jota selaimen 
+taytyisi tukea.
