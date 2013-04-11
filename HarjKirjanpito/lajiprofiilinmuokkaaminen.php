@@ -14,19 +14,19 @@ varmista_kirjautuminen();
         <h1 class="otsikko">Lajiprofiilin muokkaaminen</h1>
 
 
+        <div>
+            <?php
+            $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
-        <?php
-        $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
+            echo 'Käyttäjän lajit: <br>';
 
-        echo 'Käyttäjän lajit: <br>';
+            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
+                echo $kayttajanlajitnumero[$x] . '<br>';
+            }
 
-        for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-            echo $kayttajanlajitnumero[$x] . '<br>';
-        }
-
-        echo '<br>';
-        ?>
-
+            echo '<br>';
+            ?>
+        </div>
 
         <div>
             <form action="lajiprofiilinmuokkaaminen.php" id="lajiprofiilinvalinta" method="POST">

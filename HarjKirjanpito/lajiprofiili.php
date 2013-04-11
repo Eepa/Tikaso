@@ -6,11 +6,11 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <title>Lajiprofiili</title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        <?php require 'linkkilista.php'; ?>
+       <?php require 'apuphpt/footer.php'; ?>
     </body>
 </html>

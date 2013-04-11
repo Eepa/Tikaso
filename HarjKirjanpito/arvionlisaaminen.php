@@ -25,9 +25,10 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion lisääminen</h1>
 
-
+<div>
         <?php
         $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
+        
         echo 'Käyttäjän harjoituskerrat: <br>';
 
         for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
@@ -66,7 +67,7 @@ if (isset($_POST['harjpvm'])) {
 
         echo '<br>';
         ?>
-
+</div>
         <div>
             <form action="arvionlisaaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -96,7 +97,7 @@ if (isset($_POST['harjpvm'])) {
             $laji = $kyselyita->lajiIndeksi($lajinimi);
 
             $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
-
+?> <div> <?php
             for ($x = 0; $x < count($paivamaarat); $x++) {
                 echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
             }
@@ -106,7 +107,7 @@ if (isset($_POST['harjpvm'])) {
 
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
 
-
+</div>
 
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
@@ -150,7 +151,7 @@ if (isset($_POST['harjpvm'])) {
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
             $arviot = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-
+?> <div> <?php
             for ($int = 0; $int < count($arviot); $int++) {
                 echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
                 $arviot[$int][2] . " " .
@@ -158,7 +159,7 @@ if (isset($_POST['harjpvm'])) {
             }
             ?>
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
-
+</div>
             <div> 
                 <form action="arvionlisaaminen.php" id="harjoituksenvalinta" method="POST">
 
@@ -206,10 +207,10 @@ if (isset($_POST['harjpvm'])) {
 
         <?php if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
             ?>
-
+<div>
             <h3>Lajiprofiili: <?php echo $_POST['laji'] ?></h3>
             <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']) ?></h3>
-            <h3>Alkamisaika: <?php echo date('H:i', $_POST['harjoituskerta']) ?></h3>
+            <h3>Alkamisaika: <?php echo date('H:i', $_POST['harjoituskerta']) ?></h3></div>
 
 
             <div> 

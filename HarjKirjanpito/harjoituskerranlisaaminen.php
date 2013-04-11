@@ -15,34 +15,35 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Harjoituskerran lisääminen</h1>
 
+        <div>
 
+            <?php
+            $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
-        <?php
-        $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
+            echo 'Käyttäjän lajit: <br>';
 
-        echo 'Käyttäjän lajit: <br>';
-
-        for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-            echo $kayttajanlajitnumero[$x] . '<br>';
-        }
-
-        echo '<br>';
-        ?>
-
-        <?php
-        $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
-        echo 'Käyttäjän harjoituskerrat: <br>';
-
-        for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
-            echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
-            $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
-            $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
+                echo $kayttajanlajitnumero[$x] . '<br>';
+            }
 
             echo '<br>';
-        }
+            ?>
 
-        echo '<br>';
-        ?>
+            <?php
+            $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
+            echo 'Käyttäjän harjoituskerrat: <br>';
+
+            for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
+                echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
+                $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
+                $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+
+                echo '<br>';
+            }
+
+            echo '<br>';
+            ?>
+        </div>
 
         <div>
             <form action="harjoituskerranlisaaminen.php" id="lajiprofiilinvalinta" method="POST">
@@ -72,9 +73,9 @@ varmista_kirjautuminen();
             $lajinimi = $_POST['lajiprofiili'];
             $laji = $kyselyita->lajiIndeksi($lajinimi);
             ?>
-
-            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
-
+            <div>
+                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+            </div>
 
             <div> 
                 <form action="apuphpt/lisaaharjoituskerta.php" id="harjoituskerranlisaaminen" method="POST">

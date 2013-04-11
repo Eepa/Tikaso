@@ -13,7 +13,7 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Lajiprofiilin lisääminen</h1>
 
-
+        <div>
         <?php echo 'Kaikki lajit: <br>';
         ?>
         <?php
@@ -27,6 +27,8 @@ varmista_kirjautuminen();
 
         echo '<br>';
         ?>
+            
+            </div>
 
         <div> 
             <form action="apuphpt/lisaalajiprofiili.php" id="lajiprofiililisays" method="POST">

@@ -27,29 +27,30 @@
        
         <header>
         <div><ul id="navbar">
-                <li><a href="kirjaudu.php?ulos">Uloskirjautuminen</a></li>
+                
                 <li><a href="etusivu.php">Etusivu</a></li>
-                <li><a href="#">Lajiprofiili</a>
+                <li><a href="lajiprofiili.php">Lajiprofiili</a>
                     <ul>
                         <li><a href="lajiprofiilinlisaaminen.php">Lisääminen</a></li>
                         <li><a href="lajiprofiilinpoistaminen.php">Poistaminen</a></li>
                         <li><a href="lajiprofiilinmuokkaaminen.php">Muokkaaminen</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Harjoituskerta</a>
+                <li><a href="harjoituskerta.php">Harjoituskerta</a>
                     <ul>
                         <li><a href="harjoituskerranlisaaminen.php">Lisääminen</a></li>
                         <li><a href="harjoituskerranpoistaminen.php">Poistaminen</a></li>
                         <li><a href="harjoituskerranmuokkaaminen.php">Muokkaaminen</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Arvio</a>
+                <li><a href="arvio.php">Arvio</a>
                     <ul>
                         <li><a href="arvionlisaaminen.php">Lisääminen</a></li>
                         <li><a href="arvionpoistaminen.php">Poistaminen</a></li>
                         <li><a href="arvionmuokkaus.php">Muokkaaminen</a></li>
                     </ul>
                 </li>
+                <li><a href="kirjaudu.php?ulos">Uloskirjautuminen</a></li>
             </ul>
         </div>
         <br>

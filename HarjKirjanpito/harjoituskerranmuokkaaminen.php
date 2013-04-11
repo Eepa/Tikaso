@@ -26,37 +26,37 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Harjoituskerran muokkaaminen</h1>
 
-        
 
 
-        <?php
-        $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
-        echo 'Käyttäjän harjoituskerrat: <br>';
+        <div>
+            <?php
+            $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
+            echo 'Käyttäjän harjoituskerrat: <br>';
 
-        for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
-            echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
-            $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
-            $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+            for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
+                echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
+                $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
+                $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+
+                echo '<br>';
+            }
 
             echo '<br>';
-        }
+            ?>
 
-        echo '<br>';
-        ?>
+            <?php
+            $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
 
-        <?php
-        $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
+            echo 'Käyttäjän lajit: <br>';
 
-        echo 'Käyttäjän lajit: <br>';
+            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
+                echo $kayttajanlajitnumero[$x][0] . '<br>';
+            }
 
-        for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-            echo $kayttajanlajitnumero[$x][0] . '<br>';
-        }
+            echo '<br>';
+            ?>
 
-        echo '<br>';
-        ?>
-
-
+        </div>
         <div>
             <form action="harjoituskerranmuokkaaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -80,22 +80,23 @@ if (isset($_POST['harjpvm'])) {
 
         <br>
 
+        
+            <?php
+            if (isset($_POST['lajiprofiili'])) {
+                $lajinimi = $_POST['lajiprofiili'];
+                $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-        <?php
-        if (isset($_POST['lajiprofiili'])) {
-            $lajinimi = $_POST['lajiprofiili'];
-            $laji = $kyselyita->lajiIndeksi($lajinimi);
+                $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
+?> <div><?php
+                for ($x = 0; $x < count($paivamaarat); $x++) {
+                    echo $paivamaarat[$x][0] . '<br>';
+                }
 
-            $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
-
-            for ($x = 0; $x < count($paivamaarat); $x++) {
-                echo $paivamaarat[$x][0] . '<br>';
-            }
-
-            echo '<br>';
-            ?>
-
-            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+                echo '<br>';
+                ?> </div>
+            </div>
+<div>
+            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3></div>
 
 
 
@@ -136,19 +137,21 @@ if (isset($_POST['harjpvm'])) {
         }
         ?>
 
+        
+            <?php
+            if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
-        <?php
-        if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
+                $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+?> <div><?php
+                for ($int = 0; $int < count($arviot); $int++) {
+                    echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
+                    $arviot[$int][2] . " " .
+                    $arviot[$int][3];
+                }
+                ?></div>
 
-            $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-
-            for ($int = 0; $int < count($arviot); $int++) {
-                echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-                $arviot[$int][2] . " " .
-                $arviot[$int][3];
-            }
-            ?>
-            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
+            <div>
+            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3></div>
 
             <div> 
                 <form action="harjoituskerranmuokkaaminen.php" id="harjoituksenvalinta" method="POST">
@@ -195,21 +198,24 @@ if (isset($_POST['harjpvm'])) {
         }
         ?>
 
+        
+            <?php
+            if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
 
-        <?php
-        if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
 
 
+                $harjoituskerransisalto = $kyselyita->haeHarjoituskerta(
+                        $sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
+                
+                ?> <div> <?php
+                echo $harjoituskerransisalto[0][0] . " " . $harjoituskerransisalto[0][1] . " " .
+                $harjoituskerransisalto[0][2];
+                ?>
+            </div>
 
-            $harjoituskerransisalto = $kyselyita->haeHarjoituskerta(
-                    $sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
-            echo $harjoituskerransisalto[0][0] . " " . $harjoituskerransisalto[0][1] . " " .
-            $harjoituskerransisalto[0][2];
-            ?>
-
-            <h3>Lajiprofiili: <?php echo $_POST['laji'] ?></h3>
+        <div>    <h3>Lajiprofiili: <?php echo $_POST['laji'] ?></h3>
             <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']) ?></h3>
-            <h3>Alkamisaika: <?php echo date('H:i', $_POST['harjoituskerta']) ?></h3>
+            <h3>Alkamisaika: <?php echo date('H:i', $_POST['harjoituskerta']) ?></h3></div>
 
 
             <div> 

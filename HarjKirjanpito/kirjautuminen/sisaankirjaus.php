@@ -1,4 +1,4 @@
-<?php ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +17,7 @@
 
             <form action="../kirjaudu.php?sis" method="POST">
                 <p>Syötä tunnuksesi ja salasanasi:</p>
-                <fieldset>
+                <fieldset class="tesf">
 
                     <label for="kayttajatunnus">Käyttäjätunnus:</label> 
 
@@ -38,7 +38,6 @@
                 <a href="../index.html">Etusivulle</a>
             </p>
         </div>
-
 
     </body>
 

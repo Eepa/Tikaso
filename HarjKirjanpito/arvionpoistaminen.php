@@ -26,7 +26,7 @@ if (isset($_POST['harjpvm'])) {
         <h1 class="otsikko">Arvion poistaminen</h1>
 
       
-
+<div>
         <?php
         $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
         echo 'Käyttäjän harjoituskerrat: <br>';
@@ -67,7 +67,7 @@ if (isset($_POST['harjpvm'])) {
 
         echo '<br>';
         ?>
-
+</div>
         <div>
             <form action="arvionpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -97,7 +97,7 @@ if (isset($_POST['harjpvm'])) {
             $laji = $kyselyita->lajiIndeksi($lajinimi);
 
             $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
-
+?> <div> <?php
             for ($x = 0; $x < count($paivamaarat); $x++) {
                 echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
             }
@@ -107,7 +107,7 @@ if (isset($_POST['harjpvm'])) {
 
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
 
-
+</div>
 
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
@@ -152,7 +152,7 @@ if (isset($_POST['harjpvm'])) {
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
             $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-
+?> <div> <?php
             for ($int = 0; $int < count($arviot); $int++) {
                 echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
                 $arviot[$int][2] . " " .
@@ -160,7 +160,7 @@ if (isset($_POST['harjpvm'])) {
             }
             ?>
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
-
+</div>
             <div> 
                 <form action="apuphpt/poistaarvio.php" id="arvionpoistaminen" method="POST">
 

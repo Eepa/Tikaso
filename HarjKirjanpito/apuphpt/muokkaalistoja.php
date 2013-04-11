@@ -65,7 +65,7 @@ function muodostaYhdistetytNumeroin($yhdistetyt, $kaikkilajit) {
 //        
 
 
+?>
 
-
-return muodostaYhdistetytNumeroin($yhdistetyt, $kaikkiLajitNumeroindeksi);
+<?php return muodostaYhdistetytNumeroin($yhdistetyt, $kaikkiLajitNumeroindeksi);
 ?>
