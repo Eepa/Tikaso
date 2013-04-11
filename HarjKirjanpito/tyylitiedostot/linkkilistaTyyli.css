@@ -1,0 +1,121 @@
+/* 
+    Document   : linkkilistaTyyli
+    Created on : 11.4.2013, 14:00:22
+    Author     : Eveliina Pakarinen
+    Description:
+        Tyylitiedosto sivuille.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-color:#EAECDB ;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color: #25280D;
+
+    /*margin-bottom:100px;*/
+    margin-right:50px;
+    margin-left:50px;
+
+}
+
+header {
+    background-color:#D1D5B7 ;
+    padding: 4px;
+    margin-bottom: 50px;   
+    margin-right:50px;
+    margin-left:0px;
+    margin-top: 25px;
+}
+
+footer {
+    background-color:#D1D5B7 ;
+    margin-top:70px;
+    margin-right:50px;
+    margin-left:0px;
+
+}
+
+.otsikko {
+    text-decoration: overline;
+    margin-left: 45px;
+}
+
+
+div {
+    margin-left: 45px;
+}
+
+fieldset {
+    width: 750px;
+    padding:10px;
+    border:3px solid gray;
+    margin:0px;
+}
+
+#footerteksti {
+    font-style: italic;
+    font-size: 13px;
+    text-align: left;
+
+    /*margin-top: 6px;*/
+    margin-left: 26px;
+
+}
+
+a:link {
+
+    color: #667305;
+
+}
+
+a:visited {
+    color: #733403;
+}
+
+#navbar {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    margin-top: 6px;
+    padding:0;
+    margin-left: 50px;
+     margin-top: 23px;
+}
+#navbar li 
+{
+    list-style: none;
+    float: left; 
+    position:relative;
+
+    /*background-color:#D1D5B7;*/
+}
+#navbar li a {
+    display: block;
+    text-align:center;
+    padding: 6px 8px;
+    text-transform: uppercase;
+    text-decoration: none; 
+    color: #000;
+    font-weight: bold; }
+#navbar li a:hover {
+    /*color: #999;*/
+    background-color:#98bf21;
+}
+#navbar li ul {
+    display: none;
+    list-style-type:none;
+}
+#navbar li:hover ul, #navbar li.hover ul {
+    position: absolute;
+    /*text-align: center;*/
+    display:list-item;
+    left: 0;
+    /*width: 100%;*/
+    margin: 0;
+    padding: 0;
+    background-color: #D1D5B7; 
+}
+

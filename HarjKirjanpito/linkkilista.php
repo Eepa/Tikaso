@@ -1,48 +1,10 @@
 <?php require_once 'tarkastus.php'; ?>
 <!DOCTYPE html>
 <html>
-    <style> 
-/*        #navbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: 0;
-            padding:0;}*/
-        #navbar li 
-        {
-            list-style: none;
-            float: left; 
-            position:relative;
-            /*background-color:#999;*/
-        }
-        #navbar li a {
-            display: block;
-            padding: 3px 8px;
-            text-transform: uppercase;
-            text-decoration: none; 
-            color: #000;
-            font-weight: bold; }
-        #navbar li a:hover {
-            /*color: #999;*/
-             background-color:#98bf21;
-        }
-        #navbar li ul {
-            display: none;
-            list-style-type:none;
-        }
-        #navbar li:hover ul, #navbar li.hover ul {
-            position: absolute;
-            display:list-item;
-            left: 0;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-
-
+ 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
 
     </head>
     <body>
@@ -62,6 +24,8 @@
         </script>
 
         <?php if (on_kirjautunut()) { ?>
+       
+        <header>
         <div><ul id="navbar">
                 <li><a href="kirjaudu.php?ulos">Uloskirjautuminen</a></li>
                 <li><a href="etusivu.php">Etusivu</a></li>
@@ -89,7 +53,7 @@
             </ul>
         </div>
         <br>
-
+        </header>
                     <!--            <p>
                                     <a href="kirjaudu.php?ulos">Uloskirjautuminen</a>
                                     <a href="etusivu.php">Etusivu</a>

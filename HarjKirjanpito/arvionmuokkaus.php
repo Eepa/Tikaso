@@ -18,13 +18,13 @@ if (isset($_POST['harjpvm'])) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Arvion muokkaaminen</title>
     </head>
     <body>
-
-        <h1>Arvion muokkaaminen</h1>
-
         <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Arvion muokkaaminen</h1>
+
 
         <?php
         $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
@@ -180,15 +180,16 @@ if (isset($_POST['harjpvm'])) {
                         <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
                             <input type="radio" name="arvio" id="arvio"
-                                   value="<?php echo $arviot[$int][0]."§".
-                                    $arviot[$int][1] ."§". $arviot[$int][2] ."§". $arviot[$int][3];
-                            ?>" required> <label for="arvio">
+                                   value="<?php
+                    echo $arviot[$int][0] . "§" .
+                    $arviot[$int][1] . "§" . $arviot[$int][2] . "§" . $arviot[$int][3];
+                    ?>" required> <label for="arvio">
                                 Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
                                 Kesto: <?php echo $arviot[$int][1] . " " ?>
                                 Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
                                 Kuvaus: <?php echo $arviot[$int][3] . " " ?></label>
                             <br>    
-                        <?php } ?>
+    <?php } ?>
                         <br>
 
                         <input type="submit" name="arviovalittu" value="Valitse arvio">
@@ -208,8 +209,8 @@ if (isset($_POST['harjpvm'])) {
 
         <?php if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['arvio'])) {
             ?>
-            
-            <?php $arvio = explode("§", $_POST['arvio']); ?>
+
+    <?php $arvio = explode("§", $_POST['arvio']); ?>
 
             <h3>Lajiprofiili: <?php echo $_POST['laji']; ?></h3>
             <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']); ?></h3>
@@ -234,19 +235,19 @@ if (isset($_POST['harjpvm'])) {
 
                         <label for="yleisarvosana">Yleisarvosana:</label>
                         <input type="number" name="yleisarvosana" id="yleisarvosana" 
-                               min="1" max="10" value="<?php echo $arvio[1]?>" required>
+                               min="1" max="10" value="<?php echo $arvio[1] ?>" required>
 
                         <br>
 
                         <label for="tyytyvaisyysarvo">Tyytyväisyysarvosana:</label>
                         <input type="number" name="tyytyvaisyysarvo" id="tyytyvaisyysarvo" 
-                               min="1" max="10" value="<?php echo $arvio[2]?>" required>
+                               min="1" max="10" value="<?php echo $arvio[2] ?>" required>
                         <br>
 
                         <label for="sanallinenarvio">Sanallinenarvio:<br></label>
                         <textarea  name="sanallinenarvio" form="arvionmuokkaaminen"
                                    rows="4" cols="50" maxlength="2000" id="sanallinenarvio" 
-                                   required><?php echo $arvio[3]?></textarea>
+                                   required><?php echo $arvio[3] ?></textarea>
                         <br>
 
 
@@ -258,10 +259,10 @@ if (isset($_POST['harjpvm'])) {
 
             </div>
 
-        <?php } ?>
+<?php } ?>
 
 
 
-        <?php require 'apuphpt/footer.php'; ?>
+<?php require 'apuphpt/footer.php'; ?>
     </body>
 </html>

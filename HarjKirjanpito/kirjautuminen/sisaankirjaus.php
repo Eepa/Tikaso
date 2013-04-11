@@ -3,13 +3,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="../tyylitiedostot/linkkilistaTyyli.css" />
         <title>Harjoituskirjanpitojärjestelmä</title>
 
     </head>
 
 
     <body>
-        <h1>Harjoituskirjanpitojärjestelmä</h1>
+        <h1 class="otsikko">Harjoituskirjanpitojärjestelmä</h1>
 
         <div> 
             <h3>Kirjaudu järjestelmään</h3>

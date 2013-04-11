@@ -6,20 +6,15 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Lajiprofiilin poistaminen</title>
     </head>
-    <!--    <body onload="submit()">--> <body>
-
-        <!--        <form action="apuphpt/muokkaalistoja.php?kaytlajitnumero" id="submitForm"></form>
-                
-                <script language='JavaScript'>
-                    function submit(){
-                        document.submitForm.submit();
-                    };</script>
-        -->
-        <h1>Lajiprofiilin poistaminen</h1>
-
+    <body>
         <?php require 'linkkilista.php'; ?>
+
+
+        <h1 class="otsikko">Lajiprofiilin poistaminen</h1>
+
 
         <?php
         $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
@@ -47,8 +42,8 @@ varmista_kirjautuminen();
                         <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
                             <option value="<?php echo $kayttajanlajitnumero[$x] ?>">
                                 <?php echo $kayttajanlajitnumero[$x] ?></option>
-                            <?php }
-                            ?>
+                        <?php }
+                        ?>
                     </select>
 
                     <br>
@@ -62,7 +57,7 @@ varmista_kirjautuminen();
 
         </div>
 
-        <?php require 'apuphpt/footer.php';?>
-        
+        <?php require 'apuphpt/footer.php'; ?>
+
     </body>
 </html>

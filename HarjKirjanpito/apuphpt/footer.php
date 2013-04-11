@@ -1,12 +1,15 @@
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+    </head>
     <footer>
-        <p>
+        <p id="footerteksti">
             Harjoituskirjanpitojärjestelmän luoja: Evpa
         </p>
         
-        <p>Palautteet ja kritiikin voitte lähettää suoraan asiakaspalautepostiimme, jota luemme aina, kun 
+        <p id="footerteksti">Palautteet ja kritiikin voitte lähettää suoraan asiakaspalautepostiimme, jota luemme aina, kun 
         kahvitauoilla on tylsää.</p>
         
     </footer>

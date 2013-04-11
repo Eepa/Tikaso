@@ -18,12 +18,14 @@ if (isset($_POST['harjpvm'])) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Arvion poistaminen</title>
     </head>
     <body>
-        <h1>Arvion poistaminen</h1>
-
         <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Arvion poistaminen</h1>
+
+      
 
         <?php
         $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
@@ -148,7 +150,7 @@ if (isset($_POST['harjpvm'])) {
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
-            
+
             $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
 
             for ($int = 0; $int < count($arviot); $int++) {

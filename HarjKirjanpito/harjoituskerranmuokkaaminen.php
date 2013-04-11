@@ -19,12 +19,14 @@ if (isset($_POST['harjpvm'])) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Harjoituskerran muokkaaminen</title>
     </head>
     <body>
-        <h1>Harjoituskerran muokkaaminen</h1>
-
         <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Harjoituskerran muokkaaminen</h1>
+
+        
 
 
         <?php
@@ -152,7 +154,7 @@ if (isset($_POST['harjpvm'])) {
                 <form action="harjoituskerranmuokkaaminen.php" id="harjoituksenvalinta" method="POST">
 
                     <fieldset> 
-                        <h3>Valitse poistettava harjoitus:</h3>
+                        <h3>Valitse muokattava harjoitus:</h3>
                         <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 

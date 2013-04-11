@@ -6,13 +6,14 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Lajiprofiilin lisääminen</title>
     </head>
     <body>
-
-        <h1>Lajiprofiilin lisääminen</h1>
-
         <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Lajiprofiilin lisääminen</h1>
+
+
         <?php echo 'Kaikki lajit: <br>';
         ?>
         <?php

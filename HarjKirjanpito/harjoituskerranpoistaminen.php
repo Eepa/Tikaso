@@ -19,13 +19,14 @@ if (isset($_POST['harjpvm'])) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Harjoituskerran poistaminen</title>
     </head>
     <body>
-
-        <h1>Harjoituskerran poistaminen</h1>
-
         <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Harjoituskerran poistaminen</h1>
+
+
 
         <?php
         $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);

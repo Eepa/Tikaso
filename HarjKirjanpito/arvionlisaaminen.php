@@ -18,12 +18,13 @@ if (isset($_POST['harjpvm'])) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Arvion lisääminen</title>
     </head>
     <body>
-        <h1>Arvion lisääminen</h1>
-
         <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Arvion lisääminen</h1>
+
 
         <?php
         $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
@@ -38,21 +39,20 @@ if (isset($_POST['harjpvm'])) {
         }
 
         echo '<br>';
-        
+
         echo 'Käyttäjän arviot: <br>';
-        
+
         $kayttajanarviot = $kyselyita->haeKayttajanArvioidenTiedot($sessio->hetu);
-        
-         for ($x = 0; $x < count($kayttajanarviot); $x++) {
+
+        for ($x = 0; $x < count($kayttajanarviot); $x++) {
             echo $kayttajanarviot[$x][0] . " " . $kayttajanarviot[$x][1] . " " .
             $kayttajanarviot[$x][2] . " " . $kayttajanarviot[$x][3] . " " .
             $kayttajanarviot[$x][4] . " " . $kayttajanarviot[$x][5];
 
             echo '<br>';
         }
-        
+
         echo '<br>';
-        
         ?>
 
         <?php
@@ -78,8 +78,8 @@ if (isset($_POST['harjpvm'])) {
                         <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
                             <option value="<?php echo $kayttajanlajitnumero[$x][0] ?>">
                                 <?php echo $kayttajanlajitnumero[$x][0] ?></option>
-                        <?php }
-                        ?>
+                            <?php }
+                            ?>
                     </select>
 
                     <br>
@@ -112,8 +112,8 @@ if (isset($_POST['harjpvm'])) {
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
                     <option value="<?php echo $paivamaarat[$x][0] ?>">
                         <?php echo $paivamaarat[$x][0] ?></option>
-                <?php }
-                ?>
+                    <?php }
+                    ?>
             </datalist>
 
             <div> 

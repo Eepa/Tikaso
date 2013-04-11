@@ -8,14 +8,16 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
         <title>Etusivu - harjoituskirjanpitojärjestelmä</title>
     </head>
 
 
     <body>
-        <h1>Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
+        <?php require 'linkkilista.php'; ?>
+        <h1 class="otsikko">Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
 
-<?php require 'linkkilista.php'; ?>
+
 
 
         <div>
@@ -25,7 +27,7 @@ varmista_kirjautuminen();
         </div>
 
 
-<?php require 'apuphpt/footer.php'; ?>
+        <?php require 'apuphpt/footer.php'; ?>
 
     </body>
 
