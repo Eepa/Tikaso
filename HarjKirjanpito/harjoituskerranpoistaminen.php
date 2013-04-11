@@ -79,23 +79,22 @@ if (isset($_POST['harjpvm'])) {
 
         <br>
 
-        
 
-            <?php
-            if (isset($_POST['lajiprofiili'])) { ?> <?php 
-                $lajinimi = $_POST['lajiprofiili'];
-                $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-                $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
-                ?> <div><?php
-                for ($x = 0; $x < count($paivamaarat); $x++) {
-                    echo $paivamaarat[$x][0] . '<br>';
-                }
+        <?php if (isset($_POST['lajiprofiili'])) { ?> <?php
+        $lajinimi = $_POST['lajiprofiili'];
+        $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-                echo '<br>';
-                ?>
-                    </div>
-<div>
+        $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
+            ?> <div><?php
+        for ($x = 0; $x < count($paivamaarat); $x++) {
+            echo $paivamaarat[$x][0] . '<br>';
+        }
+
+        echo '<br>';
+            ?>
+            </div>
+            <div>
                 <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
             </div>
 
@@ -143,14 +142,14 @@ if (isset($_POST['harjpvm'])) {
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
             $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-?> <div><?php
-            for ($int = 0; $int < count($arviot); $int++) {
-                echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-                $arviot[$int][2] . " " .
-                $arviot[$int][3];
-            }
+            ?> <div><?php
+        for ($int = 0; $int < count($arviot); $int++) {
+            echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
+            $arviot[$int][2] . " " .
+            $arviot[$int][3];
+        }
             ?></div>
-         <div>   <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3></div>
+            <div>   <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3></div>
 
             <div> 
                 <form action="apuphpt/poistaharjoituskerta.php" id="harjoituksenpoisto" method="POST">

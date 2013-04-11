@@ -15,31 +15,38 @@
         <div> 
             <h3>Kirjaudu järjestelmään</h3>
 
-            <form action="../kirjaudu.php?sis" method="POST">
-                <p>Syötä tunnuksesi ja salasanasi:</p>
-                <fieldset class="tesf">
 
-                    <label for="kayttajatunnus">Käyttäjätunnus:</label> 
+        </p>
+        <form action="../kirjaudu.php?sis" method="POST">
+            <?php if (isset($_GET['epao'])) { ?> 
+                <p id="virhe">
+                    <?php echo 'Salasana tai käyttäjätunnus oli väärä';
+                } ?> </p>
 
-                    <input type="text" name="kayttajatunnus" id="kayttajatunnus" maxlength="30" required><br>
+            <p>Syötä tunnuksesi ja salasanasi:</p>
+            <fieldset class="kirjautuminenfieldset">
 
-                    <label for="salasana">Salasana:</label> 
-                    <input type="password" name="salasana" id="salasana" maxlength="30" required><br>
+                <label for="kayttajatunnus">Käyttäjätunnus:</label> 
 
-                    <input type="submit" value="Kirjaudu">
-                </fieldset>
+                <input type="text" name="kayttajatunnus" id="kayttajatunnus" maxlength="30" required><br>
+
+                <label for="salasana">Salasana:</label> 
+                <input type="password" name="salasana" id="salasana" maxlength="30" required><br>
+
+                <input type="submit" value="Kirjaudu">
+            </fieldset>
 
 
-            </form>
-        </div>
+        </form>
+    </div>
 
-        <div>
-            <p>
-                <a href="../index.html">Etusivulle</a>
-            </p>
-        </div>
+    <div>
+        <p>
+            <a href="../index.html">Etusivulle</a>
+        </p>
+    </div>
 
-    </body>
+</body>
 
 
 

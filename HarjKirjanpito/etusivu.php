@@ -1,9 +1,7 @@
 <?php
 require_once 'tarkastus.php';
-
 varmista_kirjautuminen();
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +14,6 @@ varmista_kirjautuminen();
     <body>
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
-
-
 
 
         <div>

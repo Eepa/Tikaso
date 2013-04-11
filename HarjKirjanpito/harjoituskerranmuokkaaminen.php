@@ -80,188 +80,187 @@ if (isset($_POST['harjpvm'])) {
 
         <br>
 
-        
-            <?php
-            if (isset($_POST['lajiprofiili'])) {
-                $lajinimi = $_POST['lajiprofiili'];
-                $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-                $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
-?> <div><?php
-                for ($x = 0; $x < count($paivamaarat); $x++) {
-                    echo $paivamaarat[$x][0] . '<br>';
-                }
+        <?php
+        if (isset($_POST['lajiprofiili'])) {
+            $lajinimi = $_POST['lajiprofiili'];
+            $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-                echo '<br>';
-                ?> </div>
-            </div>
-<div>
+            $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
+            ?> <div><?php
+        for ($x = 0; $x < count($paivamaarat); $x++) {
+            echo $paivamaarat[$x][0] . '<br>';
+        }
+
+        echo '<br>';
+            ?> </div>
+        </div>
+        <div>
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3></div>
 
 
 
-            <datalist name="paivamaaralista" id="paivamaaralista">
-                <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
-                    <option value="<?php echo $paivamaarat[$x][0] ?>">
-                        <?php echo $paivamaarat[$x][0] ?></option>
-                <?php }
-                ?>
-            </datalist>
+        <datalist name="paivamaaralista" id="paivamaaralista">
+            <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
+                <option value="<?php echo $paivamaarat[$x][0] ?>">
+                    <?php echo $paivamaarat[$x][0] ?></option>
+            <?php }
+            ?>
+        </datalist>
 
-            <div> 
-                <form action="harjoituskerranmuokkaaminen.php" id="ajanvalinta" method="POST">
+        <div> 
+            <form action="harjoituskerranmuokkaaminen.php" id="ajanvalinta" method="POST">
 
-                    <fieldset> 
-                        <h3>Valitse muokattavan harjoituksen päivämäärä:</h3>
+                <fieldset> 
+                    <h3>Valitse muokattavan harjoituksen päivämäärä:</h3>
 
-                        <input type="hidden" name="lajitunnus" id="lajitunnus" 
-                               value="<?php echo $laji->lajitunnus ?>">
+                    <input type="hidden" name="lajitunnus" id="lajitunnus" 
+                           value="<?php echo $laji->lajitunnus ?>">
 
-                        <input type="hidden" name="laji" id="laji" 
-                               value="<?php echo $_POST['lajiprofiili'] ?>">
+                    <input type="hidden" name="laji" id="laji" 
+                           value="<?php echo $_POST['lajiprofiili'] ?>">
 
-                        <laber for="harjpvm">Harjoitusaika:</laber>
-                        <input type="date" name="harjpvm" id="harjpvm" 
-                               list="paivamaaralista" required>
+                    <laber for="harjpvm">Harjoitusaika:</laber>
+                    <input type="date" name="harjpvm" id="harjpvm" 
+                           list="paivamaaralista" required>
 
-                        <br>
+                    <br>
 
-                        <input type="submit" value="Valitse">
+                    <input type="submit" value="Valitse">
 
-                    </fieldset>
+                </fieldset>
 
-                </form>
+            </form>
 
-            </div>
-            <?php
-        }
-        ?>
+        </div>
+        <?php
+    }
+    ?>
 
-        
-            <?php
-            if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
-                $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-?> <div><?php
-                for ($int = 0; $int < count($arviot); $int++) {
-                    echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-                    $arviot[$int][2] . " " .
-                    $arviot[$int][3];
-                }
-                ?></div>
+    <?php
+    if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
-            <div>
+        $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+        ?> <div><?php
+    for ($int = 0; $int < count($arviot); $int++) {
+        echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
+        $arviot[$int][2] . " " .
+        $arviot[$int][3];
+    }
+        ?></div>
+
+        <div>
             <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3></div>
 
-            <div> 
-                <form action="harjoituskerranmuokkaaminen.php" id="harjoituksenvalinta" method="POST">
+        <div> 
+            <form action="harjoituskerranmuokkaaminen.php" id="harjoituksenvalinta" method="POST">
 
-                    <fieldset> 
-                        <h3>Valitse muokattava harjoitus:</h3>
-                        <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
+                <fieldset> 
+                    <h3>Valitse muokattava harjoitus:</h3>
+                    <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
-                        <input type="hidden" name="lajitunnus" id="lajitunnus" 
-                               value="<?php echo $_POST['lajitunnus'] ?>">
+                    <input type="hidden" name="lajitunnus" id="lajitunnus" 
+                           value="<?php echo $_POST['lajitunnus'] ?>">
 
-                        <input type="hidden" name="harjpvm" id="harjpvm" 
-                               value="<?php echo $_POST['harjpvm'] ?>">
+                    <input type="hidden" name="harjpvm" id="harjpvm" 
+                           value="<?php echo $_POST['harjpvm'] ?>">
 
-                        <input type="hidden" name="laji" id="laji" 
-                               value="<?php echo $_POST['laji'] ?>">
+                    <input type="hidden" name="laji" id="laji" 
+                           value="<?php echo $_POST['laji'] ?>">
 
-                        <?php for ($int = 0; $int < count($arviot); $int++) { ?>
+                    <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
-                            <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php echo $arviot[$int][0];
-                            ?>" required> <label for="harjoituskerta">
-                                Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                                Kesto: <?php echo $arviot[$int][1] . " " ?>
-                                Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
-                                Kuvaus: <?php echo $arviot[$int][3] . " " ?>
-                            </label>
-                            <br>    
-                        <?php } ?>
-                        <br>
+                        <input type="radio" name="harjoituskerta" id="harjoituskerta"
+                               value="<?php echo $arviot[$int][0];
+                        ?>" required> <label for="harjoituskerta">
+                            Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
+                            Kesto: <?php echo $arviot[$int][1] . " " ?>
+                            Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
+                            Kuvaus: <?php echo $arviot[$int][3] . " " ?>
+                        </label>
+                        <br>    
+                    <?php } ?>
+                    <br>
 
-                        <input type="submit" name="harjoitusaikavalittu" value="Valitse harjoitus">
-
-
-
-                    </fieldset>
-
-                </form>
-
-            </div>
+                    <input type="submit" name="harjoitusaikavalittu" value="Valitse harjoitus">
 
 
-            <?php
-        }
+
+                </fieldset>
+
+            </form>
+
+        </div>
+
+
+        <?php
+    }
+    ?>
+
+
+    <?php
+    if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
+
+
+
+        $harjoituskerransisalto = $kyselyita->haeHarjoituskerta(
+                $sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
+        ?> <div> <?php
+    echo $harjoituskerransisalto[0][0] . " " . $harjoituskerransisalto[0][1] . " " .
+    $harjoituskerransisalto[0][2];
         ?>
-
-        
-            <?php
-            if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
-
-
-
-                $harjoituskerransisalto = $kyselyita->haeHarjoituskerta(
-                        $sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
-                
-                ?> <div> <?php
-                echo $harjoituskerransisalto[0][0] . " " . $harjoituskerransisalto[0][1] . " " .
-                $harjoituskerransisalto[0][2];
-                ?>
-            </div>
+        </div>
 
         <div>    <h3>Lajiprofiili: <?php echo $_POST['laji'] ?></h3>
             <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']) ?></h3>
             <h3>Alkamisaika: <?php echo date('H:i', $_POST['harjoituskerta']) ?></h3></div>
 
 
-            <div> 
-                <form action="apuphpt/muokkaaharjoituskertaa.php" id="harjoituskerranmuokkaaminen" method="POST">
+        <div> 
+            <form action="apuphpt/muokkaaharjoituskertaa.php" id="harjoituskerranmuokkaaminen" method="POST">
 
-                    <fieldset> 
-                        <h3>Muokkaa harjoituskertaa:</h3>
-                        <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
+                <fieldset> 
+                    <h3>Muokkaa harjoituskertaa:</h3>
+                    <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
-                        <input type="hidden" name="lajitunnus" id="lajitunnus" 
-                               value="<?php echo $_POST['lajitunnus'] ?>">
+                    <input type="hidden" name="lajitunnus" id="lajitunnus" 
+                           value="<?php echo $_POST['lajitunnus'] ?>">
 
-                        <input type="hidden" name="harjpvm" id="harjpvm" 
-                               value="<?php echo $_POST['harjpvm'] ?>">
+                    <input type="hidden" name="harjpvm" id="harjpvm" 
+                           value="<?php echo $_POST['harjpvm'] ?>">
 
-                        <input type="hidden" name="harjalku" id="harjalku" 
-                               value="<?php echo $_POST['harjoituskerta'] ?>">
+                    <input type="hidden" name="harjalku" id="harjalku" 
+                           value="<?php echo $_POST['harjoituskerta'] ?>">
 
-                        <label for="harjkesto">Harjoituksen kesto minuutteina:</label>
-                        <input type="number" name="harjkesto" id="harjkesto" 
-                               min="0" max="1500" value="<?php echo $harjoituskerransisalto[0][0] ?>"required>
+                    <label for="harjkesto">Harjoituksen kesto minuutteina:</label>
+                    <input type="number" name="harjkesto" id="harjkesto" 
+                           min="0" max="1500" value="<?php echo $harjoituskerransisalto[0][0] ?>"required>
 
-                        <br>
+                    <br>
 
-                        <label for="vaikeusaste">Vaikeusaste:</label>
-                        <input type="number" name="vaikeusaste" id="vaikeusaste" 
-                               min="1" max="10" value="<?php echo $harjoituskerransisalto[0][1] ?>"required>
-                        <br>
+                    <label for="vaikeusaste">Vaikeusaste:</label>
+                    <input type="number" name="vaikeusaste" id="vaikeusaste" 
+                           min="1" max="10" value="<?php echo $harjoituskerransisalto[0][1] ?>"required>
+                    <br>
 
-                        <label for="harjoituskuvaus">Harjoituskuvaus:<br></label>
-                        <textarea  name="harjkuvaus" form="harjoituskerranmuokkaaminen"
-                                   rows="4" cols="50" maxlength="2000" id="harjkuvaus" 
-                                   required><?php echo $harjoituskerransisalto[0][2]; ?></textarea>
-                        <br>
+                    <label for="harjoituskuvaus">Harjoituskuvaus:<br></label>
+                    <textarea  name="harjkuvaus" form="harjoituskerranmuokkaaminen"
+                               rows="4" cols="50" maxlength="2000" id="harjkuvaus" 
+                               required><?php echo $harjoituskerransisalto[0][2]; ?></textarea>
+                    <br>
 
 
-                        <input type="submit" name="muokkaa" value="Muokkaa">
+                    <input type="submit" name="muokkaa" value="Muokkaa">
 
-                    </fieldset>
+                </fieldset>
 
-                </form>
+            </form>
 
-            </div>
+        </div>
 
-        <?php } ?>
+    <?php } ?>
 
-        <?php require 'apuphpt/footer.php'; ?>
-    </body>
+    <?php require 'apuphpt/footer.php'; ?>
+</body>
 </html>

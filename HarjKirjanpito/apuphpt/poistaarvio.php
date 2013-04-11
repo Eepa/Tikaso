@@ -1,4 +1,5 @@
 <?php
+
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
@@ -7,19 +8,14 @@ varmista_kirjautuminen();
 
 $aika = $_POST['arvio'] . ".00";
 
-//echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $aika;
-
-$kyselynsuoritus = $kyselyita->poistaKayttajanArvio($_POST['hetu'], $_POST['lajitunnus'],
-        $_POST['harjpvm'], $aika);
+$kyselynsuoritus = $kyselyita->poistaKayttajanArvio($_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'], $aika);
 
 if ($kyselynsuoritus) {
 
-    echo "<script language='JavaScript'>window.alert('Poistaminen onnistui!'); 
+    echo "<script language='JavaScript'>window.alert('Arvion poistaminen onnistui!'); 
         window.location.href = '../arvionpoistaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Poistaminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Arvion poistaminen epäonnistui'); 
         window.location.href = '../arvionpoistaminen.php';</script> <br>");
 }
-
-
 ?>

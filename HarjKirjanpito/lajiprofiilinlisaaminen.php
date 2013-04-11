@@ -14,21 +14,21 @@ varmista_kirjautuminen();
         <h1 class="otsikko">Lajiprofiilin lisääminen</h1>
 
         <div>
-        <?php echo 'Kaikki lajit: <br>';
-        ?>
-        <?php
-        $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php';
+            <?php echo 'Kaikki lajit: <br>';
+            ?>
+            <?php
+            $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php';
 
-        echo '<br> Lajit joita ei vielä käyttäjällä <br>';
+            echo '<br> Lajit joita ei vielä käyttäjällä <br>';
 
-        for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
-            echo $yhdistetytnumeroin[$x] . '<br>';
-        }
+            for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
+                echo $yhdistetytnumeroin[$x] . '<br>';
+            }
 
-        echo '<br>';
-        ?>
-            
-            </div>
+            echo '<br>';
+            ?>
+
+        </div>
 
         <div> 
             <form action="apuphpt/lisaalajiprofiili.php" id="lajiprofiililisays" method="POST">

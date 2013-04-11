@@ -1,23 +1,6 @@
 <?php
-
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
-?>
-
-<?php
-
-//if (isset($_GET['kaytlajitnumero'])) {
-////    echo 'testi';
-//    $kayttajanLajitNumeroindeksi = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
-//    
-//    if($kayttajanLajitNumeroindeksi){
-//        return $kayttajanLajitNumeroindeksi;
-//    } else {
-//        echo 'Epäonnistui';
-//    }
-//    
-//}
-//
 ?>
 
 <?php
@@ -48,24 +31,14 @@ function muodostaYhdistetytNumeroin($yhdistetyt, $kaikkilajit) {
 
     for ($int = 0; $int < count($kaikkilajit); $int++) {
         if (array_key_exists($kaikkilajit[$int], $yhdistetyt)) {
-//            echo $yhdistetyt[$kaikkilajit[$int]] . '<br>';
+
             $yhdistetytnumeroin[$indeksi] = $yhdistetyt[$kaikkilajit[$int]];
             $indeksi++;
         }
     }
 
     return $yhdistetytnumeroin;
-}
-
-//        echo 'juttuja <br>';
-//        
-//        for($x = 0; $x < count($yhdistetytnumeroin); $x++){
-//            echo $yhdistetytnumeroin[$x] . '<br>';
-//        }
-//        
-
-
+}      
 ?>
 
-<?php return muodostaYhdistetytNumeroin($yhdistetyt, $kaikkiLajitNumeroindeksi);
-?>
+<?php return muodostaYhdistetytNumeroin($yhdistetyt, $kaikkiLajitNumeroindeksi);?>

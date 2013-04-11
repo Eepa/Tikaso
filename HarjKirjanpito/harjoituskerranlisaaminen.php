@@ -3,7 +3,6 @@ require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>

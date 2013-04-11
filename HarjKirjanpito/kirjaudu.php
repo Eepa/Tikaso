@@ -9,7 +9,7 @@ if (isset($_GET['sis'])) {
         $sessio->hetu = $kayttaja->hetu;
         ohjaa('etusivu.php');
     } else {
-        ohjaa('kirjautuminen/sisaankirjaus.php');
+        ohjaa('kirjautuminen/sisaankirjaus.php?epao');
     }
 } elseif (isset($_GET['ulos'])) {
     unset($sessio->hetu);

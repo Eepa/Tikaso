@@ -11,6 +11,6 @@ varmista_kirjautuminen();
     </head>
     <body>
         <?php require 'linkkilista.php'; ?>
-       <?php require 'apuphpt/footer.php'; ?>
+        <?php require 'apuphpt/footer.php'; ?>
     </body>
 </html>

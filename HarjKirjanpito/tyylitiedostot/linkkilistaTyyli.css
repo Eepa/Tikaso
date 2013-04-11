@@ -3,7 +3,7 @@
     Created on : 11.4.2013, 14:00:22
     Author     : Eveliina Pakarinen
     Description:
-        Tyylitiedosto sivuille.
+        Tyylitiedosto harjoituskirjanpitojarjestelman sivuille.
 */
 
 root { 
@@ -20,7 +20,7 @@ body {
     margin-left:50px;
 
 }
-.tesf{
+.kirjautuminenfieldset{
     width: 420px;
     padding:10px;
     border:3px solid gray;
@@ -72,6 +72,10 @@ fieldset {
 
 }
 
+#virhe {
+    color: darkorange;
+}
+
 a:link {
 
     color: #667305;
@@ -89,7 +93,7 @@ a:visited {
     margin-top: 6px;
     padding:0;
     margin-left: 50px;
-     margin-top: 23px;
+    margin-top: 23px;
 }
 #navbar li 
 {

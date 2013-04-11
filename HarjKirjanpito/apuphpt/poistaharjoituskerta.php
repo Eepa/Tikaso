@@ -11,24 +11,24 @@ varmista_kirjautuminen();
         <input type="hidden" name="lajitunnus" id="lajitunnus" 
                value="<?php echo $_POST['lajitunnus'] ?>">
         <input type="hidden" name="harjoituskerta" id="harjoituskerta"
-               value="<?php echo $_POST['harjoituskerta']?>">
+               value="<?php echo $_POST['harjoituskerta'] ?>">
     </form>
 
     <script language="JavaScript">
-                                         
+                                             
         function vahvistus(){
             var r = confirm("Poistaminen poistaa myös harjoituskertaan liittyvät arviot. Haluatko jatkaa?");
             if(r){
                 document.forms['harjoituskerta'].submit();
             } else if(!r){
-                                      
+                                          
                 window.location.href = '../harjoituskerranpoistaminen.php';
-                         
+                             
             }
         }
         vahvistus();                 
     </script>
-    
+
 <?php }
 ?>
 
@@ -42,10 +42,10 @@ if (!isset($_POST['poista'])) {
 
     if ($kyselynsuoritus) {
 
-        echo "<script language='JavaScript'>window.alert('Poistaminen onnistui!'); 
+        echo "<script language='JavaScript'>window.alert('Harjoituskerran poistaminen onnistui!'); 
         window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>";
     } else {
-        die("<script language='JavaScript'>window.alert('Poistaminen epäonnistui'); 
+        die("<script language='JavaScript'>window.alert('Harjoituskerran poistaminen epäonnistui'); 
         window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>");
     }
 }

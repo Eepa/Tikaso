@@ -52,5 +52,5 @@ kayttotapaukset.
 ke 10.04.2013, 1h
 Kasitekaavion, relaatiokaavion ja kayttotapauskaavion kuvaukset.
 
-to 11.04.2013, 1,5h
-Tyylimuokkauksen aloittamista.
+to 11.04.2013, 3,5h
+Tyylimuokkauksen aloittamista ja vahan refaktorointia.

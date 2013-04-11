@@ -1,5 +1,4 @@
 <?php
-
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
@@ -13,19 +12,11 @@ $laji = $kyselyita->lajiIndeksi($lajinimi);
 $kyselynsuoritus = $kyselyita->lisaaLajiprofiili($_POST['hetu'], $laji->lajitunnus, $_POST['tavoitekuvaus'], $_POST['tavoiteharjmaara']);
 
 if ($kyselynsuoritus) {
-    echo "<script language='JavaScript'>window.alert('Lisäys onnistui!'); 
+    echo "<script language='JavaScript'>window.alert('Lajiprofiilin lisääminen onnistui!'); 
         window.location.href = '../lajiprofiilinlisaaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Lisäys epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Lajiprofiilin lisääminen epäonnistui'); 
         window.location.href = '../lajiprofiilinlisaaminen.php';</script> <br>");
 }
 
-
-//if($kayttaja){
-////    echo var_dump($kayttaja);
-//    echo $kayttaja->lajitunnus;
-//}
-//else {
-//    ohjaa('lajiprofiilinlisaaminen.php');
-//}
 ?>
