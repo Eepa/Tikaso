@@ -11,6 +11,16 @@ varmista_kirjautuminen();
     </head>
     <body>
         <?php require 'linkkilista.php'; ?>
+        
+         <h1 class="otsikko">Harjoituskerta</h1>
+       
+        <div>
+            <h2>Kuvaus</h2>
+            <p>
+                
+            </p>
+            
+        </div>
         <?php require 'apuphpt/footer.php'; ?>
     </body>
 </html>

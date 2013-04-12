@@ -26,7 +26,7 @@ varmista_kirjautuminen();
                 haluamallasi tavalla.</li>
                 
                 <p>Huom! Lajiprofiilin alkuperäinen sisältö näkyy aluksi "Tavoitekuvaus"- ja "Tavoiteharjoitusmäärä"
-                    -laatikossa, kun muokattava profiili on valittu</p>
+                    -laatikoissa, kun muokattava profiili on valittu</p>
                 
                 <li>Lopuksi paina nappulaa "Muokkaa", jolloin muutokset tallentuvat lajiprofiiliisi.</li>
             </ol>
