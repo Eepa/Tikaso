@@ -17,6 +17,7 @@
                     if (document.location.href.match(linkit[a].href)) {
                         // a-elementti ilman href-attribuuttia on validi
                         linkit[a].removeAttribute("href");
+                        linkit[a].setAttribute("class", "valittu");
                     }
                 }
             }, false);

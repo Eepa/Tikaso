@@ -21,7 +21,7 @@ body {
 
 }
 .kirjautuminenfieldset{
-    width: 420px;
+    width: 1000px;
     padding:10px;
     border:3px solid gray;
     margin:0px;
@@ -115,13 +115,16 @@ a:visited {
     /*color: #999;*/
     background-color:#98bf21;
 }
+
+#navbar li a.valittu {
+    color:#999 ;
+}
 #navbar li ul {
     display: none;
     list-style-type:none;
 }
 #navbar li:hover ul, #navbar li.hover ul {
     position: absolute;
-    /*text-align: center;*/
     display:list-item;
     left: 0;
     /*width: 100%;*/

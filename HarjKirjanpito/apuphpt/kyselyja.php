@@ -51,9 +51,8 @@ class Kyselyja {
     }
 
     public function haeKayttajanLajitNumeroindeksi($kayttajatunnus) {
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ' . $kayttajatunnus
-                . ' AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
-        if ($kysely->execute()) {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
+        if ($kysely->execute(array($kayttajatunnus))) {
             $lajit = array();
             $indeksi = 0;
 
@@ -68,9 +67,8 @@ class Kyselyja {
     }
 
     public function haeKayttajanLajit($kayttajatunnus) {
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ' . $kayttajatunnus
-                . ' AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
-        if ($kysely->execute()) {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
+        if ($kysely->execute(array($kayttajatunnus))) {
             $lajit = array();
 
             while ($rivi = $kysely->fetch()) {

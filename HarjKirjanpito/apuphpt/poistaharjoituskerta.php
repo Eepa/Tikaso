@@ -35,8 +35,7 @@ varmista_kirjautuminen();
 
 <?php
 if (!isset($_POST['poista'])) {
-    echo $_POST['hetu'] . " " . $_POST['lajitunnus'] . " " . $_POST['harjpvm'] . " " . $_POST['harjoituskerta'];
-
+    
     $kyselynsuoritus = $kyselyita->poistaHarjoituskerta(
             $_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
 
