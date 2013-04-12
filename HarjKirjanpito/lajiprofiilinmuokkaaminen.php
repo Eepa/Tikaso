@@ -13,19 +13,27 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Lajiprofiilin muokkaaminen</h1>
 
-
-        <div>
-            <?php
-            $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
-
-            echo 'Käyttäjän lajit: <br>';
-
-            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-                echo $kayttajanlajitnumero[$x] . '<br>';
-            }
-
-            echo '<br>';
-            ?>
+        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
+        
+         <div>
+            <h2>Ohjeet</h2>
+            
+            <ol>
+                <li>Valitse kohdasta "Lajiprofiilin valinta" profiili, jota haluat muokata ja paina "Valitse"
+                    -nappulaa.</li>
+                <br>
+                <li>Muokkaa avautuvassa muokkausnäytössä valitun lajiprofiilin tavoitekuvausta ja tavoiteharjoitusmäärää
+                haluamallasi tavalla.</li>
+                
+                <p>Huom! Lajiprofiilin alkuperäinen sisältö näkyy aluksi "Tavoitekuvaus"- ja "Tavoiteharjoitusmäärä"
+                    -laatikossa, kun muokattava profiili on valittu</p>
+                
+                <li>Lopuksi paina nappulaa "Muokkaa", jolloin muutokset tallentuvat lajiprofiiliisi.</li>
+            </ol>
+            
+            <br>    
+            
+            
         </div>
 
         <div>
@@ -58,7 +66,7 @@ varmista_kirjautuminen();
             $lajiprofiilinsisalto = $kyselyita->haeLajiprofiilinSisalto($sessio->hetu, $laji->lajitunnus);
             ?>
 
-            <div><h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3> </div>
+            <div><h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2> </div>
 
 
             <div> 

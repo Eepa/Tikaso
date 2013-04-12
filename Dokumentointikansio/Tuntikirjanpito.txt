@@ -54,3 +54,6 @@ Kasitekaavion, relaatiokaavion ja kayttotapauskaavion kuvaukset.
 
 to 11.04.2013, 3,5h
 Tyylimuokkauksen aloittamista ja vahan refaktorointia.
+
+pe 12.04.2013, 2,5h
+Sisallon tuottamista sivuille ja korjailua ja ulkonakoa.

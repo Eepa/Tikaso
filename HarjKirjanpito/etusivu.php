@@ -15,11 +15,12 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
 
-
         <div>
             <h2>Sisältö</h2>
             <p>Harjoituskirjanpitojärjestelmässä voit merkata ylös omat treenikertasi
-                ja antaa treeniarvioita itsellesi. Lisäksi voit lisätä itsellesi lajiprofiileita.</p>
+                ja antaa treeniarvioita itsellesi. <br> Lisäksi voit lisätä itsellesi lajiprofiileita, 
+                joihin liittyen harjoituskertoja lisätään.</p>
+
         </div>
 
 

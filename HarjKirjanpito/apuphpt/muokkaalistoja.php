@@ -8,18 +8,18 @@ varmista_kirjautuminen();
 $kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
 $kaikkiLajit = $kyselyita->haeKaikkiLajit();
 
-for ($int = 0; $int < count($kaikkiLajitNumeroindeksi); $int++) {
-    echo $kaikkiLajitNumeroindeksi[$int] . '<br>';
-}
+//for ($int = 0; $int < count($kaikkiLajitNumeroindeksi); $int++) {
+//    echo $kaikkiLajitNumeroindeksi[$int] . '<br>';
+//}
 
-echo '<br> Käyttäjän lajit: <br>';
+//echo '<br> Käyttäjän lajit: <br>';
 
 $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
 $kayttajanLajitNumeroindeksi = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
-for ($int = 0; $int < count($kayttajanLajitNumeroindeksi); $int++) {
-    echo $kayttajanLajitNumeroindeksi[$int] . '<br>';
-}
+//for ($int = 0; $int < count($kayttajanLajitNumeroindeksi); $int++) {
+//    echo $kayttajanLajitNumeroindeksi[$int] . '<br>';
+//}
 
 
 $yhdistetyt = array_diff($kaikkiLajit, $kayttajanlajit);

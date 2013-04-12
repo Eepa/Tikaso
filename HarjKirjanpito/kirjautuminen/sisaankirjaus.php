@@ -13,10 +13,10 @@
         <h1 class="otsikko">Harjoituskirjanpitojärjestelmä</h1>
 
         <div> 
-            <h3>Kirjaudu järjestelmään</h3>
+            <h2>Kirjaudu järjestelmään</h2>
 
 
-        </p>
+        
         <form action="../kirjaudu.php?sis" method="POST">
             <?php if (isset($_GET['epao'])) { ?> 
                 <p id="virhe">
@@ -24,7 +24,7 @@
                 } ?> </p>
 
             <p>Syötä tunnuksesi ja salasanasi:</p>
-            <fieldset class="kirjautuminenfieldset">
+            <fieldset class="kirjautuminenfieldset" id="sisaankirjaus">
 
                 <label for="kayttajatunnus">Käyttäjätunnus:</label> 
 

@@ -15,19 +15,27 @@ varmista_kirjautuminen();
 
         <h1 class="otsikko">Lajiprofiilin poistaminen</h1>
 
+
+        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
+
         <div>
-            <?php
-            $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
+            <h2>Ohjeet</h2>
 
-            echo 'Käyttäjän lajit: <br>';
+            <ol>
+                <li>Valitse kohdasta "Lajiprofiilin valinta" poistettava profiili.</li>
 
-            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-                echo $kayttajanlajitnumero[$x] . '<br>';
-            }
 
-            echo '<br>';
-            ?>
+                <br>
+
+                <li>Paina tämän jälkeen nappulaa "Poista", jolloin profiili poistuu tiedoistasi.</li>
+            </ol>
+
+            <br>    
+
+
         </div>
+
+
         <div> 
             <form action="apuphpt/poistalajiprofiili.php" id="lajiprofiilipoisto" method="POST">
 

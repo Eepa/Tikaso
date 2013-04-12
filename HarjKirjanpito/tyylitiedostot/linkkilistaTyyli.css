@@ -21,11 +21,16 @@ body {
 
 }
 .kirjautuminenfieldset{
-    width: 1000px;
+    width: 420px;
     padding:10px;
     border:3px solid gray;
     margin:0px;
 }
+
+#salasana{
+    position: relative;
+    left: 45px;
+    }
 
 header {
     background-color:#D1D5B7 ;
@@ -60,6 +65,10 @@ fieldset {
     padding:10px;
     border:3px solid gray;
     margin:0px;
+}
+
+textarea {
+    max-width: 97%;
 }
 
 #footerteksti {

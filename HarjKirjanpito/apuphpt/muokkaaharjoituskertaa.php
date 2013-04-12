@@ -12,9 +12,9 @@ $kyselynsuoritus = $kyselyita->muokkaaHarjoituskertaa($_POST['hetu'], $_POST['la
 if ($kyselynsuoritus) {
 
     echo "<script language='JavaScript'>window.alert('Harjoituskerran muokkaaminen onnistui!'); 
-        window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>";
+        window.location.href = '../harjoituskerranmuokkaaminen.php';</script> <br>";
 } else {
     die("<script language='JavaScript'>window.alert('Harjoituskerran muokkaaminen epäonnistui'); 
-        window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>");
+        window.location.href = '../harjoituskerranmuokkaaminen.php';</script> <br>");
 }
 ?>
