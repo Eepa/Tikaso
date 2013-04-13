@@ -71,6 +71,11 @@ textarea {
     max-width: 97%;
 }
 
+#tummennettu {
+    font-weight: bold;
+    
+}
+
 #footerteksti {
     font-style: italic;
     font-size: 13px;

@@ -66,7 +66,7 @@ varmista_kirjautuminen();
             $lajiprofiilinsisalto = $kyselyita->haeLajiprofiilinSisalto($sessio->hetu, $laji->lajitunnus);
             ?>
 
-            <div><h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2> </div>
+            <div><h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2> <br></div>
 
 
             <div> 

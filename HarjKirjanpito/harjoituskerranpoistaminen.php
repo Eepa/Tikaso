@@ -27,34 +27,30 @@ if (isset($_POST['harjpvm'])) {
         <h1 class="otsikko">Harjoituskerran poistaminen</h1>
 
         <div>
+            <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
-            <?php
-            $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
-            echo 'Käyttäjän harjoituskerrat: <br>';
+            <h2>Ohjeet</h2>
 
-            for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
-                echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
-                $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
-                $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
-
-                echo '<br>';
-            }
-
-            echo '<br>';
-            ?>
+            <ol>
+                <li>Valitse kohdasta "Lajiprofiilin valinta" laji, josta haluat poistaa harjoituskerran
+                    ja paina nappulaa "Valitse".</li>
 
 
-            <?php
-            $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
+                <br>
 
-            echo 'Käyttäjän lajit: <br>';
+                <li>Valitse tämän jälkeen avautuvasta päivämäärän valintaruudusta päivämäärä, 
+                    jolta haluat poistaa harjoituskerran. <br> Valitse sopiva päivä päivämäärävalikosta 
+                    tai kirjoita päivä muodossa vvvv-kk-pp. Paina lopuksi "Valitse"-nappulaa.
 
-            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-                echo $kayttajanlajitnumero[$x][0] . '<br>';
-            }
+                </li>
+                <br>
+                <li>Valitse lopuksi avautuvasta listasta poistettava harjoituskerta ja paina sitten 
+               "Poista"-nappia poistaaksesi valitun harjoituskerran.</li>
+            </ol>
 
-            echo '<br>';
-            ?>
+            <br>    
+
+
         </div>
         <div>
             <form action="harjoituskerranpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
@@ -81,21 +77,27 @@ if (isset($_POST['harjpvm'])) {
 
 
 
-        <?php if (isset($_POST['lajiprofiili'])) { ?> <?php
-        $lajinimi = $_POST['lajiprofiili'];
-        $laji = $kyselyita->lajiIndeksi($lajinimi);
+        <?php
+        if (isset($_POST['lajiprofiili'])) {
+            $lajinimi = $_POST['lajiprofiili'];
+            $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-        $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
-            ?> <div><?php
-        for ($x = 0; $x < count($paivamaarat); $x++) {
-            echo $paivamaarat[$x][0] . '<br>';
-        }
+            $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
+            ?> 
 
-        echo '<br>';
-            ?>
-            </div>
             <div>
-                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
+
+                <h2>Päivämäärät, joina lajin harjoituksia:</h2>
+
+                <?php
+                for ($x = 0; $x < count($paivamaarat); $x++) {
+                    $date = date_create($paivamaarat[$x][0]);
+                    echo date_format($date, "d.m.Y") . '<br>';
+                }
+                echo '<br>';
+                ?>
+                <br>
             </div>
 
 
@@ -133,23 +135,51 @@ if (isset($_POST['harjpvm'])) {
                 </form>
 
             </div>
-            <?php
-        }
-        ?>
+        <?php } ?>
 
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
             $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-            ?> <div><?php
-        for ($int = 0; $int < count($arviot); $int++) {
-            echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-            $arviot[$int][2] . " " .
-            $arviot[$int][3];
-        }
-            ?></div>
-            <div>   <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3></div>
+
+            function teeTeksti($alkup) {
+
+                $taulukko = explode(" ", $alkup, 16);
+
+                $palautettava = "";
+                $uusitaulukko = array();
+                if (count($taulukko) >= 16) {
+
+                    for ($int = 0; $int <= 15; $int++) {
+                        if ($int == 15) {
+                            $uusitaulukko[$int] = "...";
+                        } else {
+                            $uusitaulukko[$int] = $taulukko[$int];
+                        }
+                    }
+                } else {
+                    $uusitaulukko = $taulukko;
+                }
+
+                for ($int = 0; $int < count($uusitaulukko); $int++) {
+                    $palautettava = $palautettava . $uusitaulukko[$int] . " ";
+                }
+                return $palautettava;
+            }
+            ?> 
+
+            <div>
+                <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
+
+                <h2>Päivämääräksi valittu: 
+                    <?php
+                    $date = date_create($_POST['harjpvm']);
+                    echo date_format($date, "d.m.Y");
+                    ?></h2>
+
+                <br>
+            </div>
 
             <div> 
                 <form action="apuphpt/poistaharjoituskerta.php" id="harjoituksenpoisto" method="POST">
@@ -164,19 +194,22 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="harjpvm" id="harjpvm" 
                                value="<?php echo $_POST['harjpvm'] ?>">
 
+                        <input type="hidden" name="harjkertojenmaara" id="harjkertojenmaara"
+                               value="<?php echo count($arviot); ?>">
+
                         <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php echo $arviot[$int][0];
-                            ?>" required> <label for="harjoituskerta">
-                                Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                                Kesto: <?php echo $arviot[$int][1] . " " ?>
-                                Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
-                                Kuvaus: <?php echo $arviot[$int][3] . " " ?>
-                            </label>
+                                   value="<?php echo $arviot[$int][0]; ?>" required> 
+                            <span id="tummennettu">Alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
+                            <span id="tummennettu">Kesto: </span> <?php echo $arviot[$int][1] . " " ?>
+                            <span id="tummennettu">Vaikeusaste: </span> <?php echo $arviot[$int][2] . " " ?>
+                            <span id="tummennettu">Kuvaus: </span><?php echo teeTeksti($arviot[$int][3]) . " " ?>
+
                             <br>    
+                            <br>
                         <?php } ?>
-                        <br>
+
 
                         <input type="submit" name="poista" value="Poista">
 

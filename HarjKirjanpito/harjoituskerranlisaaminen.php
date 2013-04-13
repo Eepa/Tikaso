@@ -24,7 +24,27 @@ varmista_kirjautuminen();
 
                 <br>
 
-                <li>Paina tämän jälkeen nappulaa "Poista", jolloin profiili poistuu tiedoistasi.</li>
+                <li>Täytä tämän jälkeen avautuvaan "Lisää harjoituskerta"-muokkausvalikkoon 
+                    uuden harjoituskerran tiedot.
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Harjoituspäivä: Valitse sopiva päivä päivämäärävalikosta tai kirjoita päivä 
+                        muodossa vvvv-kk-pp.</li>
+                        
+                        <li>Harjoituksen alkamisaika: Anna alkamisaika muodossa hh:mm.</li>
+                        
+                        <li>Harjoituksen kesto: Anna harjoituksen kesto minuutteina väliltä 0-1500.</li>
+                        
+                        <li>Harjoituksen vaikeusaste: Anna vaikeusaste väliltä 1-10.</li>
+                        
+                        <li>Harjoituskuvaus: Kirjoita harjoitukselle sanallinen kuvaus. Yläraja pituudelle on 2000 merkkiä.
+                            <br> Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
+                        
+                    </ul>
+                </li>
+                <br>
+                <li>Paina tämän jälkeen "Lisää"-nappulaa tallentaaksesi uuden harjoituskerran.</li>
             </ol>
 
             <br>    
@@ -32,25 +52,9 @@ varmista_kirjautuminen();
 
         </div>
 
-        <div>
+        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
 
-            <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
 
-            <?php
-            $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
-            echo 'Käyttäjän harjoituskerrat: <br>';
-
-            for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
-                echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
-                $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
-                $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
-
-                echo '<br>';
-            }
-
-            echo '<br>';
-            ?>
-        </div>
 
         <div>
             <form action="harjoituskerranlisaaminen.php" id="lajiprofiilinvalinta" method="POST">
@@ -63,8 +67,8 @@ varmista_kirjautuminen();
                         <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
                             <option value="<?php echo $kayttajanlajitnumero[$x] ?>">
                                 <?php echo $kayttajanlajitnumero[$x] ?></option>
-                            <?php }
-                            ?>
+                        <?php }
+                        ?>
                     </select>
 
                     <br>
@@ -82,6 +86,7 @@ varmista_kirjautuminen();
             ?>
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
+                <br>
             </div>
 
             <div> 
@@ -94,7 +99,7 @@ varmista_kirjautuminen();
                         <input type="hidden" name="lajitunnus" id="lajitunnus" 
                                value="<?php echo $laji->lajitunnus ?>">
 
-                        <laber for="harjpvm">Harjoituspäivä (valitse listasta tai anna muodossa vvvv-kk-pp):</laber>
+                        <laber for="harjpvm">Harjoituspäivä (valitse valikosta tai anna muodossa vvvv-kk-pp):</laber>
                         <input type="date" name="harjpvm" id="harjpvm" 
                                required>
 

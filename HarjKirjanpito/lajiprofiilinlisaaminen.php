@@ -31,7 +31,7 @@ varmista_kirjautuminen();
                     <a href="lajiprofiilinpoistaminen.php">Lajiprofiilin poistaminen</a>.</p>
 
                 <li>Täytä seuraavaksi kohta "Tavoitekuvaus" haluamallasi kuvauksella lajin treenaamisen 
-                    tavoitteista. <br>Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
+                    tavoitteista. Yläraja pituudelle on 2000 merkkiä.<br>Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
                 <br>
 
                 <li>Lopuksi täytä tavoiteharjoitusmäärä viikossa (väliltä 1-30 kertaa/vko) ja paina "Lisää"-nappia, 

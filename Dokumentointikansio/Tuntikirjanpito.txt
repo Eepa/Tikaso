@@ -57,3 +57,6 @@ Tyylimuokkauksen aloittamista ja vahan refaktorointia.
 
 pe 12.04.2013, 2,5h
 Sisallon tuottamista sivuille ja korjailua ja ulkonakoa.
+
+la 13.04.2013, 2,5h
+Sivun sisallon parantamista, ohjeiden kirjoittamista.
