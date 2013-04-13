@@ -66,8 +66,7 @@ CREATE TABLE harjoituskerta (
 
 
 //Kertoo arvion, jonka joku kayttaja on tehnyt tietysta 
-harjoituksesta. Kayttaja voi lisata arvion itselleen tai jollekin 
-muulle kayttajalle. Arvioista merkitaan vahintaan harjoituskerta, 
+harjoituksesta. Arvioista merkitaan vahintaan harjoituskerta, 
 johon arvio liittyy, arviopaivamaara ja arvioija. Lisaksi voidaan 
 merkita yleisarvosana harjoituksesta, tyytyvaisyysarvosana, 
 ja sanallinen arvio. Jos arvioon liittyva harjoituskerta poistetaan

@@ -15,18 +15,26 @@ varmista_kirjautuminen();
         <h1 class="otsikko">Harjoituskerran lisääminen</h1>
 
         <div>
+            <h2>Ohjeet</h2>
 
-            <?php
-            $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
+            <ol>
+                <li>Valitse kohdasta "Lajiprofiilin valinta" laji, johon haluat lisätä harjoituskerran
+                    ja paina nappulaa "Valitse".</li>
 
-            echo 'Käyttäjän lajit: <br>';
 
-            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-                echo $kayttajanlajitnumero[$x] . '<br>';
-            }
+                <br>
 
-            echo '<br>';
-            ?>
+                <li>Paina tämän jälkeen nappulaa "Poista", jolloin profiili poistuu tiedoistasi.</li>
+            </ol>
+
+            <br>    
+
+
+        </div>
+
+        <div>
+
+            <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
 
             <?php
             $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
@@ -55,8 +63,8 @@ varmista_kirjautuminen();
                         <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
                             <option value="<?php echo $kayttajanlajitnumero[$x] ?>">
                                 <?php echo $kayttajanlajitnumero[$x] ?></option>
-                        <?php }
-                        ?>
+                            <?php }
+                            ?>
                     </select>
 
                     <br>
@@ -73,7 +81,7 @@ varmista_kirjautuminen();
             $laji = $kyselyita->lajiIndeksi($lajinimi);
             ?>
             <div>
-                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
             </div>
 
             <div> 

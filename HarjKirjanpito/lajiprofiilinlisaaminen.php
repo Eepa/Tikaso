@@ -14,46 +14,33 @@ varmista_kirjautuminen();
         <h1 class="otsikko">Lajiprofiilin lisääminen</h1>
 
         <div>
-            <?php 
-//            echo 'Kaikki lajit: <br>';
-//            ?>
-            <?php
-            $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php';
-//
-//            echo '<br> Lajit joita ei vielä käyttäjällä <br>';
-//
-//            for ($x = 0; $x < count($yhdistetytnumeroin); $x++) {
-//                echo $yhdistetytnumeroin[$x] . '<br>';
-//            }
-//
-//            echo '<br>';
-//            ?>
+            <?php $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php'; ?>
 
         </div>
-        
+
         <div>
             <h2>Ohjeet</h2>
-            
+
             <ol>
                 <li>Valitse kohdasta "Lajivalinta" sopiva laji uuteen profiiliin.</li>
-                
+
                 <p>Huom! Jos kohta "Lajivalinta" on tyhjä, tarkoittaa se, että olet lisännyt itsellesi jo 
-            kaikki harjoituskirjanpitojärjestelmässä olevat lajit. <br> Pääset muokkaamaan ja poistamaan 
-                lajiprofiileitasi sivuilla 
-                <a href="lajiprofiilinmuokkaaminen.php">Lajiprofiilin muokkaaminen</a> ja 
-                <a href="lajiprofiilinpoistaminen.php">Lajiprofiilin poistaminen</a>.</p>
-                
+                    kaikki harjoituskirjanpitojärjestelmässä olevat lajit. <br> Pääset muokkaamaan ja poistamaan 
+                    lajiprofiileitasi sivuilla 
+                    <a href="lajiprofiilinmuokkaaminen.php">Lajiprofiilin muokkaaminen</a> ja 
+                    <a href="lajiprofiilinpoistaminen.php">Lajiprofiilin poistaminen</a>.</p>
+
                 <li>Täytä seuraavaksi kohta "Tavoitekuvaus" haluamallasi kuvauksella lajin treenaamisen 
-                tavoitteista. <br>Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
+                    tavoitteista. <br>Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
                 <br>
-                
+
                 <li>Lopuksi täytä tavoiteharjoitusmäärä viikossa (väliltä 1-30 kertaa/vko) ja paina "Lisää"-nappia, 
                     jolloin uusi profiilisi tallentuu.</li>
             </ol>
-            
+
             <br>    
-            
-            
+
+
         </div>
 
         <div> 
@@ -70,8 +57,8 @@ varmista_kirjautuminen();
                         <?php for ($x = 0; $x < count($yhdistetytnumeroin); $x++) { ?>
                             <option value="<?php echo $yhdistetytnumeroin[$x] ?>">
                                 <?php echo $yhdistetytnumeroin[$x] ?></option>
-                        <?php }
-                        ?>
+                            <?php }
+                            ?>
                     </select>
 
                     <br>

@@ -9,8 +9,8 @@
             Harjoituskirjanpitojärjestelmän luoja: Evpa
         </p>
 
-        <p id="footerteksti">Palautteet ja kritiikin voitte lähettää suoraan asiakaspalautepostiimme, jota luemme aina, kun 
-            kahvitauoilla on tylsää.</p>
+        <p id="footerteksti">Palautetta ja kritiikkiä voitte antaa suoraan asiakaspalautepostiimme, 
+        jonka osoitteen julkaisemme pikimmiten.</p>
 
     </footer>
 </html>

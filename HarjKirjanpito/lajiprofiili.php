@@ -31,7 +31,7 @@ varmista_kirjautuminen();
         </div>
 
         <div>
-            <h2>Järjestelmän lajit:</h2>
+            <h2>Järjestelmän kaikki lajit:</h2>
 
             <?php
             $kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
