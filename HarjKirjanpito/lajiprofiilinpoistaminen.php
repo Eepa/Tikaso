@@ -2,6 +2,7 @@
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,15 +25,12 @@ varmista_kirjautuminen();
             <ol>
                 <li>Valitse kohdasta "Lajiprofiilin valinta" poistettava profiili.</li>
 
-
                 <br>
 
                 <li>Paina tämän jälkeen nappulaa "Poista", jolloin profiili poistuu tiedoistasi.</li>
             </ol>
 
             <br>    
-
-
         </div>
 
 
@@ -60,9 +58,7 @@ varmista_kirjautuminen();
 
                 </fieldset>
 
-
             </form>
-
         </div>
 
         <?php require 'apuphpt/footer.php'; ?>

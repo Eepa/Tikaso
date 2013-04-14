@@ -2,6 +2,7 @@
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,26 +15,26 @@ varmista_kirjautuminen();
         <h1 class="otsikko">Lajiprofiilin muokkaaminen</h1>
 
         <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
-        
-         <div>
+
+        <div>
             <h2>Ohjeet</h2>
-            
+
             <ol>
                 <li>Valitse kohdasta "Lajiprofiilin valinta" profiili, jota haluat muokata ja paina "Valitse"
                     -nappulaa.</li>
                 <br>
                 <li>Muokkaa avautuvassa muokkausnäytössä valitun lajiprofiilin tavoitekuvausta ja tavoiteharjoitusmäärää
-                haluamallasi tavalla.</li>
-                
+                    haluamallasi tavalla.</li>
+
                 <p>Huom! Lajiprofiilin alkuperäinen sisältö näkyy aluksi "Tavoitekuvaus"- ja "Tavoiteharjoitusmäärä"
                     -laatikoissa, kun muokattava profiili on valittu</p>
-                
+
                 <li>Lopuksi paina nappulaa "Muokkaa", jolloin muutokset tallentuvat lajiprofiiliisi.</li>
             </ol>
-            
+
             <br>    
-            
-            
+
+
         </div>
 
         <div>

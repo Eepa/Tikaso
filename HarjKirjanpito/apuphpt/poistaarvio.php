@@ -15,7 +15,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Arvion poistaminen onnistui!'); 
         window.location.href = '../arvionpoistaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Arvion poistaminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Arvion poistaminen epäonnistui.'); 
         window.location.href = '../arvionpoistaminen.php';</script> <br>");
 }
 ?>

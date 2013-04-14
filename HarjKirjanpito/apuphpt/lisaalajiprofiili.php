@@ -1,4 +1,5 @@
 <?php
+
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
@@ -15,8 +16,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Lajiprofiilin lisääminen onnistui!'); 
         window.location.href = '../lajiprofiilinlisaaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Lajiprofiilin lisääminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Lajiprofiilin lisääminen epäonnistui.'); 
         window.location.href = '../lajiprofiilinlisaaminen.php';</script> <br>");
 }
-
 ?>

@@ -15,7 +15,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Arvion lisääminen onnistui!'); 
         window.location.href = '../arvionlisaaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Arvion lisääminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Arvion lisääminen epäonnistui.'); 
         window.location.href = '../arvionlisaaminen.php';</script> <br>");
 }
 ?>

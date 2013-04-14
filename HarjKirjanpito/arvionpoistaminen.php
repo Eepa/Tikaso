@@ -1,6 +1,31 @@
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
+
+function teeTeksti($alkup) {
+
+    $taulukko = explode(" ", $alkup, 16);
+
+    $palautettava = "";
+    $uusitaulukko = array();
+    if (count($taulukko) >= 16) {
+
+        for ($int = 0; $int <= 15; $int++) {
+            if ($int == 15) {
+                $uusitaulukko[$int] = "...";
+            } else {
+                $uusitaulukko[$int] = $taulukko[$int];
+            }
+        }
+    } else {
+        $uusitaulukko = $taulukko;
+    }
+
+    for ($int = 0; $int < count($uusitaulukko); $int++) {
+        $palautettava = $palautettava . $uusitaulukko[$int] . " ";
+    }
+    return $palautettava;
+}
 ?>
 
 <?php
@@ -25,187 +50,176 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion poistaminen</h1>
 
-
         <div>
-            <?php
-            $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
-            echo 'Käyttäjän harjoituskerrat: <br>';
 
-            for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
-                echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
-                $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
-                $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+            <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
-                echo '<br>';
-            }
+            <h2>Ohjeet</h2>
 
-            echo '<br>';
+            <ol>
+                <li>Valitse kohdasta "Lajiprofiilin valinta" laji, jonka arvion haluat poistaa 
+                    ja paina nappulaa "Valitse".</li>
 
-            echo 'Käyttäjän arviot: <br>';
+                <br>
 
-            $kayttajanarviot = $kyselyita->haeKayttajanArvioidenTiedot($sessio->hetu);
+                <li>Valitse tämän jälkeen avautuvasta päivämäärän valintaruudusta poistettavan 
+                    arvion päivämäärä. <br> Valitse sopiva päivä päivämäärävalikosta 
+                    tai kirjoita päivä muodossa vvvv-kk-pp. Paina lopuksi "Valitse"-nappulaa.
 
-            for ($x = 0; $x < count($kayttajanarviot); $x++) {
-                echo $kayttajanarviot[$x][0] . " " . $kayttajanarviot[$x][1] . " " .
-                $kayttajanarviot[$x][2] . " " . $kayttajanarviot[$x][3] . " " .
-                $kayttajanarviot[$x][4] . " " . $kayttajanarviot[$x][5];
+                </li>
+                <br>
+                <li>Valitse avautuvasta listasta poistettava arvio ja paina sitten 
+                    "Poista arvio"-nappia poistaaksesi valitun arvion.</li>
 
-                echo '<br>';
-            }
+                <br>    
 
-            echo '<br>';
-            ?>
+                </div>
+                <div>
+                    <form action="arvionpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
+                        <fieldset> 
 
-            <?php
-            $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
+                            <h3>Lajiprofiilin valinta:</h3>
+                            <label for="lajiprofiili">Lajiprofiilin valinta:</label>
 
-            echo 'Käyttäjän lajit: <br>';
+                            <select name="lajiprofiili" id="lajiprofiili" required>
+                                <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
+                                    <option value="<?php echo $kayttajanlajitnumero[$x][0] ?>">
+                                        <?php echo $kayttajanlajitnumero[$x][0] ?></option>
+                                <?php }
+                                ?>
+                            </select>
 
-            for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-                echo $kayttajanlajitnumero[$x][0] . '<br>';
-            }
+                            <br>
+                            <input type="submit" value="Valitse">
+                        </fieldset>
+                    </form>
+                </div>
 
-            echo '<br>';
-            ?>
-        </div>
-        <div>
-            <form action="arvionpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
-                <fieldset> 
+                <br>
 
-                    <h3>Lajiprofiilin valinta:</h3>
-                    <label for="lajiprofiili">Lajiprofiilin valinta:</label>
+                <?php
+                if (isset($_POST['lajiprofiili'])) {
+                    $lajinimi = $_POST['lajiprofiili'];
+                    $laji = $kyselyita->lajiIndeksi($lajinimi);
 
-                    <select name="lajiprofiili" id="lajiprofiili" required>
-                        <?php for ($x = 0; $x < count($kayttajanlajitnumero); $x++) { ?>
-                            <option value="<?php echo $kayttajanlajitnumero[$x][0] ?>">
-                                <?php echo $kayttajanlajitnumero[$x][0] ?></option>
+                    $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
+                    ?> 
+
+
+                    <div>
+                        <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
+
+                        <h2>Päivämäärät, joina lajista arvioita:</h2>
+
+                        <?php
+                        for ($x = 0; $x < count($paivamaarat); $x++) {
+                            $date = date_create($paivamaarat[$x][0]);
+                            echo date_format($date, "d.m.Y") . '<br>';
+                        }
+                        echo '<br>';
+                        ?>
+                        <br>
+                    </div>
+
+                    <datalist name="paivamaaralista" id="paivamaaralista">
+                        <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
+                            <option value="<?php echo $paivamaarat[$x][0] ?>">
+                                <?php echo $paivamaarat[$x][0] ?></option>
                         <?php }
                         ?>
-                    </select>
+                    </datalist>
 
-                    <br>
-                    <input type="submit" value="Valitse">
-                </fieldset>
-            </form>
-        </div>
+                    <div> 
+                        <form action="arvionpoistaminen.php" id="ajanvalinta" method="POST">
 
-        <br>
+                            <fieldset> 
+                                <h3>Valitse päivämäärä arvioille:</h3>
 
-        <?php
-        if (isset($_POST['lajiprofiili'])) {
-            $lajinimi = $_POST['lajiprofiili'];
-            $laji = $kyselyita->lajiIndeksi($lajinimi);
+                                <input type="hidden" name="lajitunnus" id="lajitunnus" 
+                                       value="<?php echo $laji->lajitunnus ?>">
 
-            $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
-            ?> <div> <?php
-        for ($x = 0; $x < count($paivamaarat); $x++) {
-            echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
-        }
+                                <input type="hidden" name="laji" id="laji" 
+                                       value="<?php echo $_POST['lajiprofiili'] ?>">
 
-        echo '<br>';
-            ?>
+                                <laber for="harjpvm">Harjoitusaika 
+                                    (valitse valikosta tai anna muodossa vvvv-kk-pp):</laber>
+                                <input type="date" name="harjpvm" id="harjpvm" 
+                                       list="paivamaaralista" required>
 
-                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+                                <br>
 
-            </div>
+                                <input type="submit" value="Valitse">
 
-            <datalist name="paivamaaralista" id="paivamaaralista">
-                <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
-                    <option value="<?php echo $paivamaarat[$x][0] ?>">
-                        <?php echo $paivamaarat[$x][0] ?></option>
-                <?php }
+                            </fieldset>
+
+                        </form>
+
+                    </div>
+                    <?php
+                }
                 ?>
-            </datalist>
 
-            <div> 
-                <form action="arvionpoistaminen.php" id="ajanvalinta" method="POST">
 
-                    <fieldset> 
-                        <h3>Valitse päivämäärä arvioille:</h3>
 
-                        <input type="hidden" name="lajitunnus" id="lajitunnus" 
-                               value="<?php echo $laji->lajitunnus ?>">
+                <?php
+                if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
-                        <input type="hidden" name="laji" id="laji" 
-                               value="<?php echo $_POST['lajiprofiili'] ?>">
+                    $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+                    ?> 
 
-                        <laber for="harjpvm">Harjoitusaika:</laber>
-                        <input type="date" name="harjpvm" id="harjpvm" 
-                               list="paivamaaralista" required>
+                    <div>
+                        <h2> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
+
+                        <h2>Päivämääräksi valittu: 
+                            <?php
+                            $date = date_create($_POST['harjpvm']);
+                            echo date_format($date, "d.m.Y") . '<br>';
+                            ?></h2>
 
                         <br>
 
-                        <input type="submit" value="Valitse">
+                    </div>
 
-                    </fieldset>
+                    <div> 
+                        <form action="apuphpt/poistaarvio.php" id="arvionpoistaminen" method="POST">
 
-                </form>
+                            <fieldset> 
+                                <h3>Valitse poistettava arvio:</h3>
+                                <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
-            </div>
-            <?php
-        }
-        ?>
+                                <input type="hidden" name="lajitunnus" id="lajitunnus" 
+                                       value="<?php echo $_POST['lajitunnus'] ?>">
 
+                                <input type="hidden" name="harjpvm" id="harjpvm" 
+                                       value="<?php echo $_POST['harjpvm'] ?>">
 
+                                <input type="hidden" name="laji" id="laji" 
+                                       value="<?php echo $_POST['laji'] ?>">
 
-        <?php
-        if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
+                                <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
-            $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-            ?> <div> <?php
-        for ($int = 0; $int < count($arviot); $int++) {
-            echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-            $arviot[$int][2] . " " .
-            $arviot[$int][3];
-        }
-            ?>
-                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
-            </div>
-            <div> 
-                <form action="apuphpt/poistaarvio.php" id="arvionpoistaminen" method="POST">
+                                    <input type="radio" name="arvio" id="arvio"
+                                           value="<?php echo $arviot[$int][0]; ?>" required> 
+                                    <span id="tummennettu">Harjoituksen alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
+                                    <span id="tummennettu">Yleisarvosana: </span> <?php echo $arviot[$int][1] . " " ?>
+                                    <span id="tummennettu">Tyytyväisyysarvo: </span> <?php echo $arviot[$int][2] . " " ?>
+                                    <span id="tummennettu">Sanallinen arvio: </span><?php echo teeTeksti($arviot[$int][3]) . " " ?>
 
-                    <fieldset> 
-                        <h3>Valitse poistettava arvio:</h3>
-                        <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
+                                    <br>    
+                                    <br>
+                                <?php } ?>
 
-                        <input type="hidden" name="lajitunnus" id="lajitunnus" 
-                               value="<?php echo $_POST['lajitunnus'] ?>">
+                                <input type="submit" name="poistettuarvio" value="Poista arvio">
+                            </fieldset>
 
-                        <input type="hidden" name="harjpvm" id="harjpvm" 
-                               value="<?php echo $_POST['harjpvm'] ?>">
+                        </form>
+                    </div>
 
-                        <input type="hidden" name="laji" id="laji" 
-                               value="<?php echo $_POST['laji'] ?>">
-
-                        <?php for ($int = 0; $int < count($arviot); $int++) { ?>
-
-                            <input type="radio" name="arvio" id="arvio"
-                                   value="<?php echo $arviot[$int][0];
-                            ?>" required> <label for="arvio">
-                                Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                                Yleisarvosana: <?php echo $arviot[$int][1] . " " ?>
-                                Tyytyväisyysarvo: <?php echo $arviot[$int][2] . " " ?>
-                                Sanallinen arvio: <?php echo $arviot[$int][3] . " " ?></label>
-                            <br>    
-                        <?php } ?>
-                        <br>
-
-                        <input type="submit" name="poistettuarvio" value="Poista arvio">
+                    <?php
+                }
+                ?>
 
 
-
-                    </fieldset>
-
-                </form>
-
-            </div>
-
-
-            <?php
-        }
-        ?>
-
-
-        <?php require 'apuphpt/footer.php'; ?>
-    </body>
-</html>
+                <?php require 'apuphpt/footer.php'; ?>
+                </body>
+                </html>

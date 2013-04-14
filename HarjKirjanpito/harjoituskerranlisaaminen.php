@@ -30,17 +30,17 @@ varmista_kirjautuminen();
                     <br>
                     <ul>
                         <li>Harjoituspäivä: Valitse sopiva päivä päivämäärävalikosta tai kirjoita päivä 
-                        muodossa vvvv-kk-pp.</li>
-                        
+                            muodossa vvvv-kk-pp.</li>
+
                         <li>Harjoituksen alkamisaika: Anna alkamisaika muodossa hh:mm.</li>
-                        
+
                         <li>Harjoituksen kesto: Anna harjoituksen kesto minuutteina väliltä 0-1500.</li>
-                        
+
                         <li>Harjoituksen vaikeusaste: Anna vaikeusaste väliltä 1-10.</li>
-                        
+
                         <li>Harjoituskuvaus: Kirjoita harjoitukselle sanallinen kuvaus. Yläraja pituudelle on 2000 merkkiä.
                             <br> Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
-                        
+
                     </ul>
                 </li>
                 <br>

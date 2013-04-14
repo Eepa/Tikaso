@@ -2,6 +2,7 @@
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,8 +28,6 @@ varmista_kirjautuminen();
         <?php require 'apuphpt/footer.php'; ?>
 
     </body>
-
-
 
 
 </html>

@@ -1,6 +1,31 @@
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
+
+function teeTeksti($alkup) {
+
+    $taulukko = explode(" ", $alkup, 16);
+
+    $palautettava = "";
+    $uusitaulukko = array();
+    if (count($taulukko) >= 16) {
+
+        for ($int = 0; $int <= 15; $int++) {
+            if ($int == 15) {
+                $uusitaulukko[$int] = "...";
+            } else {
+                $uusitaulukko[$int] = $taulukko[$int];
+            }
+        }
+    } else {
+        $uusitaulukko = $taulukko;
+    }
+
+    for ($int = 0; $int < count($uusitaulukko); $int++) {
+        $palautettava = $palautettava . $uusitaulukko[$int] . " ";
+    }
+    return $palautettava;
+}
 ?>
 
 <?php
@@ -46,9 +71,9 @@ if (isset($_POST['harjpvm'])) {
                 <br>
                 <li>Valitse avautuvasta listasta muokattava harjoituskerta ja paina sitten 
                     "Valitse harjoitus"-nappia siirtyäksesi muokkaukseen.</li>
-                
+
                 <br>
-                
+
                 <li>
                     Muokkaa tämän jälkeen harjoituskertaa haluamallasi tavalla ja paina lopuksi 
                     "Muokkaa"-nappia tallentaaksesi muutokset. <br> Harjoituskerran alkuperäinen sisältö 
@@ -57,21 +82,20 @@ if (isset($_POST['harjpvm'])) {
                     <br>
                     <ul>
                         <li>Harjoituksen kesto: Anna harjoituksen kesto minuutteina väliltä 0-1500.</li>
-                        
+
                         <li>Harjoituksen vaikeusaste: Anna vaikeusaste väliltä 1-10.</li>
-                        
+
                         <li>Harjoituskuvaus: Kirjoita harjoitukselle sanallinen kuvaus. Yläraja pituudelle on 2000 merkkiä.
                             <br> Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
-                        
+
                     </ul>
                 </li>
-                
+
             </ol>
 
             <br>    
-
-
         </div>
+
         <div>
             <form action="harjoituskerranmuokkaaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -142,7 +166,8 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="laji" id="laji" 
                                value="<?php echo $_POST['lajiprofiili'] ?>">
 
-                        <laber for="harjpvm">Harjoitusaika:</laber>
+                        <laber for="harjpvm">Harjoitusaika 
+                            (valitse valikosta tai anna muodossa vvvv-kk-pp):</laber>
                         <input type="date" name="harjpvm" id="harjpvm" 
                                list="paivamaaralista" required>
 
@@ -164,31 +189,6 @@ if (isset($_POST['harjpvm'])) {
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
             $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-
-            function teeTeksti($alkup) {
-
-                $taulukko = explode(" ", $alkup, 16);
-
-                $palautettava = "";
-                $uusitaulukko = array();
-                if (count($taulukko) >= 16) {
-
-                    for ($int = 0; $int <= 15; $int++) {
-                        if ($int == 15) {
-                            $uusitaulukko[$int] = "...";
-                        } else {
-                            $uusitaulukko[$int] = $taulukko[$int];
-                        }
-                    }
-                } else {
-                    $uusitaulukko = $taulukko;
-                }
-
-                for ($int = 0; $int < count($uusitaulukko); $int++) {
-                    $palautettava = $palautettava . $uusitaulukko[$int] . " ";
-                }
-                return $palautettava;
-            }
             ?>
 
 

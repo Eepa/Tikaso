@@ -1,9 +1,8 @@
 <?php
+
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
-
-
 
 <?php
 
@@ -14,7 +13,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Harjoituskerran muokkaaminen onnistui!'); 
         window.location.href = '../harjoituskerranmuokkaaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Harjoituskerran muokkaaminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Harjoituskerran muokkaaminen epäonnistui.'); 
         window.location.href = '../harjoituskerranmuokkaaminen.php';</script> <br>");
 }
 ?>

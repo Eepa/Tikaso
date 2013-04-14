@@ -1,6 +1,31 @@
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
+
+function teeTeksti($alkup) {
+
+    $taulukko = explode(" ", $alkup, 16);
+
+    $palautettava = "";
+    $uusitaulukko = array();
+    if (count($taulukko) >= 16) {
+
+        for ($int = 0; $int <= 15; $int++) {
+            if ($int == 15) {
+                $uusitaulukko[$int] = "...";
+            } else {
+                $uusitaulukko[$int] = $taulukko[$int];
+            }
+        }
+    } else {
+        $uusitaulukko = $taulukko;
+    }
+
+    for ($int = 0; $int < count($uusitaulukko); $int++) {
+        $palautettava = $palautettava . $uusitaulukko[$int] . " ";
+    }
+    return $palautettava;
+}
 ?>
 
 <?php
@@ -25,47 +50,49 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion muokkaaminen</h1>
 
-<div>
-        <?php
-        $kayttajanharjoituskerrat = $kyselyita->haeKayttajanHarjoituskerrat($sessio->hetu);
-        echo 'Käyttäjän harjoituskerrat: <br>';
+        <div>
 
-        for ($x = 0; $x < count($kayttajanharjoituskerrat); $x++) {
-            echo $kayttajanharjoituskerrat[$x][0] . " " . $kayttajanharjoituskerrat[$x][1] . " " .
-            $kayttajanharjoituskerrat[$x][2] . " " . $kayttajanharjoituskerrat[$x][3] . " " .
-            $kayttajanharjoituskerrat[$x][4] . " " . $kayttajanharjoituskerrat[$x][5];
+            <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
-            echo '<br>';
-        }
+            <h2>Ohjeet</h2>
 
-        echo '<br>';
+            <ol>
+                <li>Valitse kohdasta "Lajiprofiilin valinta" laji, jonka arviota haluat muokata 
+                    ja paina nappulaa "Valitse".</li>
 
-        echo 'Käyttäjän arviot: <br>';
+                <br>
 
-        $kayttajanarviot = $kyselyita->haeKayttajanArvioidenTiedot($sessio->hetu);
+                <li>Valitse tämän jälkeen avautuvasta päivämäärän valintaruudusta muokattavan 
+                    arvion päivämäärä. <br> Valitse sopiva päivä päivämäärävalikosta 
+                    tai kirjoita päivä muodossa vvvv-kk-pp. Paina lopuksi "Valitse"-nappulaa.
 
-        for ($x = 0; $x < count($kayttajanarviot); $x++) {
-            echo $kayttajanarviot[$x][0] . " " . $kayttajanarviot[$x][1] . " " .
-            $kayttajanarviot[$x][2] . " " . $kayttajanarviot[$x][3] . " " .
-            $kayttajanarviot[$x][4] . " " . $kayttajanarviot[$x][5];
+                </li>
+                <br>
+                <li>Valitse avautuvasta listasta muokattava arvio ja paina sitten 
+                    "Valitse arvio"-nappia siirtyäksesi arvion muokkaukseen.</li>
 
-            echo '<br>';
-        }
+                <br>    
 
-        echo '<br>';
-        ?>
+                <li>
+                    Muokkaa tämän jälkeen arviota haluamallasi tavalla ja paina lopuksi 
+                    "Muokkaa"-nappia tallentaaksesi muutokset. <br> Arvion alkuperäinen sisältö 
+                    näkyy aluksi muokkauslaatikoissa.
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Harjoituksen yleisarvosana: Anna harjoituksen yleisarvosana väliltä 1-10.</li>
 
-        <?php
-        $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
+                        <li>Tyytyväisyysarvosana: Anna arvosana tyytyväisyydestäsi harjoitukseen väliltä 1-10.</li>
 
-        echo 'Käyttäjän lajit: <br>';
+                        <li>Sanallinen arvio: Kirjoita harjoitukselle sanallinen arvio. Yläraja pituudelle on 2000 merkkiä.
+                            <br> Jos haluat jättää kentän tyhjäksi, lisää kenttään esimerkiksi välilyönti.</li>
+                    </ul>
+                </li>
+            </ol>
 
-        for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-            echo $kayttajanlajitnumero[$x][0] . '<br>';
-        }
+            <br>    
 
-        echo '<br>';
-        ?></div>
+        </div>
 
         <div>
             <form action="arvionmuokkaus.php" id="lajiprofiilinvalinta" method="POST">
@@ -97,18 +124,24 @@ if (isset($_POST['harjpvm'])) {
             $laji = $kyselyita->lajiIndeksi($lajinimi);
 
             $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
-?> <div> <?php
-            for ($x = 0; $x < count($paivamaarat); $x++) {
-                echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
-            }
-
-            echo '<br>';
-            ?>
-
-            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+            ?> 
 
 
-</div>
+            <div>
+                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
+
+                <h2>Päivämäärät, joina lajista arvioita:</h2>
+
+                <?php
+                for ($x = 0; $x < count($paivamaarat); $x++) {
+                    $date = date_create($paivamaarat[$x][0]);
+                    echo date_format($date, "d.m.Y") . '<br>';
+                }
+                echo '<br>';
+                ?>
+                <br>
+            </div>
+
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
                     <option value="<?php echo $paivamaarat[$x][0] ?>">
@@ -129,7 +162,8 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="laji" id="laji" 
                                value="<?php echo $_POST['lajiprofiili'] ?>">
 
-                        <laber for="harjpvm">Harjoitusaika:</laber>
+                        <laber for="harjpvm">Harjoitusaika 
+                            (valitse valikosta tai anna muodossa vvvv-kk-pp):</laber>
                         <input type="date" name="harjpvm" id="harjpvm" 
                                list="paivamaaralista" required>
 
@@ -152,15 +186,22 @@ if (isset($_POST['harjpvm'])) {
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['arvio'])) {
 
             $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-?> <div> <?php
-            for ($int = 0; $int < count($arviot); $int++) {
-                echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-                $arviot[$int][2] . " " .
-                $arviot[$int][3];
-            }
-            ?>
-            <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
-</div>
+            ?> 
+
+            <div>
+                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
+
+                <h2>Päivämääräksi valittu: 
+                    <?php
+                    $date = date_create($_POST['harjpvm']);
+                    echo date_format($date, "d.m.Y") . '<br>';
+                    ?></h2>
+
+                <br>
+
+            </div>
+
+
             <div> 
                 <form action="arvionmuokkaus.php" id="arvionvalinta" method="POST">
 
@@ -183,26 +224,21 @@ if (isset($_POST['harjpvm'])) {
                                    value="<?php
                     echo $arviot[$int][0] . "§" .
                     $arviot[$int][1] . "§" . $arviot[$int][2] . "§" . $arviot[$int][3];
-                    ?>" required> <label for="arvio">
-                                Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                                Kesto: <?php echo $arviot[$int][1] . " " ?>
-                                Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
-                                Kuvaus: <?php echo $arviot[$int][3] . " " ?></label>
+                            ?>" required> 
+                            <span id="tummennettu">Harjoituksen alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
+                            <span id="tummennettu">Yleisarvosana: </span> <?php echo $arviot[$int][1] . " " ?>
+                            <span id="tummennettu">Tyytyväisyysarvo: </span> <?php echo $arviot[$int][2] . " " ?>
+                            <span id="tummennettu">Sanallinen arvio: </span><?php echo teeTeksti($arviot[$int][3]) . " " ?>
+
                             <br>    
-    <?php } ?>
-                        <br>
+                            <br>
+                        <?php } ?>
 
                         <input type="submit" name="arviovalittu" value="Valitse arvio">
-
-
-
                     </fieldset>
 
                 </form>
-
             </div>
-
-
             <?php
         }
         ?>
@@ -210,12 +246,19 @@ if (isset($_POST['harjpvm'])) {
         <?php if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['arvio'])) {
             ?>
 
-    <?php $arvio = explode("§", $_POST['arvio']); ?>
+            <?php $arvio = explode("§", $_POST['arvio']); ?>
 
-  <div>          <h3>Lajiprofiili: <?php echo $_POST['laji']; ?></h3>
-            <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']); ?></h3>
-            <h3>Alkamisaika: <?php echo date('H:i', $arvio[0]); ?></h3>
-</div>
+            <div>          
+                <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji']; ?></h2>
+                <h2>Päivämääräksi valittu: 
+                    <?php
+                    $date = date_create($_POST['harjpvm']);
+                    echo date_format($date, "d.m.Y") . '<br>';
+                    ?></h2>
+
+                <h2>Harjoituksen alkamisaika: <?php echo substr($arvio[0], 0, 5); ?></h2>
+                <br>
+            </div>
 
             <div> 
                 <form action="apuphpt/muokkaaarviota.php" id="arvionmuokkaaminen" method="POST">
@@ -233,7 +276,7 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="harjalku" id="harjalku" 
                                value="<?php echo $arvio[0] ?>">
 
-                        <label for="yleisarvosana">Yleisarvosana:</label>
+                        <label for="yleisarvosana">Harjoituksen yleisarvosana:</label>
                         <input type="number" name="yleisarvosana" id="yleisarvosana" 
                                min="1" max="10" value="<?php echo $arvio[1] ?>" required>
 
@@ -250,7 +293,6 @@ if (isset($_POST['harjpvm'])) {
                                    required><?php echo $arvio[3] ?></textarea>
                         <br>
 
-
                         <input type="submit" name="muokkaa" value="Muokkaa">
 
                     </fieldset>
@@ -259,7 +301,7 @@ if (isset($_POST['harjpvm'])) {
 
             </div>
 
-<?php } ?>
+        <?php } ?>
 
         <?php require 'apuphpt/footer.php'; ?>
     </body>

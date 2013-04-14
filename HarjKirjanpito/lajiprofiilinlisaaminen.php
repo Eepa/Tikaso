@@ -2,6 +2,7 @@
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,8 +40,6 @@ varmista_kirjautuminen();
             </ol>
 
             <br>    
-
-
         </div>
 
         <div> 
@@ -57,8 +56,8 @@ varmista_kirjautuminen();
                         <?php for ($x = 0; $x < count($yhdistetytnumeroin); $x++) { ?>
                             <option value="<?php echo $yhdistetytnumeroin[$x] ?>">
                                 <?php echo $yhdistetytnumeroin[$x] ?></option>
-                            <?php }
-                            ?>
+                        <?php }
+                        ?>
                     </select>
 
                     <br>
@@ -79,9 +78,7 @@ varmista_kirjautuminen();
 
                 </fieldset>
 
-
             </form>
-
         </div>
 
         <?php require 'apuphpt/footer.php'; ?>

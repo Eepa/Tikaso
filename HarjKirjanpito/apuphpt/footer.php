@@ -10,7 +10,7 @@
         </p>
 
         <p id="footerteksti">Palautetta ja kritiikkiä voitte antaa suoraan asiakaspalautepostiimme, 
-        jonka osoitteen julkaisemme pikimmiten.</p>
+            jonka osoitteen julkaisemme pikimmiten.</p>
 
     </footer>
 </html>

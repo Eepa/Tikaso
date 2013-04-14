@@ -1,4 +1,5 @@
 <?php
+
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
@@ -17,7 +18,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Harjoituskerran lisääminen onnistui!'); 
         window.location.href = '../harjoituskerranlisaaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Harjoituskerran lisääminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Harjoituskerran lisääminen epäonnistui.'); 
         window.location.href = '../harjoituskerranlisaaminen.php';</script> <br>");
 }
 ?>

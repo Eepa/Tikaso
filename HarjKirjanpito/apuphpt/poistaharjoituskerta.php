@@ -15,15 +15,15 @@ varmista_kirjautuminen();
     </form>
 
     <script language="JavaScript">
-                                             
+                                                         
         function vahvistus(){
             var r = confirm("Poistaminen poistaa myös harjoituskertaan liittyvät arviot. Haluatko jatkaa?");
             if(r){
                 document.forms['harjoituskerta'].submit();
             } else if(!r){
-                                          
+                                                      
                 window.location.href = '../harjoituskerranpoistaminen.php';
-                             
+                                         
             }
         }
         vahvistus();                 
@@ -35,7 +35,7 @@ varmista_kirjautuminen();
 
 <?php
 if (!isset($_POST['poista'])) {
-    
+
     $kyselynsuoritus = $kyselyita->poistaHarjoituskerta(
             $_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
 
@@ -44,7 +44,7 @@ if (!isset($_POST['poista'])) {
         echo "<script language='JavaScript'>window.alert('Harjoituskerran poistaminen onnistui!'); 
         window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>";
     } else {
-        die("<script language='JavaScript'>window.alert('Harjoituskerran poistaminen epäonnistui'); 
+        die("<script language='JavaScript'>window.alert('Harjoituskerran poistaminen epäonnistui.'); 
         window.location.href = '../harjoituskerranpoistaminen.php';</script> <br>");
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
@@ -14,7 +15,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Lajiprofiilin poistaminen onnistui!'); 
         window.location.href = '../lajiprofiilinpoistaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Lajiprofiilin poistaminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Lajiprofiilin poistaminen epäonnistui.'); 
         window.location.href = '../lajiprofiilinpoistaminen.php';</script> <br>");
 }
 ?>

@@ -15,7 +15,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Arvion muokkaaminen onnistui!'); 
         window.location.href = '../arvionmuokkaus.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Arvion muokkaaminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Arvion muokkaaminen epäonnistui.'); 
         window.location.href = '../arvionmuokkaus.php';</script> <br>");
 }
 ?>

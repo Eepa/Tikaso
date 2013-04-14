@@ -15,40 +15,37 @@
         <div> 
             <h2>Kirjaudu järjestelmään</h2>
 
+            <form action="../kirjaudu.php?sis" method="POST">
+                <?php if (isset($_GET['epao'])) { ?> 
+                    <p id="virhe">
+                        <?php
+                        echo 'Salasana tai käyttäjätunnus oli väärä';
+                    }
+                    ?> </p>
 
-        
-        <form action="../kirjaudu.php?sis" method="POST">
-            <?php if (isset($_GET['epao'])) { ?> 
-                <p id="virhe">
-                    <?php echo 'Salasana tai käyttäjätunnus oli väärä';
-                } ?> </p>
+                <p>Syötä tunnuksesi ja salasanasi:</p>
+                <fieldset class="kirjautuminenfieldset" id="sisaankirjaus">
 
-            <p>Syötä tunnuksesi ja salasanasi:</p>
-            <fieldset class="kirjautuminenfieldset" id="sisaankirjaus">
+                    <label for="kayttajatunnus">Käyttäjätunnus:</label> 
 
-                <label for="kayttajatunnus">Käyttäjätunnus:</label> 
+                    <input type="text" name="kayttajatunnus" id="kayttajatunnus" maxlength="30" required><br>
 
-                <input type="text" name="kayttajatunnus" id="kayttajatunnus" maxlength="30" required><br>
+                    <label for="salasana">Salasana:</label> 
+                    <input type="password" name="salasana" id="salasana" maxlength="30" required><br>
 
-                <label for="salasana">Salasana:</label> 
-                <input type="password" name="salasana" id="salasana" maxlength="30" required><br>
-
-                <input type="submit" value="Kirjaudu">
-            </fieldset>
-
-
-        </form>
-    </div>
-
-    <div>
-        <p>
-            <a href="../index.html">Etusivulle</a>
-        </p>
-    </div>
-
-</body>
+                    <input type="submit" value="Kirjaudu">
+                </fieldset>
 
 
+            </form>
+        </div>
 
+        <div>
+            <p>
+                <a href="../index.html">Etusivulle</a>
+            </p>
+        </div>
+
+    </body>
 
 </html>

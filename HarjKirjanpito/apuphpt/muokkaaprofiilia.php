@@ -1,4 +1,5 @@
 <?php
+
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
@@ -12,7 +13,7 @@ if ($kyselynsuoritus) {
     echo "<script language='JavaScript'>window.alert('Lajiprofiilin muokkaaminen onnistui!'); 
         window.location.href = '../lajiprofiilinmuokkaaminen.php';</script> <br>";
 } else {
-    die("<script language='JavaScript'>window.alert('Lajiprofiilin muokkaaminen epäonnistui'); 
+    die("<script language='JavaScript'>window.alert('Lajiprofiilin muokkaaminen epäonnistui.'); 
         window.location.href = '../lajiprofiilinmuokkaaminen.php';</script> <br>");
 }
 ?>

@@ -45,7 +45,7 @@ if (isset($_POST['harjpvm'])) {
                 </li>
                 <br>
                 <li>Valitse lopuksi avautuvasta listasta poistettava harjoituskerta ja paina sitten 
-               "Poista"-nappia poistaaksesi valitun harjoituskerran.</li>
+                    "Poista"-nappia poistaaksesi valitun harjoituskerran.</li>
             </ol>
 
             <br>    

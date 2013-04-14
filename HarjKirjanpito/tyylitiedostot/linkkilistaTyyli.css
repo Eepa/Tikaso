@@ -30,7 +30,7 @@ body {
 #salasana{
     position: relative;
     left: 45px;
-    }
+}
 
 header {
     background-color:#D1D5B7 ;
@@ -73,7 +73,7 @@ textarea {
 
 #tummennettu {
     font-weight: bold;
-    
+
 }
 
 #footerteksti {

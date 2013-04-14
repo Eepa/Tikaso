@@ -13,7 +13,7 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
 
         <h1 class="otsikko">Lajiprofiili</h1>
-       
+
         <div>
             <h2>Kuvaus</h2>
             <p>
@@ -41,7 +41,7 @@ varmista_kirjautuminen();
                 echo $kaikkiLajitNumeroindeksi[$int] . '<br>';
             }
             ?>
-            
+
         </div>
 
 
