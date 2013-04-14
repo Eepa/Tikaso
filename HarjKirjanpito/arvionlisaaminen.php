@@ -97,16 +97,21 @@ if (isset($_POST['harjpvm'])) {
             $laji = $kyselyita->lajiIndeksi($lajinimi);
 
             $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
-            ?> <div> <?php
-        for ($x = 0; $x < count($paivamaarat); $x++) {
-            echo $paivamaarat[$x][0] . " " . $paivamaarat[$x][1] . '<br>';
-        }
+            ?> 
 
-        echo '<br>';
-            ?>
+            <div>
+                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
 
-                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h3>
+                <h2>Päivämäärät, joina lajista arvioita:</h2>
 
+                <?php
+                for ($x = 0; $x < count($paivamaarat); $x++) {
+                    $date = date_create($paivamaarat[$x][0]);
+                    echo date_format($date, "d.m.Y") . '<br>';
+                }
+                echo '<br>';
+                ?>
+                <br>
             </div>
 
             <datalist name="paivamaaralista" id="paivamaaralista">
@@ -151,15 +156,46 @@ if (isset($_POST['harjpvm'])) {
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
             $arviot = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-            ?> <div> <?php
-        for ($int = 0; $int < count($arviot); $int++) {
-            echo $arviot[$int][0] . " " . $arviot[$int][1] . " " .
-            $arviot[$int][2] . " " .
-            $arviot[$int][3];
-        }
-            ?>
-                <h3> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h3>
+
+            function teeTeksti($alkup) {
+
+                $taulukko = explode(" ", $alkup, 16);
+
+                $palautettava = "";
+                $uusitaulukko = array();
+                if (count($taulukko) >= 16) {
+
+                    for ($int = 0; $int <= 15; $int++) {
+                        if ($int == 15) {
+                            $uusitaulukko[$int] = "...";
+                        } else {
+                            $uusitaulukko[$int] = $taulukko[$int];
+                        }
+                    }
+                } else {
+                    $uusitaulukko = $taulukko;
+                }
+
+                for ($int = 0; $int < count($uusitaulukko); $int++) {
+                    $palautettava = $palautettava . $uusitaulukko[$int] . " ";
+                }
+                return $palautettava;
+            }
+            ?> 
+
+
+            <div>
+                <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
+
+                <h2>Päivämääräksi valittu: 
+                    <?php
+                    $date = date_create($_POST['harjpvm']);
+                    echo date_format($date, "d.m.Y") . '<br>';
+                    ?></h2>
+
+                <br>
             </div>
+
             <div> 
                 <form action="arvionlisaaminen.php" id="harjoituksenvalinta" method="POST">
 
@@ -179,15 +215,15 @@ if (isset($_POST['harjpvm'])) {
                         <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php echo $arviot[$int][0];
-                            ?>" required> <label for="harjoituskerta">
-                                Alkamisaika: <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                                Kesto: <?php echo $arviot[$int][1] . " " ?>
-                                Vaikeusaste: <?php echo $arviot[$int][2] . " " ?>
-                                Kuvaus: <?php echo $arviot[$int][3] . " " ?></label>
+                                   value="<?php echo $arviot[$int][0]; ?>" required> 
+                            <span id="tummennettu">Alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
+                            <span id="tummennettu">Kesto: </span> <?php echo $arviot[$int][1] . " " ?>
+                            <span id="tummennettu">Vaikeusaste: </span> <?php echo $arviot[$int][2] . " " ?>
+                            <span id="tummennettu">Kuvaus: </span><?php echo teeTeksti($arviot[$int][3]) . " " ?>
+
                             <br>    
+                            <br>
                         <?php } ?>
-                        <br>
 
                         <input type="submit" name="harjoitusaikavalittu" value="Valitse harjoitus">
 
@@ -205,12 +241,20 @@ if (isset($_POST['harjpvm'])) {
         ?>
 
 
-        <?php if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
+        <?php
+        if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['harjoituskerta'])) {
+
+            $date = date_create($_POST['harjpvm']);
+            
+            
+            $harjoituskerta = $kyselyita->haeHarjoituskerta($_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
             ?>
-            <div>
-                <h3>Lajiprofiili: <?php echo $_POST['laji'] ?></h3>
-                <h3>Harjoituspäivä: <?php echo date('d F Y', $_POST['harjpvm']) ?></h3>
-                <h3>Alkamisaika: <?php echo date('H:i', $_POST['harjoituskerta']) ?></h3></div>
+            <div>   
+                <h2>Lajiprofiili: <?php echo $_POST['laji'] ?></h2>
+                <h2>Harjoituspäivä: <?php echo date_format($date, "d.m.Y") ?></h2>
+                <h2>Alkamisaika: <?php echo substr($_POST['harjoituskerta'], 0, 5); ?></h2>
+                <br>
+            </div>
 
 
             <div> 
