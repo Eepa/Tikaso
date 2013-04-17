@@ -30,6 +30,4 @@ Tietokanta toteutetaan PostreSQL-tietokantana users.cs.helsinki.fi -
 palvelimelle. Tietokanta toimii samalla palvelimella 
 web-sovelluksena, joka toteutetaan php- ja html-kielilla. Lisaksi 
 joitain ominaisuuksia toteutetaan JavaScript-kielella, jota selaimen 
-taytyisi tukea. Sovellus ei edellyta minkaan tietyn tietokannan kayttoa. 
-Tietokantaa vaihdettaessa pitaisi mahdollisesti muuttaa vain sovelluksen 
-kyselyjen syntaksia, jos uudessa tietokannassa on eri syntaksi.
+taytyisi tukea.
