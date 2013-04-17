@@ -1,3 +1,8 @@
+<!-- Lajiprofiili tietosivu. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivulla kuvaillaan lajiprofiileita yleisesti. Sivun tyylistä vastaa 
+tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
@@ -6,7 +11,7 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/tyylit.css" />
         <title>Lajiprofiili</title>
     </head>
     <body>
@@ -27,23 +32,21 @@ varmista_kirjautuminen();
                 poistamaan jo luomiasi profiileita.
             </p>
             <br>
-
         </div>
 
+        <!--Tuloste, joka kertoo kaikki järjestelmän mahdolliset lajit.-->
+        
         <div>
             <h2>Järjestelmän kaikki lajit:</h2>
 
             <?php
-            $kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
-            $kaikkiLajit = $kyselyita->haeKaikkiLajit();
+            $kaikkiLajit = $kyselyita->haeKaikkiLajitNumeroindeksi();
 
-            for ($int = 0; $int < count($kaikkiLajitNumeroindeksi); $int++) {
-                echo $kaikkiLajitNumeroindeksi[$int] . '<br>';
+            for ($int = 0; $int < count($kaikkiLajit); $int++) {
+                echo $kaikkiLajit[$int] . '<br>';
             }
             ?>
-
         </div>
-
 
         <?php require 'apuphpt/footer.php'; ?>
     </body>

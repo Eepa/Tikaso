@@ -1,3 +1,7 @@
+<!-- Sivu lajiprofiilin poistamista varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
@@ -7,17 +11,17 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/tyylit.css" />
         <title>Lajiprofiilin poistaminen</title>
     </head>
     <body>
         <?php require 'linkkilista.php'; ?>
-
-
         <h1 class="otsikko">Lajiprofiilin poistaminen</h1>
 
 
         <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
+        
+         <!--Ohjeet lajiprofiilin poistamista varten.-->
 
         <div>
             <h2>Ohjeet</h2>
@@ -33,6 +37,7 @@ varmista_kirjautuminen();
             <br>    
         </div>
 
+         <!--Lomake lajiprofiilin poistamista varten.-->
 
         <div> 
             <form action="apuphpt/poistalajiprofiili.php" id="lajiprofiilipoisto" method="POST">

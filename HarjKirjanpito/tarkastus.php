@@ -1,3 +1,8 @@
+<!-- Tarkastustiedosto, joka tarkastaa, onko käyttäjä kirjautunut järjestelmään. 
+Tiedoston avulla luodaan jokaiselle sessiolle myös oma sessio kutsumalla sessiot.php:tä.
+Lisäksi tarkastuksen avulla määritellään kyselijä, joka suorittaa tarvittavia tietokantakyselyita.
+-->
+
 <?php
 
 require_once 'apuphpt/kyselyja.php';

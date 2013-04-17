@@ -1,3 +1,8 @@
+<!-- Harjoituskirjanpitojärjestelmän etusivu. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Etusivulla kuvaillaan järjestelmää yleisesti. Sivun tyylistä vastaa 
+tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
@@ -7,7 +12,7 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/tyylit.css" />
         <title>Etusivu - harjoituskirjanpitojärjestelmä</title>
     </head>
 

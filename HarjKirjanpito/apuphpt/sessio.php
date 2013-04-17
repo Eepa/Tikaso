@@ -1,3 +1,6 @@
+<!--Sessio-luokka, joka määrittelee, kuka on kirjautuneena järjestelmään. Sessio-luokasta 
+määritellään ilmentymä, jota voi käyttää järjestelmään sisään- ja uloskirjautumisen määrittelyssä.--> 
+
 <?php
 
 class Sessio {

@@ -1,3 +1,6 @@
+<!-- Koodi, joka suorittaa valitun harjoituskerran muokkaamisen. Muokkaamisen 
+onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
+
 <?php
 
 require_once '../tarkastus.php';

@@ -1,3 +1,8 @@
+<!-- Arvio tietosivu. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivulla kuvaillaan arvioita yleisesti. Sivun tyylistä vastaa 
+tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
@@ -6,7 +11,7 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/tyylit.css" />
         <title>Arvio</title>
     </head>
     <body>
@@ -26,19 +31,20 @@ varmista_kirjautuminen();
             <br>
         </div>
 
+        <!--Tuloste, joka kertoo kaikki käyttäjän lajit, joista on lisätty arvioita.-->
+        
         <div>
             <h2>Lajisi, joista merkittyjä arvioita:</h2>
 
             <p>
                 <?php
-                $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
+                $kayttajanlajit = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu);
 
-                for ($x = 0; $x < count($kayttajanlajitnumero); $x++) {
-                    echo $kayttajanlajitnumero[$x][0] . '<br>';
+                for ($x = 0; $x < count($kayttajanlajit); $x++) {
+                    echo $kayttajanlajit[$x][0] . '<br>';
                 }
                 ?>
             </p>
-
         </div>
 
         <?php require 'apuphpt/footer.php'; ?>

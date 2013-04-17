@@ -1,3 +1,4 @@
+<!--Sivuston alapalkki.-->
 
 <!DOCTYPE html>
 <html>

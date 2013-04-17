@@ -1,3 +1,8 @@
+<!--Kirjautumisen suorittava koodi. Kirjautumisen apuna kutsutaan tarkastus.php:tä, jonka avulla 
+välitetään tietokantakyselyitä suorittavan luokan ilmentymä kirjautumistarkistusta varten. 
+Ohjaa käyttäjän oikealle sivulle sen mukaan, mitä käyttäjä oli tekemässä (uloskirjautuminen, onnistunut 
+sisäänkirjautuminen, epäonnistunut sisäänkirjautuminen).-->
+
 <?php
 
 require_once 'tarkastus.php';

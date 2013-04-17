@@ -1,3 +1,6 @@
+<!-- Koodi, joka suorittaa lajiprofiilin poistamisen tietyltä käyttäjältä. Poistamisen 
+onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
+
 <?php
 
 require_once '../tarkastus.php';

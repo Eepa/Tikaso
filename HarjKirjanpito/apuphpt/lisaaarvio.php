@@ -1,3 +1,7 @@
+<!-- Koodi, joka suorittaa arvion lisäämisen tietylle käyttäjälle liittyen tiettyyn 
+harjoituskertaan. Lisäämisen onnistumisesta ja epäonnistumisesta ilmoitetaan 
+JavaScript-ilmoituksen avulla. -->
+
 <?php
 
 require_once '../tarkastus.php';

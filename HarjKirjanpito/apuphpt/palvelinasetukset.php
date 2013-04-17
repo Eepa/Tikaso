@@ -1,3 +1,5 @@
+<!--Asetukset tietokantapalvelinta varten.-->
+
 <?php
 
 $pdo = new PDO('pgsql:host=localhost;dbname=evpa',

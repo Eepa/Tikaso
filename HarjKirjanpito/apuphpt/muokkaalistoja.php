@@ -1,3 +1,5 @@
+<!--KORJATTAVA!!! KYSELYIDEN AVULLA VOIDAAN HOITAA-->
+
 <?php
 
 require_once 'tarkastus.php';
@@ -10,7 +12,6 @@ $kaikkiLajitNumeroindeksi = $kyselyita->haeKaikkiLajitNumeroindeksi();
 $kaikkiLajit = $kyselyita->haeKaikkiLajit();
 
 $kayttajanlajit = $kyselyita->haeKayttajanLajit($sessio->hetu);
-$kayttajanLajitNumeroindeksi = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu);
 
 $yhdistetyt = array_diff($kaikkiLajit, $kayttajanlajit);
 

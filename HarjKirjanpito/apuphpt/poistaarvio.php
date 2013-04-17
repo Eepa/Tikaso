@@ -1,3 +1,6 @@
+<!-- Koodi, joka suorittaa tiettyyn harjoituskertaan liittyvän arvion poistamisen. Poistamisen 
+onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
+
 <?php
 
 require_once '../tarkastus.php';

@@ -1,3 +1,6 @@
+<!-- Koodi, joka suorittaa lajiprofiilin lisäämisen tietylle käyttäjälle. Lisäämisen 
+onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
+
 <?php
 
 require_once '../tarkastus.php';

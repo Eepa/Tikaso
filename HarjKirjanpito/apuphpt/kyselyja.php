@@ -1,3 +1,6 @@
+<!--Järjestelmässä käytettävät kyselyt ja niiden suorittaja. Kyselynsuorittaja 
+määritellään luokasta Kyselyja.--> 
+
 <?php
 
 class Kyselyja {

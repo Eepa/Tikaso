@@ -1,10 +1,14 @@
+<!-- Linkkilista määrittelee järjestelmään navigointipalkin ja sen ominaisuuksia. 
+Navigointipalkin tietylle sivulle johtava linkki poistuu käytöstä, jos käyttäjä on 
+siirtynyt kyseiselle sivulle. Tästä ominaisuudesta vastataan JavaScript-koodin avulla.-->
+
 <?php require_once 'tarkastus.php'; ?>
 <!DOCTYPE html>
 <html>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/tyylit.css" />
 
     </head>
     <body>
@@ -25,6 +29,8 @@
         </script>
 
         <?php if (on_kirjautunut()) { ?>
+        
+        <!--Jos käyttäjä on kirjautunut järjestelmään, näkyvät hänellä seuraavat linkit navigointipalkissa.-->
 
             <header>
                 <div><ul id="navbar">

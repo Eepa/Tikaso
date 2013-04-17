@@ -1,3 +1,6 @@
+<!-- Koodi, joka suorittaa harjoituskerran lisäämisen tietylle käyttäjälle liittyen tiettyyn 
+lajiin. Lisäämisen onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
+
 <?php
 
 require_once '../tarkastus.php';

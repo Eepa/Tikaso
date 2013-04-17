@@ -1,3 +1,7 @@
+<!-- Sivu lajiprofiilin lisäämistä varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
@@ -7,19 +11,18 @@ varmista_kirjautuminen();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+        <link rel="stylesheet" type="text/css" href="tyylitiedostot/tyylit.css" />
         <title>Lajiprofiilin lisääminen</title>
     </head>
     <body>
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Lajiprofiilin lisääminen</h1>
+        
+        <?php $kayttamattomatlajit = require 'apuphpt/muokkaalistoja.php'; ?>
 
+         <!--Ohjeet lajiprofiilin lisäämistä varten.-->
         <div>
-            <?php $yhdistetytnumeroin = require 'apuphpt/muokkaalistoja.php'; ?>
-
-        </div>
-
-        <div>
+            
             <h2>Ohjeet</h2>
 
             <ol>
@@ -41,6 +44,8 @@ varmista_kirjautuminen();
 
             <br>    
         </div>
+        
+        <!--Lomake lajiprofiilin lisäämistä varten.-->
 
         <div> 
             <form action="apuphpt/lisaalajiprofiili.php" id="lajiprofiililisays" method="POST">
@@ -53,9 +58,9 @@ varmista_kirjautuminen();
                     <label for="laji">Lajivalinta:</label>
 
                     <select name="laji" required>
-                        <?php for ($x = 0; $x < count($yhdistetytnumeroin); $x++) { ?>
-                            <option value="<?php echo $yhdistetytnumeroin[$x] ?>">
-                                <?php echo $yhdistetytnumeroin[$x] ?></option>
+                        <?php for ($x = 0; $x < count($kayttamattomatlajit); $x++) { ?>
+                            <option value="<?php echo $kayttamattomatlajit[$x] ?>">
+                                <?php echo $kayttamattomatlajit[$x] ?></option>
                         <?php }
                         ?>
                     </select>
