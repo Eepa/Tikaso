@@ -66,3 +66,6 @@ Ohjeiden lopettelua ja aputulosteiden parantelu.
 
 ke 17.04.2013, 3,5h
 Dokumentoinnin tekemista.
+
+pe 19.04.2013, 1,5h
+Koodin refaktorointi ja kommentointi.

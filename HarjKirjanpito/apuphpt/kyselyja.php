@@ -15,67 +15,57 @@ class Kyselyja {
         return $this->_pdo->prepare($kyselylause);
     }
 
+    private function palautaTaulukko($kysely) {
+        $uusiTaulukko = array();
+        $indeksi = 0;
+        while ($rivi = $kysely->fetch()) {
+            $uusiTaulukko[$indeksi] = $rivi;
+            $indeksi++;
+        }
+        return $uusiTaulukko;
+    }
+
     public function tunnistus($kayttajatunnus, $salasana) {
         $kysely = $this->valmistelut('SELECT hetu FROM kayttaja WHERE kayttajanimi = ? AND salasana = ?');
 
         if ($kysely->execute(array($kayttajatunnus, $salasana))) {
             return $kysely->fetchObject();
-        } else {
-            return null;
-        }
-    }
-
-    public function kaikkiLajiprofiilitJoitaEiKayttajalla($hetu){
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji WHERE lajitunnus  
-            NOT IN (SELECT DISTINCT lajitunnus FROM 
-            lajiprofiili WHERE hetu = ?)');
-        
-        if($kysely->execute(array($hetu))){
-            $lajit = array();
-            $indeksi = 0;
-            while($rivi = $kysely->fetch()){
-                $lajit[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $lajit;
         }
         return null;
     }
-    
-  
+
+    public function kaikkiLajiprofiilitJoitaEiKayttajalla($hetu) {
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji WHERE lajitunnus  
+            NOT IN (SELECT DISTINCT lajitunnus FROM 
+            lajiprofiili WHERE hetu = ?)');
+
+        if ($kysely->execute(array($hetu))) {
+            return $this->palautaTaulukko($kysely);
+        }
+        return null;
+    }
+
     public function haeKaikkiLajinimet() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji ORDER BY lajinimi');
+      
         if ($kysely->execute()) {
-            $lajit = array();
-            $indeksi = 0;
-
-            while ($rivi = $kysely->fetch()) {
-                $lajit[$indeksi] = $rivi['lajinimi'];
-                $indeksi++;
-            }
-            return $lajit;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
 
     public function haeKayttajanLajitLajinimella($kayttajatunnus) {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
+       
         if ($kysely->execute(array($kayttajatunnus))) {
-            $lajit = array();
-            $indeksi = 0;
-
-            while ($rivi = $kysely->fetch()) {
-                $lajit[$indeksi] = $rivi['lajinimi'];
-                $indeksi++;
-            }
-
-            return $lajit;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
 
     public function haeLajiIndeksi($lajinimi) {
         $kysely = $this->valmistelut('SELECT lajitunnus FROM laji WHERE lajinimi = ?');
+        
         if ($kysely->execute(array($lajinimi))) {
             return $kysely->fetchObject();
         }
@@ -85,6 +75,7 @@ class Kyselyja {
     public function lisaaLajiprofiili($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara) {
         $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
             (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (?, ?, ?, ?)');
+        
         if ($kysely->execute(array($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara))) {
             return true;
         }
@@ -93,7 +84,7 @@ class Kyselyja {
 
     public function poistaLajiprofiili($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('DELETE FROM lajiprofiili WHERE hetu = ? and lajitunnus = ?');
-
+        
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             return true;
         }
@@ -105,14 +96,7 @@ class Kyselyja {
             hetu = ? AND lajitunnus = ? ');
 
         if ($kysely->execute(array($hetu, $lajitunnus))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -144,13 +128,7 @@ class Kyselyja {
             WHERE harjoituskerta.hetu = ? AND harjoituskerta.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
 
         if ($kysely->execute(array($hetu))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -158,14 +136,9 @@ class Kyselyja {
     public function haeHarjoituskerranPaivamaarat($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? 
             AND lajitunnus = ? ORDER BY harjpvm');
+        
         if ($kysely->execute(array($hetu, $lajitunnus))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -173,9 +146,9 @@ class Kyselyja {
     public function haeHarjoituskerranPaivamaaratIndeksein($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? 
             AND lajitunnus = ? ORDER BY harjpvm');
+        
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             $sisalto = array();
-
             while ($rivi = $kysely->fetch()) {
                 $sisalto[$rivi['harjpvm']] = $rivi['harjpvm'];
             }
@@ -189,13 +162,7 @@ class Kyselyja {
             WHERE hetu = ? AND lajitunnus =? AND harjpvm =? ORDER BY harjalku');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -215,13 +182,7 @@ class Kyselyja {
             WHERE hetu = ? AND lajitunnus =? AND harjpvm =? AND harjalku = ?');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -230,6 +191,7 @@ class Kyselyja {
         $kysely = $this->valmistelut('UPDATE harjoituskerta SET harjkesto = ?, vaikeusaste = ? , 
             harjkuvaus = ?
             WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ?');
+        
         if ($kysely->execute(array($harjkesto, $vaikeusaste, $harjkuvaus,
                     $hetu, $lajitunnus, $harjpvm, $harjalku))) {
             return true;
@@ -256,13 +218,7 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
             arvioijahetu = ? AND harjpvm = ?)');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $hetu, $lajitunnus, $hetu, $harjpvm))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -271,13 +227,7 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
         $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM arvio WHERE hetu = ? 
             AND lajitunnus = ? AND arvioijahetu = ? ORDER BY harjpvm');
         if ($kysely->execute(array($hetu, $lajitunnus, $hetu))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }
@@ -288,13 +238,7 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
             AND harjpvm = ? AND arvioijahetu = ? ORDER BY harjalku');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $hetu))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
+            return $this->palautaTaulukko($kysely);
         }
         return null;
     }

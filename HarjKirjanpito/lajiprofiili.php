@@ -43,7 +43,7 @@ varmista_kirjautuminen();
             $kaikkiLajit = $kyselyita->haeKaikkiLajinimet();
 
             for ($int = 0; $int < count($kaikkiLajit); $int++) {
-                echo $kaikkiLajit[$int] . '<br>';
+                echo $kaikkiLajit[$int][0] . '<br>';
             }
             ?>
         </div>
