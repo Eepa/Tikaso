@@ -18,7 +18,7 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Lajiprofiilin muokkaaminen</h1>
 
-        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
+        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitLajinimella($sessio->hetu); ?>
 
         <!--Ohjeet muokkaamista varten-->
 
@@ -71,7 +71,7 @@ varmista_kirjautuminen();
 
         <?php
         if (isset($_POST['lajiprofiili'])) {
-            $laji = $kyselyita->lajiIndeksi($_POST['lajiprofiili']);
+            $laji = $kyselyita->haeLajiIndeksi($_POST['lajiprofiili']);
             $lajiprofiilinsisalto = $kyselyita->haeLajiprofiilinSisalto($sessio->hetu, $laji->lajitunnus);
             ?>
 

@@ -25,20 +25,25 @@ class Kyselyja {
         }
     }
 
-    public function haeKaikkiLajit() {
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji ORDER BY lajinimi');
-
-        if ($kysely->execute()) {
+    public function kaikkiLajiprofiilitJoitaEiKayttajalla($hetu){
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji WHERE lajitunnus  
+            NOT IN (SELECT DISTINCT lajitunnus FROM 
+            lajiprofiili WHERE hetu = ?)');
+        
+        if($kysely->execute(array($hetu))){
             $lajit = array();
-            while ($rivi = $kysely->fetch()) {
-                $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
+            $indeksi = 0;
+            while($rivi = $kysely->fetch()){
+                $lajit[$indeksi] = $rivi;
+                $indeksi++;
             }
             return $lajit;
         }
         return null;
     }
-
-    public function haeKaikkiLajitNumeroindeksi() {
+    
+  
+    public function haeKaikkiLajinimet() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji ORDER BY lajinimi');
         if ($kysely->execute()) {
             $lajit = array();
@@ -53,7 +58,7 @@ class Kyselyja {
         return null;
     }
 
-    public function haeKayttajanLajitNumeroindeksi($kayttajatunnus) {
+    public function haeKayttajanLajitLajinimella($kayttajatunnus) {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
         if ($kysely->execute(array($kayttajatunnus))) {
             $lajit = array();
@@ -69,21 +74,7 @@ class Kyselyja {
         return null;
     }
 
-    public function haeKayttajanLajit($kayttajatunnus) {
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
-        if ($kysely->execute(array($kayttajatunnus))) {
-            $lajit = array();
-
-            while ($rivi = $kysely->fetch()) {
-                $lajit[$rivi['lajinimi']] = $rivi['lajinimi'];
-            }
-
-            return $lajit;
-        }
-        return null;
-    }
-
-    public function lajiIndeksi($lajinimi) {
+    public function haeLajiIndeksi($lajinimi) {
         $kysely = $this->valmistelut('SELECT lajitunnus FROM laji WHERE lajinimi = ?');
         if ($kysely->execute(array($lajinimi))) {
             return $kysely->fetchObject();
@@ -133,22 +124,6 @@ class Kyselyja {
             return true;
         }
         return false;
-    }
-
-    public function haeKayttajanHarjoituskerrat($hetu) {
-        $kysely = $this->valmistelut('SELECT lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste,
-            harjkuvaus FROM harjoituskerta WHERE hetu = ? ORDER BY lajitunnus, harjpvm, harjalku');
-
-        if ($kysely->execute(array($hetu))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
-        }
-        return null;
     }
 
     public function lisaaHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto, $vaikeusaste, $harjkuvaus) {
@@ -209,7 +184,7 @@ class Kyselyja {
         return null;
     }
 
-    public function haeHarjoituskerratIlmanHarjalkua($hetu, $lajitunnus, $harjpvm) {
+    public function haeHarjoituskerratJaNiidenHarjalku($hetu, $lajitunnus, $harjpvm) {
         $kysely = $this->valmistelut('SELECT harjalku, harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta
             WHERE hetu = ? AND lajitunnus =? AND harjpvm =? ORDER BY harjalku');
 
@@ -262,24 +237,6 @@ class Kyselyja {
         return false;
     }
 
-    public function haeKayttajanArvioidenTiedot($hetu) {
-
-        $kysely = $this->valmistelut('SELECT lajitunnus, harjpvm, harjalku, yleisarvosana, 
-            tyytyvaisyysarvo, sanallinenarvio FROM arvio WHERE hetu = ? AND arvioijahetu = ? ORDER BY
-            lajitunnus, harjpvm, harjalku');
-
-        if ($kysely->execute(array($hetu, $hetu))) {
-            $sisalto = array();
-            $indeksi = 0;
-            while ($rivi = $kysely->fetch()) {
-                $sisalto[$indeksi] = $rivi;
-                $indeksi++;
-            }
-            return $sisalto;
-        }
-        return null;
-    }
-
     public function lisaaKayttajalleArvio($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
 
         $kysely = $this->valmistelut('INSERT INTO arvio (hetu, lajitunnus, 
@@ -325,7 +282,7 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
         return null;
     }
 
-    public function arviotTiettynaPaivanaLajille($hetu, $lajitunnus, $harjpvm) {
+    public function haeArviotTiettynaPaivanaTietylleLajille($hetu, $lajitunnus, $harjpvm) {
         $kysely = $this->valmistelut('SELECT harjalku, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio 
             FROM arvio WHERE hetu = ? AND lajitunnus = ?
             AND harjpvm = ? AND arvioijahetu = ? ORDER BY harjalku');

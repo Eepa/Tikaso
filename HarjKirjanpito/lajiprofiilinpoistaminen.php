@@ -19,7 +19,7 @@ varmista_kirjautuminen();
         <h1 class="otsikko">Lajiprofiilin poistaminen</h1>
 
 
-        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
+        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitLajinimella($sessio->hetu); ?>
         
          <!--Ohjeet lajiprofiilin poistamista varten.-->
 

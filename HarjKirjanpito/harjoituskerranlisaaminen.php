@@ -52,7 +52,7 @@ varmista_kirjautuminen();
 
         </div>
 
-        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitNumeroindeksi($sessio->hetu); ?>
+        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitLajinimella($sessio->hetu); ?>
 
 
 
@@ -82,7 +82,7 @@ varmista_kirjautuminen();
         <?php
         if (isset($_POST['lajiprofiili'])) {
             $lajinimi = $_POST['lajiprofiili'];
-            $laji = $kyselyita->lajiIndeksi($lajinimi);
+            $laji = $kyselyita->haeLajiIndeksi($lajinimi);
             ?>
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>

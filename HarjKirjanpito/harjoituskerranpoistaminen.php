@@ -80,7 +80,7 @@ if (isset($_POST['harjpvm'])) {
         <?php
         if (isset($_POST['lajiprofiili'])) {
             $lajinimi = $_POST['lajiprofiili'];
-            $laji = $kyselyita->lajiIndeksi($lajinimi);
+            $laji = $kyselyita->haeLajiIndeksi($lajinimi);
 
             $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
             ?> 
@@ -141,7 +141,7 @@ if (isset($_POST['harjpvm'])) {
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
-            $arviot = $kyselyita->haeHarjoituskerratIlmanHarjalkua($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+            $arviot = $kyselyita->haeHarjoituskerratJaNiidenHarjalku($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
 
             function teeTeksti($alkup) {
 

@@ -40,7 +40,7 @@ varmista_kirjautuminen();
             <h2>Järjestelmän kaikki lajit:</h2>
 
             <?php
-            $kaikkiLajit = $kyselyita->haeKaikkiLajitNumeroindeksi();
+            $kaikkiLajit = $kyselyita->haeKaikkiLajinimet();
 
             for ($int = 0; $int < count($kaikkiLajit); $int++) {
                 echo $kaikkiLajit[$int] . '<br>';

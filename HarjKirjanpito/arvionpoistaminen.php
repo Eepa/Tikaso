@@ -100,7 +100,7 @@ if (isset($_POST['harjpvm'])) {
                 <?php
                 if (isset($_POST['lajiprofiili'])) {
                     $lajinimi = $_POST['lajiprofiili'];
-                    $laji = $kyselyita->lajiIndeksi($lajinimi);
+                    $laji = $kyselyita->haeLajiIndeksi($lajinimi);
 
                     $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
                     ?> 
@@ -164,7 +164,7 @@ if (isset($_POST['harjpvm'])) {
                 <?php
                 if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
-                    $arviot = $kyselyita->arviotTiettynaPaivanaLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+                    $arviot = $kyselyita->haeArviotTiettynaPaivanaTietylleLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
                     ?> 
 
                     <div>

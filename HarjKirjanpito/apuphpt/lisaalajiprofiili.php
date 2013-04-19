@@ -9,9 +9,8 @@ varmista_kirjautuminen();
 
 <?php
 
-$lajinimi = $_POST['laji'];
 
-$laji = $kyselyita->lajiIndeksi($lajinimi);
+$laji = $kyselyita->haeLajiIndeksi($_POST['lajinimi']);
 
 $kyselynsuoritus = $kyselyita->lisaaLajiprofiili($_POST['hetu'], $laji->lajitunnus, $_POST['tavoitekuvaus'], $_POST['tavoiteharjmaara']);
 

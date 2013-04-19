@@ -10,7 +10,7 @@ varmista_kirjautuminen();
 <?php
 
 $lajinimi = $_POST['lajiprofiili'];
-$laji = $kyselyita->lajiIndeksi($lajinimi);
+$laji = $kyselyita->haeLajiIndeksi($lajinimi);
 
 $kyselynsuoritus = $kyselyita->poistaLajiprofiili($_POST['hetu'], $laji->lajitunnus);
 

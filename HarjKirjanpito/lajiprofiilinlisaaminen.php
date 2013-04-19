@@ -18,7 +18,7 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Lajiprofiilin lisääminen</h1>
         
-        <?php $kayttamattomatlajit = require 'apuphpt/muokkaalistoja.php'; ?>
+        <?php $kayttamattomatlajit =  $kyselyita->kaikkiLajiprofiilitJoitaEiKayttajalla($sessio->hetu); ?>
 
          <!--Ohjeet lajiprofiilin lisäämistä varten.-->
         <div>
@@ -55,12 +55,12 @@ varmista_kirjautuminen();
 
                     <input type="hidden" name="hetu" id="hetu" value="<?php echo $sessio->hetu ?>">
 
-                    <label for="laji">Lajivalinta:</label>
+                    <label for="lajinimi">Lajivalinta:</label>
 
-                    <select name="laji" required>
+                    <select name="lajinimi" required>
                         <?php for ($x = 0; $x < count($kayttamattomatlajit); $x++) { ?>
-                            <option value="<?php echo $kayttamattomatlajit[$x] ?>">
-                                <?php echo $kayttamattomatlajit[$x] ?></option>
+                            <option value="<?php echo $kayttamattomatlajit[$x][0] ?>">
+                                <?php echo $kayttamattomatlajit[$x][0] ?></option>
                         <?php }
                         ?>
                     </select>
