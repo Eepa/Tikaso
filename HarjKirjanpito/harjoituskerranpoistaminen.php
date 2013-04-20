@@ -1,7 +1,17 @@
+<!-- Sivu harjoituskerran poistamista varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
+
+require_once 'apuphpt/tekstinmuokkaaja.php';
 ?>
+
+<!--Tarkistus, onko lomakkeella lähetetyllä tietyllä päivällä harjoituskertoja. Jos harjoituskertoja ei 
+ole, annetaan käyttäjälle ilmoitus, joka on kirjoitettu JavaScript-kielellä ja palataan takaisin 
+harjoituskerran poistamissivulle.-->
 
 <?php
 if (isset($_POST['harjpvm'])) {
@@ -14,7 +24,6 @@ if (isset($_POST['harjpvm'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,6 +35,8 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Harjoituskerran poistaminen</h1>
 
+        <!--Ohjeet poistamista varten.-->
+
         <div>
             <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
@@ -35,7 +46,6 @@ if (isset($_POST['harjpvm'])) {
                 <li>Valitse kohdasta "Lajiprofiilin valinta" laji, josta haluat poistaa harjoituskerran
                     ja paina nappulaa "Valitse".</li>
 
-
                 <br>
 
                 <li>Valitse tämän jälkeen avautuvasta päivämäärän valintaruudusta päivämäärä, 
@@ -43,15 +53,19 @@ if (isset($_POST['harjpvm'])) {
                     tai kirjoita päivä muodossa vvvv-kk-pp. Paina lopuksi "Valitse"-nappulaa.
 
                 </li>
+
                 <br>
+
                 <li>Valitse lopuksi avautuvasta listasta poistettava harjoituskerta ja paina sitten 
                     "Poista"-nappia poistaaksesi valitun harjoituskerran.</li>
             </ol>
 
             <br>    
-
-
         </div>
+
+        <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
+        päivämäärän valintalomake aukeaa.-->
+
         <div>
             <form action="harjoituskerranpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -71,11 +85,12 @@ if (isset($_POST['harjpvm'])) {
                     <input type="submit" value="Valitse">
                 </fieldset>
             </form>
+            <br>
         </div>
-
-        <br>
-
-
+     
+        <!--Jos lajiprofiili on valittu, valitaan seuraavassa päivämääränvalintalomakkeessa jonkin harjoituksen 
+        päivämäärä, jonka harjoituksille halutaan tehdä toimenpiteitä. Valinnan jälkeen palataan takaisin 
+        samalle sivulle, jolloin poistolomake aukeaa.-->
 
         <?php
         if (isset($_POST['lajiprofiili'])) {
@@ -84,6 +99,8 @@ if (isset($_POST['harjpvm'])) {
 
             $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
             ?> 
+
+            <!--Informaatiota valitusta lajiprofiilista ja päivämääristä, joina harjoituskertoja on.-->
 
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
@@ -100,6 +117,7 @@ if (isset($_POST['harjpvm'])) {
                 <br>
             </div>
 
+            <!--Päivämäärälista harjoituksista, joita valitulla lajiprofiililla on.-->
 
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
@@ -108,6 +126,8 @@ if (isset($_POST['harjpvm'])) {
                 <?php }
                 ?>
             </datalist>
+
+            <!--Päivämäärän valintalomake-->
 
             <div> 
                 <form action="harjoituskerranpoistaminen.php" id="ajanvalinta" method="POST">
@@ -131,43 +151,20 @@ if (isset($_POST['harjpvm'])) {
                         <input type="submit" value="Valitse">
 
                     </fieldset>
-
                 </form>
-
             </div>
         <?php } ?>
 
+        <!--Jos päivämäärä ja lajiprofiili on valittu, aukeaa harjoituskerran valintalomake. 
+        Kun lomake lähetetään siirrytään sivulle, joka poistaa harjiotuskerran tietokannasta.-->
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus'])) {
 
-            $arviot = $kyselyita->haeHarjoituskerratJaNiidenHarjalku($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
-
-            function teeTeksti($alkup) {
-
-                $taulukko = explode(" ", $alkup, 16);
-
-                $palautettava = "";
-                $uusitaulukko = array();
-                if (count($taulukko) >= 16) {
-
-                    for ($int = 0; $int <= 15; $int++) {
-                        if ($int == 15) {
-                            $uusitaulukko[$int] = "...";
-                        } else {
-                            $uusitaulukko[$int] = $taulukko[$int];
-                        }
-                    }
-                } else {
-                    $uusitaulukko = $taulukko;
-                }
-
-                for ($int = 0; $int < count($uusitaulukko); $int++) {
-                    $palautettava = $palautettava . $uusitaulukko[$int] . " ";
-                }
-                return $palautettava;
-            }
+            $harjoituskerrat = $kyselyita->haeHarjoituskerratJaNiidenHarjalku($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
             ?> 
+
+            <!--Informaatiota valitusta lajiprofiilista ja päivämäärästä.-->
 
             <div>
                 <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
@@ -180,6 +177,8 @@ if (isset($_POST['harjpvm'])) {
 
                 <br>
             </div>
+
+            <!--Harjoituskerran valintalomake-->
 
             <div> 
                 <form action="apuphpt/poistaharjoituskerta.php" id="harjoituksenpoisto" method="POST">
@@ -195,37 +194,29 @@ if (isset($_POST['harjpvm'])) {
                                value="<?php echo $_POST['harjpvm'] ?>">
 
                         <input type="hidden" name="harjkertojenmaara" id="harjkertojenmaara"
-                               value="<?php echo count($arviot); ?>">
+                               value="<?php echo count($harjoituskerrat); ?>">
 
-                        <?php for ($int = 0; $int < count($arviot); $int++) { ?>
+                        <?php for ($int = 0; $int < count($harjoituskerrat); $int++) { ?>
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php echo $arviot[$int][0]; ?>" required> 
-                            <span id="tummennettu">Alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                            <span id="tummennettu">Kesto: </span> <?php echo $arviot[$int][1] . " " ?>
-                            <span id="tummennettu">Vaikeusaste: </span> <?php echo $arviot[$int][2] . " " ?>
-                            <span id="tummennettu">Kuvaus: </span><?php echo teeTeksti($arviot[$int][3]) . " " ?>
+                                   value="<?php echo $harjoituskerrat[$int][0]; ?>" required> 
+                            <span id="tummennettu">Alkamisaika: </span> <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
+                            <span id="tummennettu">Kesto: </span> <?php echo $harjoituskerrat[$int][1] . " " ?>
+                            <span id="tummennettu">Vaikeusaste: </span> <?php echo $harjoituskerrat[$int][2] . " " ?>
+                            <span id="tummennettu">Kuvaus: </span><?php echo teeTeksti($harjoituskerrat[$int][3]) . " " ?>
 
                             <br>    
                             <br>
                         <?php } ?>
 
-
                         <input type="submit" name="poista" value="Poista">
 
-
-
                     </fieldset>
-
                 </form>
-
             </div>
-
-
             <?php
         }
         ?>
-
 
         <?php require 'apuphpt/footer.php'; ?>
 

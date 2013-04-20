@@ -1,32 +1,17 @@
+<!-- Sivu harjoituskerran muokkaamista varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 
-function teeTeksti($alkup) {
-
-    $taulukko = explode(" ", $alkup, 16);
-
-    $palautettava = "";
-    $uusitaulukko = array();
-    if (count($taulukko) >= 16) {
-
-        for ($int = 0; $int <= 15; $int++) {
-            if ($int == 15) {
-                $uusitaulukko[$int] = "...";
-            } else {
-                $uusitaulukko[$int] = $taulukko[$int];
-            }
-        }
-    } else {
-        $uusitaulukko = $taulukko;
-    }
-
-    for ($int = 0; $int < count($uusitaulukko); $int++) {
-        $palautettava = $palautettava . $uusitaulukko[$int] . " ";
-    }
-    return $palautettava;
-}
+require_once 'apuphpt/tekstinmuokkaaja.php';
 ?>
+
+<!--Tarkistus, onko lomakkeella lähetetyllä tietyllä päivällä harjoituskertoja. Jos harjoituskertoja ei 
+ole, annetaan käyttäjälle ilmoitus, joka on kirjoitettu JavaScript-kielellä ja palataan takaisin 
+harjoituskerran muokkaamissivulle.-->
 
 <?php
 if (isset($_POST['harjpvm'])) {
@@ -39,7 +24,6 @@ if (isset($_POST['harjpvm'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,8 +35,9 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Harjoituskerran muokkaaminen</h1>
 
-        <div>
+        <!--Ohjeet poistamista varten.-->
 
+        <div>
             <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
             <h2>Ohjeet</h2>
@@ -96,6 +81,9 @@ if (isset($_POST['harjpvm'])) {
             <br>    
         </div>
 
+        <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
+        päivämäärän valintalomake aukeaa.-->
+
         <div>
             <form action="harjoituskerranmuokkaaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -115,10 +103,12 @@ if (isset($_POST['harjpvm'])) {
                     <input type="submit" value="Valitse">
                 </fieldset>
             </form>
+            <br>
         </div>
-
-        <br>
-
+      
+        <!--Jos lajiprofiili on valittu, valitaan seuraavassa päivämääränvalintalomakkeessa jonkin harjoituksen 
+        päivämäärä, jonka harjoituksille halutaan tehdä toimenpiteitä. Valinnan jälkeen palataan takaisin 
+        samalle sivulle, jolloin harjoituskerran valintalomake aukeaa.-->
 
         <?php
         if (isset($_POST['lajiprofiili'])) {
@@ -128,6 +118,7 @@ if (isset($_POST['harjpvm'])) {
             $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
             ?> 
 
+            <!--Informaatiota valitusta lajiprofiilista ja päivämääristä, joina harjoituskertoja on.-->
 
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
@@ -144,7 +135,7 @@ if (isset($_POST['harjpvm'])) {
                 <br>
             </div>
 
-
+            <!--Päivämäärälista harjoituksista, joita valitulla lajiprofiililla on.-->
 
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
@@ -153,6 +144,8 @@ if (isset($_POST['harjpvm'])) {
                 <?php }
                 ?>
             </datalist>
+
+            <!--Päivämäärän valintalomake-->
 
             <div> 
                 <form action="harjoituskerranmuokkaaminen.php" id="ajanvalinta" method="POST">
@@ -176,21 +169,24 @@ if (isset($_POST['harjpvm'])) {
                         <input type="submit" value="Valitse">
 
                     </fieldset>
-
                 </form>
-
             </div>
             <?php
         }
         ?>
 
+        <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan harjoituskertaa 
+        ei ole valittu, aukeaa harjoituskerran valintalomake. 
+        Kun lomake lähetetään palataan takaisin samalle sivulle ja harjoituskeran 
+        muokkauslomake aukeaa.-->
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
 
-            $arviot = $kyselyita->haeHarjoituskerratJaNiidenHarjalku($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
+            $harjoituskerrat = $kyselyita->haeHarjoituskerratJaNiidenHarjalku($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
             ?>
 
+            <!--Informaatiota valitusta lajiprofiilista ja päivämäärästä.-->
 
             <div>
                 <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
@@ -200,9 +196,10 @@ if (isset($_POST['harjpvm'])) {
                     $date = date_create($_POST['harjpvm']);
                     echo date_format($date, "d.m.Y") . '<br>';
                     ?></h2>
-
                 <br>
             </div>
+
+            <!--Harjoituskerran valintalomake-->
 
             <div> 
                 <form action="harjoituskerranmuokkaaminen.php" id="harjoituksenvalinta" method="POST">
@@ -220,14 +217,14 @@ if (isset($_POST['harjpvm'])) {
                         <input type="hidden" name="laji" id="laji" 
                                value="<?php echo $_POST['laji'] ?>">
 
-                        <?php for ($int = 0; $int < count($arviot); $int++) { ?>
+                        <?php for ($int = 0; $int < count($harjoituskerrat); $int++) { ?>
 
                             <input type="radio" name="harjoituskerta" id="harjoituskerta"
-                                   value="<?php echo $arviot[$int][0]; ?>" required> 
-                            <span id="tummennettu">Alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
-                            <span id="tummennettu">Kesto: </span> <?php echo $arviot[$int][1] . " " ?>
-                            <span id="tummennettu">Vaikeusaste: </span> <?php echo $arviot[$int][2] . " " ?>
-                            <span id="tummennettu">Kuvaus: </span><?php echo teeTeksti($arviot[$int][3]) . " " ?>
+                                   value="<?php echo $harjoituskerrat[$int][0]; ?>" required> 
+                            <span id="tummennettu">Alkamisaika: </span> <?php echo substr($harjoituskerrat[$int][0], 0, 5) . " " ?>
+                            <span id="tummennettu">Kesto: </span> <?php echo $harjoituskerrat[$int][1] . " " ?>
+                            <span id="tummennettu">Vaikeusaste: </span> <?php echo $harjoituskerrat[$int][2] . " " ?>
+                            <span id="tummennettu">Kuvaus: </span><?php echo teeTeksti($harjoituskerrat[$int][3]) . " " ?>
 
                             <br>    
                             <br>
@@ -236,18 +233,17 @@ if (isset($_POST['harjpvm'])) {
 
                         <input type="submit" name="harjoitusaikavalittu" value="Valitse harjoitus">
 
-
-
                     </fieldset>
-
                 </form>
-
             </div>
-
-
             <?php
         }
         ?>
+
+        <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan harjoituskerta
+        on valittu, aukeaa harjoituskerran muokkauslomake. 
+        Kun lomake lähetetään siirrytään sivulle, joka muokkaa tietokannassa olevaa 
+        harjoituskertaa.-->
 
 
         <?php
@@ -259,6 +255,8 @@ if (isset($_POST['harjpvm'])) {
             $date = date_create($_POST['harjpvm']);
             ?>
 
+            <!--Informaatiota valitusta lajiprofiilista, päivämäärästä ja harjoituskerran alkamisajasta.-->
+
             <div>   
                 <h2>Lajiprofiili: <?php echo $_POST['laji'] ?></h2>
                 <h2>Harjoituspäivä: <?php echo date_format($date, "d.m.Y") ?></h2>
@@ -266,6 +264,8 @@ if (isset($_POST['harjpvm'])) {
                 <br>
             </div>
 
+            <!--Harjoituskerran muokkauslomake. Harjoituskerran aiempi sisältö ilmestyy aluksi lomakkeen 
+            kenttiin.-->
 
             <div> 
                 <form action="apuphpt/muokkaaharjoituskertaa.php" id="harjoituskerranmuokkaaminen" method="POST">
@@ -300,15 +300,11 @@ if (isset($_POST['harjpvm'])) {
                                    required><?php echo $harjoituskerransisalto[0][2]; ?></textarea>
                         <br>
 
-
                         <input type="submit" name="muokkaa" value="Muokkaa">
 
                     </fieldset>
-
                 </form>
-
             </div>
-
         <?php } ?>
 
         <?php require 'apuphpt/footer.php'; ?>

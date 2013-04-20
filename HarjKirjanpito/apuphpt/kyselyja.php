@@ -47,7 +47,7 @@ class Kyselyja {
 
     public function haeKaikkiLajinimet() {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji ORDER BY lajinimi');
-      
+
         if ($kysely->execute()) {
             return $this->palautaTaulukko($kysely);
         }
@@ -56,7 +56,7 @@ class Kyselyja {
 
     public function haeKayttajanLajitLajinimella($kayttajatunnus) {
         $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
-       
+
         if ($kysely->execute(array($kayttajatunnus))) {
             return $this->palautaTaulukko($kysely);
         }
@@ -65,7 +65,7 @@ class Kyselyja {
 
     public function haeLajiIndeksi($lajinimi) {
         $kysely = $this->valmistelut('SELECT lajitunnus FROM laji WHERE lajinimi = ?');
-        
+
         if ($kysely->execute(array($lajinimi))) {
             return $kysely->fetchObject();
         }
@@ -75,7 +75,7 @@ class Kyselyja {
     public function lisaaLajiprofiili($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara) {
         $kysely = $this->valmistelut('INSERT INTO lajiprofiili 
             (hetu, lajitunnus, tavoitekuvaus, tavoiteharjmaara) VALUES (?, ?, ?, ?)');
-        
+
         if ($kysely->execute(array($hetu, $lajitunnus, $tavoitekuvaus, $tavoiteharjmaara))) {
             return true;
         }
@@ -84,7 +84,7 @@ class Kyselyja {
 
     public function poistaLajiprofiili($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('DELETE FROM lajiprofiili WHERE hetu = ? and lajitunnus = ?');
-        
+
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             return true;
         }
@@ -104,6 +104,7 @@ class Kyselyja {
     public function muokkaaLajiprofiilia($tavoitekuvaus, $tavoiteharjmaara, $hetu, $lajitunnus) {
         $kysely = $this->valmistelut('UPDATE lajiprofiili SET tavoitekuvaus = ?, tavoiteharjmaara = ? 
             WHERE hetu = ? AND lajitunnus = ?');
+       
         if ($kysely->execute(array($tavoitekuvaus, $tavoiteharjmaara, $hetu, $lajitunnus))) {
             return true;
         }
@@ -114,7 +115,7 @@ class Kyselyja {
 
         $kysely = $this->valmistelut('INSERT INTO harjoituskerta (hetu,
             lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
-	VALUES (?, ?, ?, ?, ?, ?, ?)');
+	    VALUES (?, ?, ?, ?, ?, ?, ?)');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku,
                     $harjkesto, $vaikeusaste, $harjkuvaus))) {
@@ -136,7 +137,7 @@ class Kyselyja {
     public function haeHarjoituskerranPaivamaarat($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? 
             AND lajitunnus = ? ORDER BY harjpvm');
-        
+
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             return $this->palautaTaulukko($kysely);
         }
@@ -146,7 +147,7 @@ class Kyselyja {
     public function haeHarjoituskerranPaivamaaratIndeksein($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM harjoituskerta WHERE hetu = ? 
             AND lajitunnus = ? ORDER BY harjpvm');
-        
+
         if ($kysely->execute(array($hetu, $lajitunnus))) {
             $sisalto = array();
             while ($rivi = $kysely->fetch()) {
@@ -191,7 +192,7 @@ class Kyselyja {
         $kysely = $this->valmistelut('UPDATE harjoituskerta SET harjkesto = ?, vaikeusaste = ? , 
             harjkuvaus = ?
             WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ?');
-        
+
         if ($kysely->execute(array($harjkesto, $vaikeusaste, $harjkuvaus,
                     $hetu, $lajitunnus, $harjpvm, $harjalku))) {
             return true;
@@ -202,8 +203,8 @@ class Kyselyja {
     public function lisaaKayttajalleArvio($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
 
         $kysely = $this->valmistelut('INSERT INTO arvio (hetu, lajitunnus, 
-harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio) VALUES (?, ?,
-?, ?, ?, ?, ?, ?)');
+                  harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio) VALUES (?, ?,
+                  ?, ?, ?, ?, ?, ?)');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana,
                     $tyytyvaisyysarvo, $sanallinenarvio))) {
@@ -226,6 +227,7 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
     public function haeArvionPaivamaarat($hetu, $lajitunnus) {
         $kysely = $this->valmistelut('SELECT DISTINCT harjpvm FROM arvio WHERE hetu = ? 
             AND lajitunnus = ? AND arvioijahetu = ? ORDER BY harjpvm');
+
         if ($kysely->execute(array($hetu, $lajitunnus, $hetu))) {
             return $this->palautaTaulukko($kysely);
         }
@@ -258,6 +260,7 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
         $kysely = $this->valmistelut('UPDATE arvio SET yleisarvosana = ?, tyytyvaisyysarvo = ? , 
             sanallinenarvio = ?
             WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ? AND arvioijahetu = ?');
+
         if ($kysely->execute(array($yleisarvosana, $tyytyvaisyysarvo,
                     $sanallinenarvio,
                     $hetu, $lajitunnus, $harjpvm, $harjalku, $hetu))) {
@@ -265,8 +268,8 @@ harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvi
         }
         return false;
     }
-
-}
+    
+    }
 
 require 'palvelinasetukset.php';
 

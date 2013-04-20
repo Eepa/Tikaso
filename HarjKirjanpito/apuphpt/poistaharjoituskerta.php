@@ -21,19 +21,19 @@ varmista_kirjautuminen();
         <input type="hidden" name="harjoituskerta" id="harjoituskerta"
                value="<?php echo $_POST['harjoituskerta'] ?>">
     </form>
-    
+
     <!--Poiston vahvistuskysely, joka suoritetaan heti sivulle tultaessa.-->
 
     <script language="JavaScript">
-                                                             
+                                                                     
         function vahvistus(){
             var r = confirm("Poistaminen poistaa myös harjoituskertaan liittyvät arviot. Haluatko jatkaa?");
             if(r){
                 document.forms['harjoituskerta'].submit();
             } else if(!r){
-                                                          
+                                                                  
                 window.location.href = '../harjoituskerranpoistaminen.php';
-                                             
+                                                     
             }
         }
         vahvistus();                 
@@ -42,7 +42,7 @@ varmista_kirjautuminen();
 <?php }
 ?>
 
-    <!--Varsinainen harjoituskerran poistava koodi.-->
+<!--Varsinainen harjoituskerran poistava koodi.-->
 
 <?php
 if (!isset($_POST['poista'])) {

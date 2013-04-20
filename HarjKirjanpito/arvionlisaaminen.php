@@ -1,32 +1,18 @@
+<!-- Sivu arvion lisäämistä varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 
-function teeTeksti($alkup) {
-
-    $taulukko = explode(" ", $alkup, 16);
-
-    $palautettava = "";
-    $uusitaulukko = array();
-    if (count($taulukko) >= 16) {
-
-        for ($int = 0; $int <= 15; $int++) {
-            if ($int == 15) {
-                $uusitaulukko[$int] = "...";
-            } else {
-                $uusitaulukko[$int] = $taulukko[$int];
-            }
-        }
-    } else {
-        $uusitaulukko = $taulukko;
-    }
-
-    for ($int = 0; $int < count($uusitaulukko); $int++) {
-        $palautettava = $palautettava . $uusitaulukko[$int] . " ";
-    }
-    return $palautettava;
-}
+require_once 'apuphpt/tekstinmuokkaaja.php';
 ?>
+
+<!--Tarkistus, onko lomakkeella lähetetyllä tietyllä päivällä harjoituskertoja. Jos harjoituskertoja ei 
+ole, annetaan käyttäjälle ilmoitus, joka on kirjoitettu JavaScript-kielellä ja palataan takaisin 
+harjoituskerran muokkaamissivulle.-->
+
 
 <?php
 if (isset($_POST['harjpvm'])) {
@@ -50,8 +36,9 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion lisääminen</h1>
 
-        <div>
+        <!--Ohjeet lisäämistä varten.-->
 
+        <div>
             <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
             <h2>Ohjeet</h2>
@@ -92,6 +79,9 @@ if (isset($_POST['harjpvm'])) {
             <br>    
         </div>
 
+        <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
+       päivämäärän valintalomake aukeaa.-->
+
         <div>
             <form action="arvionlisaaminen.php" id="lajiprofiilinvalinta" method="POST">
                 <fieldset> 
@@ -110,10 +100,13 @@ if (isset($_POST['harjpvm'])) {
                     <br>
                     <input type="submit" value="Valitse">
                 </fieldset>
+                <br>
             </form>
         </div>
 
-        <br>
+        <!--Jos lajiprofiili on valittu, valitaan seuraavassa päivämääränvalintalomakkeessa jonkin harjoituksen 
+        päivämäärä, jonka harjoituksille halutaan lisätä arvio. Valinnan jälkeen palataan takaisin 
+        samalle sivulle, jolloin harjoituskerran valintalomake aukeaa.-->
 
         <?php
         if (isset($_POST['lajiprofiili'])) {
@@ -122,6 +115,8 @@ if (isset($_POST['harjpvm'])) {
 
             $paivamaarat = $kyselyita->haeHarjoituskerranPaivamaarat($sessio->hetu, $laji->lajitunnus);
             ?> 
+
+            <!--Informaatiota valitusta lajiprofiilista ja päivämääristä, joina harjoituskertoja on.-->   
 
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
@@ -138,6 +133,8 @@ if (isset($_POST['harjpvm'])) {
                 <br>
             </div>
 
+            <!--Päivämäärälista arvioista, joita valitulla lajiprofiililla on.-->
+
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
                     <option value="<?php echo $paivamaarat[$x][0] ?>">
@@ -145,6 +142,8 @@ if (isset($_POST['harjpvm'])) {
                 <?php }
                 ?>
             </datalist>
+
+            <!--Päivämäärän valintalomake-->
 
             <div> 
                 <form action="arvionlisaaminen.php" id="ajanvalinta" method="POST">
@@ -168,14 +167,16 @@ if (isset($_POST['harjpvm'])) {
                         <input type="submit" value="Valitse">
 
                     </fieldset>
-
                 </form>
-
             </div>
             <?php
         }
         ?>
 
+        <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan harjoituskertaa 
+        ei ole valittu, aukeaa harjoituskerran valintalomake. 
+        Kun lomake lähetetään palataan takaisin samalle sivulle ja harjoituskeran 
+        muokkauslomake aukeaa.-->
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
@@ -183,6 +184,7 @@ if (isset($_POST['harjpvm'])) {
             $arviot = $kyselyita->harjoituksetJoillaEiVielaArviota($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
             ?> 
 
+            <!--Informaatiota valitusta lajiprofiilista ja päivämäärästä.-->
 
             <div>
                 <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
@@ -192,9 +194,10 @@ if (isset($_POST['harjpvm'])) {
                     $date = date_create($_POST['harjpvm']);
                     echo date_format($date, "d.m.Y") . '<br>';
                     ?></h2>
-
                 <br>
             </div>
+
+            <!--Harjoituskerran valintalomake-->
 
             <div> 
                 <form action="arvionlisaaminen.php" id="harjoituksenvalinta" method="POST">
@@ -227,16 +230,17 @@ if (isset($_POST['harjpvm'])) {
 
                         <input type="submit" name="harjoitusaikavalittu" value="Valitse harjoitus">
 
-
-
                     </fieldset>
-
                 </form>
-
             </div>
             <?php
         }
         ?>
+
+        <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan harjoituskerta
+        on valittu, aukeaa arvion lisäyslomake. 
+        Kun lomake lähetetään siirrytään sivulle, joka lisää tietokantaan uuden arvion 
+        valitulle harjoituskerralle.-->
 
 
         <?php
@@ -291,11 +295,8 @@ if (isset($_POST['harjpvm'])) {
                         <input type="submit" name="lisaa" value="Lisää arvio">
 
                     </fieldset>
-
                 </form>
-
             </div>
-
         <?php } ?>
 
         <?php require 'apuphpt/footer.php'; ?>

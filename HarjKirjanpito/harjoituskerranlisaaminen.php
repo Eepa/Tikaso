@@ -1,3 +1,7 @@
+<!-- Sivu harjoituskerran lisäämistä varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
@@ -14,13 +18,17 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Harjoituskerran lisääminen</h1>
 
+        <!--Ohjeet lisäämistä varten-->
+
         <div>
+
+            <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitLajinimella($sessio->hetu); ?>
+
             <h2>Ohjeet</h2>
 
             <ol>
                 <li>Valitse kohdasta "Lajiprofiilin valinta" laji, johon haluat lisätä harjoituskerran
                     ja paina nappulaa "Valitse".</li>
-
 
                 <br>
 
@@ -48,13 +56,10 @@ varmista_kirjautuminen();
             </ol>
 
             <br>    
-
-
         </div>
 
-        <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitLajinimella($sessio->hetu); ?>
-
-
+        <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
+        lisäyslomake aukeaa.-->
 
         <div>
             <form action="harjoituskerranlisaaminen.php" id="lajiprofiilinvalinta" method="POST">
@@ -79,14 +84,17 @@ varmista_kirjautuminen();
 
         <br>
 
+        <!--Harjoituskerran lisäämislomake, joka tulee näkyviin, jos lajiprofiili, johon 
+        harjoituskerta lisätään, on valittu. Lomakkeen lähetyksen jälkeen uusi harjoituskerta 
+        on lisätty tietokantaan.-->
+
         <?php
         if (isset($_POST['lajiprofiili'])) {
             $lajinimi = $_POST['lajiprofiili'];
             $laji = $kyselyita->haeLajiIndeksi($lajinimi);
             ?>
             <div>
-                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
-                <br>
+                <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2> <br>
             </div>
 
             <div> 
@@ -132,9 +140,7 @@ varmista_kirjautuminen();
                         <input type="submit" value="Lisää">
 
                     </fieldset>
-
                 </form>
-
             </div>
             <?php
         }
