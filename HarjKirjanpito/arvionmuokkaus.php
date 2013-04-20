@@ -1,9 +1,18 @@
+<!-- Sivu arvion muokkaamista varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 
 require_once 'apuphpt/tekstinmuokkaaja.php';
 ?>
+
+<!--Tarkistus, onko lomakkeella lähetetyllä tietyllä päivällä harjoituskertoja. Jos harjoituskertoja ei 
+ole, annetaan käyttäjälle ilmoitus, joka on kirjoitettu JavaScript-kielellä ja palataan takaisin 
+arvion muokkaamissivulle.-->
+
 
 <?php
 if (isset($_POST['harjpvm'])) {
@@ -27,8 +36,9 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion muokkaaminen</h1>
 
-        <div>
+        <!--Ohjeet muokkaamista varten-->
 
+        <div>
             <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
             <h2>Ohjeet</h2>
@@ -44,7 +54,9 @@ if (isset($_POST['harjpvm'])) {
                     tai kirjoita päivä muodossa vvvv-kk-pp. Paina lopuksi "Valitse"-nappulaa.
 
                 </li>
+
                 <br>
+
                 <li>Valitse avautuvasta listasta muokattava arvio ja paina sitten 
                     "Valitse arvio"-nappia siirtyäksesi arvion muokkaukseen.</li>
 
@@ -54,8 +66,10 @@ if (isset($_POST['harjpvm'])) {
                     Muokkaa tämän jälkeen arviota haluamallasi tavalla ja paina lopuksi 
                     "Muokkaa"-nappia tallentaaksesi muutokset. <br> Arvion alkuperäinen sisältö 
                     näkyy aluksi muokkauslaatikoissa.
+
                     <br>
                     <br>
+
                     <ul>
                         <li>Harjoituksen yleisarvosana: Anna harjoituksen yleisarvosana väliltä 1-10.</li>
 
@@ -68,8 +82,10 @@ if (isset($_POST['harjpvm'])) {
             </ol>
 
             <br>    
-
         </div>
+
+        <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
+       päivämäärän valintalomake aukeaa.-->
 
         <div>
             <form action="arvionmuokkaus.php" id="lajiprofiilinvalinta" method="POST">
@@ -87,13 +103,17 @@ if (isset($_POST['harjpvm'])) {
                     </select>
 
                     <br>
+
                     <input type="submit" value="Valitse">
                 </fieldset>
             </form>
+            <br>
         </div>
 
-        <br>
 
+        <!--Jos lajiprofiili on valittu, valitaan seuraavassa päivämääränvalintalomakkeessa jonkin harjoituksen 
+        päivämäärä, jonka harjoituksien arviota halutaan muokata. Valinnan jälkeen palataan takaisin 
+        samalle sivulle, jolloin muokattavan arvion valintalomake aukeaa.-->
 
         <?php
         if (isset($_POST['lajiprofiili'])) {
@@ -103,6 +123,7 @@ if (isset($_POST['harjpvm'])) {
             $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
             ?> 
 
+            <!--Informaatiota valitusta lajiprofiilista ja päivämääristä, joina harjoituskertoja on.-->
 
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
@@ -119,6 +140,8 @@ if (isset($_POST['harjpvm'])) {
                 <br>
             </div>
 
+            <!--Päivämäärälista arvioista, joita valitulla lajiprofiililla on.-->
+
             <datalist name="paivamaaralista" id="paivamaaralista">
                 <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
                     <option value="<?php echo $paivamaarat[$x][0] ?>">
@@ -126,6 +149,8 @@ if (isset($_POST['harjpvm'])) {
                 <?php }
                 ?>
             </datalist>
+
+            <!--Päivämäärän valintalomake-->
 
             <div> 
                 <form action="arvionmuokkaus.php" id="ajanvalinta" method="POST">
@@ -149,14 +174,16 @@ if (isset($_POST['harjpvm'])) {
                         <input type="submit" value="Valitse">
 
                     </fieldset>
-
                 </form>
-
             </div>
             <?php
         }
         ?>
 
+        <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan arviota 
+        ei ole valittu, aukeaa muokattavan arvion valintalomake. 
+        Kun lomake lähetetään palataan takaisin samalle sivulle ja arvion 
+        muokkauslomake aukeaa.-->
 
 
         <?php
@@ -164,6 +191,8 @@ if (isset($_POST['harjpvm'])) {
 
             $arviot = $kyselyita->haeArviotTiettynaPaivanaTietylleLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
             ?> 
+
+            <!--Informaatiota valitusta lajiprofiilista ja päivämäärästä.-->
 
             <div>
                 <h2> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
@@ -175,9 +204,9 @@ if (isset($_POST['harjpvm'])) {
                     ?></h2>
 
                 <br>
-
             </div>
 
+            <!--Arvion valintalomake-->
 
             <div> 
                 <form action="arvionmuokkaus.php" id="arvionvalinta" method="POST">
@@ -198,10 +227,11 @@ if (isset($_POST['harjpvm'])) {
                         <?php for ($int = 0; $int < count($arviot); $int++) { ?>
 
                             <input type="radio" name="arvio" id="arvio"
-                                   value="<?php
-                    echo $arviot[$int][0] . "§" .
-                    $arviot[$int][1] . "§" . $arviot[$int][2] . "§" . $arviot[$int][3];
-                            ?>" required> 
+                                   value="
+                                   <?php
+                                   echo $arviot[$int][0] . "§" .
+                                   $arviot[$int][1] . "§" . $arviot[$int][2] . "§" . $arviot[$int][3];
+                                   ?>" required> 
                             <span id="tummennettu">Harjoituksen alkamisaika: </span> <?php echo substr($arviot[$int][0], 0, 5) . " " ?>
                             <span id="tummennettu">Yleisarvosana: </span> <?php echo $arviot[$int][1] . " " ?>
                             <span id="tummennettu">Tyytyväisyysarvo: </span> <?php echo $arviot[$int][2] . " " ?>
@@ -212,18 +242,25 @@ if (isset($_POST['harjpvm'])) {
                         <?php } ?>
 
                         <input type="submit" name="arviovalittu" value="Valitse arvio">
-                    </fieldset>
 
+                    </fieldset>
                 </form>
             </div>
             <?php
         }
         ?>
 
+      <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan arvio
+      on valittu, aukeaa arvion lisäyslomake. 
+      Kun lomake lähetetään siirrytään sivulle, joka muokkaa valitun arvion 
+      tietoja tietokannassa.-->
+
         <?php if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && isset($_POST['arvio'])) {
             ?>
 
             <?php $arvio = explode("§", $_POST['arvio']); ?>
+      
+            <!--Tietoa valitusta harjoituskerrasta-->
 
             <div>          
                 <h2>Lajiprofiiliksi valittu: <?php echo $_POST['laji']; ?></h2>
@@ -231,11 +268,14 @@ if (isset($_POST['harjpvm'])) {
                     <?php
                     $date = date_create($_POST['harjpvm']);
                     echo date_format($date, "d.m.Y") . '<br>';
-                    ?></h2>
+                    ?>
+                </h2>
 
-                <h2>Harjoituksen alkamisaika: <?php echo substr($arvio[0], 0, 5); ?></h2>
+                <h2>Harjoituksen alkamisaika: <?php echo substr($arvio[0], 0, -3); ?></h2>
                 <br>
             </div>
+            
+            <!--Arvion muokkauslomake. Lomakkeelle ilmestyy aluksi arvion aikaisemmat tiedot.-->
 
             <div> 
                 <form action="apuphpt/muokkaaarviota.php" id="arvionmuokkaaminen" method="POST">
@@ -273,11 +313,8 @@ if (isset($_POST['harjpvm'])) {
                         <input type="submit" name="muokkaa" value="Muokkaa">
 
                     </fieldset>
-
                 </form>
-
             </div>
-
         <?php } ?>
 
         <?php require 'apuphpt/footer.php'; ?>

@@ -1,9 +1,17 @@
+<!-- Sivu arvion poistamista varten. Sivulle pääsee vain, jos järjestelmään on 
+kirjautunut. Sivun tyylistä vastaa tyylitiedosto tyylit.css. Sivuun liittyvät myös linkkilista.php ja footer.php, 
+jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
+
 <?php
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 
 require_once 'apuphpt/tekstinmuokkaaja.php';
 ?>
+
+<!--Tarkistus, onko lomakkeella lähetetyllä tietyllä päivällä harjoituskertoja. Jos harjoituskertoja ei 
+ole, annetaan käyttäjälle ilmoitus, joka on kirjoitettu JavaScript-kielellä ja palataan takaisin 
+arvion positamissivulle.-->
 
 <?php
 if (isset($_POST['harjpvm'])) {
@@ -27,8 +35,9 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion poistaminen</h1>
 
-        <div>
+        <!--Ohjeet lisäämistä varten-->
 
+        <div>
             <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
 
             <h2>Ohjeet</h2>
@@ -44,17 +53,23 @@ if (isset($_POST['harjpvm'])) {
                     tai kirjoita päivä muodossa vvvv-kk-pp. Paina lopuksi "Valitse"-nappulaa.
 
                 </li>
+
                 <br>
+
                 <li>Valitse avautuvasta listasta poistettava arvio ja paina sitten 
-                    "Poista arvio"-nappia poistaaksesi valitun arvion.</li>
+                    "Poista arvio"-nappia poistaaksesi valitun arvion.
+                </li>
 
-                <br>    
-
+                <br>
                 </div>
+
+                <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
+                päivämäärän valintalomake aukeaa.-->
+
                 <div>
                     <form action="arvionpoistaminen.php" id="lajiprofiilinvalinta" method="POST">
-                        <fieldset> 
 
+                        <fieldset> 
                             <h3>Lajiprofiilin valinta:</h3>
                             <label for="lajiprofiili">Lajiprofiilin valinta:</label>
 
@@ -70,9 +85,12 @@ if (isset($_POST['harjpvm'])) {
                             <input type="submit" value="Valitse">
                         </fieldset>
                     </form>
+                    <br>
                 </div>
 
-                <br>
+                <!--Jos lajiprofiili on valittu, valitaan seuraavassa päivämääränvalintalomakkeessa jonkin harjoituksen 
+                päivämäärä, jonka harjoituksilta halutaan poistaa arvio. Valinnan jälkeen palataan takaisin 
+                samalle sivulle, jolloin poistettavan arvion valintalomake aukeaa.-->
 
                 <?php
                 if (isset($_POST['lajiprofiili'])) {
@@ -82,6 +100,7 @@ if (isset($_POST['harjpvm'])) {
                     $paivamaarat = $kyselyita->haeArvionPaivamaarat($sessio->hetu, $laji->lajitunnus);
                     ?> 
 
+                    <!--Informaatiota valitusta lajiprofiilista ja päivämääristä, joina harjoituskertoja on.-->
 
                     <div>
                         <h2> Lajiprofiiliksi valittu: <?php echo $_POST['lajiprofiili'] ?></h2>
@@ -98,6 +117,8 @@ if (isset($_POST['harjpvm'])) {
                         <br>
                     </div>
 
+                    <!--Päivämäärälista arvioista, joita valitulla lajiprofiililla on.-->
+
                     <datalist name="paivamaaralista" id="paivamaaralista">
                         <?php for ($x = 0; $x < count($paivamaarat); $x++) { ?>
                             <option value="<?php echo $paivamaarat[$x][0] ?>">
@@ -105,6 +126,8 @@ if (isset($_POST['harjpvm'])) {
                         <?php }
                         ?>
                     </datalist>
+
+                    <!--Päivämäärän valintalomake-->
 
                     <div> 
                         <form action="arvionpoistaminen.php" id="ajanvalinta" method="POST">
@@ -128,14 +151,15 @@ if (isset($_POST['harjpvm'])) {
                                 <input type="submit" value="Valitse">
 
                             </fieldset>
-
                         </form>
-
                     </div>
                     <?php
                 }
                 ?>
 
+                <!--Jos päivämäärä ja lajitunnus on valittu, aukeaa poistettavan arvion valintalomake. 
+                Kun lomake lähetetään siirrytään sivulle, jolla valittu arvio poistetaan 
+                tietokannasta.-->
 
 
                 <?php
@@ -144,6 +168,8 @@ if (isset($_POST['harjpvm'])) {
                     $arviot = $kyselyita->haeArviotTiettynaPaivanaTietylleLajille($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm']);
                     ?> 
 
+                    <!--Informaatiota valitusta lajiprofiilista ja päivämäärästä.-->
+
                     <div>
                         <h2> Lajiprofiiliksi valittu: <?php echo $_POST['laji'] ?></h2>
 
@@ -151,11 +177,13 @@ if (isset($_POST['harjpvm'])) {
                             <?php
                             $date = date_create($_POST['harjpvm']);
                             echo date_format($date, "d.m.Y") . '<br>';
-                            ?></h2>
+                            ?>
+                        </h2>
 
                         <br>
-
                     </div>
+
+                    <!--Poistettavan arvion valintalomake-->
 
                     <div> 
                         <form action="apuphpt/poistaarvio.php" id="arvionpoistaminen" method="POST">
@@ -188,14 +216,11 @@ if (isset($_POST['harjpvm'])) {
 
                                 <input type="submit" name="poistettuarvio" value="Poista arvio">
                             </fieldset>
-
                         </form>
                     </div>
-
                     <?php
                 }
                 ?>
-
 
                 <?php require 'apuphpt/footer.php'; ?>
                 </body>

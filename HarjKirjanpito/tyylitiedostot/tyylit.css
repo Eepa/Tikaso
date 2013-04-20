@@ -16,10 +16,8 @@ body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: #25280D;
 
-    /*margin-bottom:100px;*/
     margin-right:50px;
     margin-left:50px;
-    
 }
 
 .kirjautuminenfieldset{
@@ -28,26 +26,6 @@ body {
     border:3px solid gray;
     margin:0px;
 }
-/*
-#salasana{
-    float: right;
-    margin: 4px;
-}
-
-#kayttajatunnus{
-    float: right;
-    margin: 4px;
-}
-
-.kirj{
-    float:left;
-    margin: 4px;
-}
-
-.kirjnappula{
-    float: left;
-    margin: 7px;
-}*/
 
 header {
     background-color:#D1D5B7 ;
@@ -98,9 +76,7 @@ textarea {
     font-size: 13px;
     text-align: left;
 
-    /*margin-top: 6px;*/
     margin-left: 26px;
-
 }
 
 #virhe {
@@ -108,9 +84,7 @@ textarea {
 }
 
 a:link {
-
     color: #667305;
-
 }
 
 a:visited {
@@ -125,16 +99,12 @@ a:visited {
     padding:0;
     margin-left: 50px;
     margin-top: 23px;
-
 }
 
-#navbar li 
-{
+#navbar li {
     list-style: none;
     float: left; 
     position:relative;
-
-    /*background-color:#D1D5B7;*/
 }
 
 #navbar li a {
@@ -147,7 +117,6 @@ a:visited {
     font-weight: bold; }
 
 #navbar li a:hover {
-    /*color: #999;*/
     background-color:#98bf21;
 }
 
@@ -164,7 +133,6 @@ a:visited {
     position: absolute;
     display:list-item;
     left: 0;
-    /*width: 100%;*/
     margin: 0;
     padding: 0;
     background-color: #D1D5B7; 

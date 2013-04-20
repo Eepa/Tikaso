@@ -11,7 +11,7 @@ require_once 'apuphpt/tekstinmuokkaaja.php';
 
 <!--Tarkistus, onko lomakkeella lähetetyllä tietyllä päivällä harjoituskertoja. Jos harjoituskertoja ei 
 ole, annetaan käyttäjälle ilmoitus, joka on kirjoitettu JavaScript-kielellä ja palataan takaisin 
-harjoituskerran muokkaamissivulle.-->
+arvion lisäämissivulle.-->
 
 
 <?php
@@ -36,7 +36,7 @@ if (isset($_POST['harjpvm'])) {
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Arvion lisääminen</h1>
 
-        <!--Ohjeet lisäämistä varten.-->
+        <!--Ohjeet lisäämistä varten-->
 
         <div>
             <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanHarjoituskertaLajit($sessio->hetu); ?>
@@ -175,8 +175,8 @@ if (isset($_POST['harjpvm'])) {
 
         <!--Jos päivämäärä ja lajitunnus on valittu ja samaan aikaan harjoituskertaa 
         ei ole valittu, aukeaa harjoituskerran valintalomake. 
-        Kun lomake lähetetään palataan takaisin samalle sivulle ja harjoituskeran 
-        muokkauslomake aukeaa.-->
+        Kun lomake lähetetään palataan takaisin samalle sivulle ja arvion 
+        lisäyslomake aukeaa.-->
 
         <?php
         if (isset($_POST['harjpvm']) && isset($_POST['lajitunnus']) && !isset($_POST['harjoituskerta'])) {
@@ -251,6 +251,8 @@ if (isset($_POST['harjpvm'])) {
             $harjoituskerta = $kyselyita->haeHarjoituskerta($sessio->hetu, $_POST['lajitunnus'], $_POST['harjpvm'], $_POST['harjoituskerta']);
             ?>
 
+            <!--Tietoa valitusta harjoituskerrasta-->
+
             <div>   
                 <h2>Lajiprofiili: <?php echo $_POST['laji'] ?></h2>
                 <h2>Harjoituspäivä: <?php echo date_format($date, "d.m.Y") ?></h2>
@@ -258,6 +260,8 @@ if (isset($_POST['harjpvm'])) {
                 <h2>Kuvaus: <?php echo teeTeksti($harjoituskerta[0][2]); ?></h2>
                 <br>
             </div>
+            
+            <!--Arvion lisäyslomake-->
 
             <div> 
                 <form action="apuphpt/lisaaarvio.php" id="arvionlisaaminen" method="POST">

@@ -7,6 +7,7 @@ jotka määrittelevät sivulle navigointipalkin ja alalaidan. -->
 require_once 'tarkastus.php';
 varmista_kirjautuminen();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +17,6 @@ varmista_kirjautuminen();
     </head>
     <body>
         <?php require 'linkkilista.php'; ?>
-
         <h1 class="otsikko">Lajiprofiili</h1>
 
         <div>
