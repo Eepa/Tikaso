@@ -75,7 +75,6 @@ textarea {
     font-style: italic;
     font-size: 13px;
     text-align: left;
-
     margin-left: 26px;
 }
 
@@ -114,7 +113,8 @@ a:visited {
     text-transform: uppercase;
     text-decoration: none; 
     color: #000;
-    font-weight: bold; }
+    font-weight: bold; 
+}
 
 #navbar li a:hover {
     background-color:#98bf21;

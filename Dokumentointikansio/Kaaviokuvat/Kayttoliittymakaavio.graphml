@@ -15,13 +15,12 @@
   <graph edgedefault="directed" id="G">
     <data key="d7"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="55.0" width="71.357421875" x="200.98319382440476" y="-130.20588235294116"/>
+          <y:Geometry height="55.0" width="71.357421875" x="318.3414000496032" y="-130.20588235294116"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#99FF99" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="61.357421875" x="5.0" y="4.0">Aloitussivu</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#99FF99" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="68.67578125" x="1.3408203125" y="4.0">Aloitussivu</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="48.02734375" x="2.0" y="30.701171875">Julkinen<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -36,13 +35,12 @@
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="55.0" width="94.689453125" x="189.31717819940476" y="-22.70588235294116"/>
+          <y:Geometry height="55.0" width="94.689453125" x="306.6753844246032" y="-4.5467436974789734"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#99FF99" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="84.689453125" x="5.0" y="4.0">Kirjautumissivu</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#99FF99" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="94.0234375" x="0.3330078125" y="4.0">Kirjautumissivu</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="48.02734375" x="2.0" y="30.701171875">Julkinen<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -57,13 +55,12 @@
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="53.3515625" x="223.32382192460318" y="175.0"/>
+          <y:Geometry height="40.0" width="53.3515625" x="340.6822203621032" y="175.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="43.3515625" x="5.0" y="10.6494140625">Etusivu<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="47.341796875" x="3.0048828125" y="10.6494140625">Etusivu<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -77,13 +74,12 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
           <y:Geometry height="40.0" width="100.6953125" x="566.2344866071429" y="82.5"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="90.6953125" x="5.0" y="10.6494140625">Linkkilista-palkki<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="100.703125" x="-0.00390625" y="10.6494140625">Linkkilista-palkki<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -97,13 +93,12 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="64.021484375" x="584.5714006696429" y="175.0"/>
+          <y:Geometry height="40.0" width="64.021484375" x="584.5714006696429" y="393.2757352941176"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="54.021484375" x="5.0" y="10.6494140625">Lajiprofiili<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="61.333984375" x="1.34375" y="10.6494140625">Lajiprofiili<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -117,13 +112,12 @@
       </data>
     </node>
     <node id="n5">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="155.404296875" x="538.8799944196429" y="260.0"/>
+          <y:Geometry height="40.0" width="155.404296875" x="538.8799944196429" y="482.0257352941176"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="145.404296875" x="5.0" y="10.6494140625">Lajiprofiilin muokkaaminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="159.361328125" x="-1.978515625" y="10.6494140625">Lajiprofiilin muokkaaminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -137,13 +131,12 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="138.734375" x="704.2843998015873" y="260.0"/>
+          <y:Geometry height="40.0" width="138.734375" x="704.2843998015873" y="482.02573529411757"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="128.734375" x="5.0" y="10.6494140625">Lajiprofiilin poistaminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="142.673828125" x="-1.9697265625" y="10.6494140625">Lajiprofiilin poistaminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -157,13 +150,12 @@
       </data>
     </node>
     <node id="n7">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="131.392578125" x="397.48704427083334" y="260.0"/>
+          <y:Geometry height="40.0" width="131.392578125" x="397.48704427083334" y="482.02573529411757"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="121.392578125" x="5.0" y="10.6494140625">Lajiprofiilin lisääminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="134.025390625" x="-1.31640625" y="10.6494140625">Lajiprofiilin lisääminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -177,13 +169,12 @@
       </data>
     </node>
     <node id="n8">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="88.02734375" x="916.3779947916667" y="175.0"/>
+          <y:Geometry height="40.0" width="88.02734375" x="721.7120284051119" y="175.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="78.02734375" x="5.0" y="10.6494140625">Harjoituskerta<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="84.6953125" x="1.666015625" y="10.6494140625">Harjoituskerta<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -197,13 +188,12 @@
       </data>
     </node>
     <node id="n9">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="163.40234375" x="1019.0797805059524" y="260.0"/>
+          <y:Geometry height="40.0" width="163.40234375" x="804.0755788252802" y="260.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="153.40234375" x="5.0" y="10.6494140625">Harjoituskerran poistaminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="166.708984375" x="-1.6533203125" y="10.6494140625">Harjoituskerran poistaminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -217,13 +207,12 @@
       </data>
     </node>
     <node id="n10">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="156.060546875" x="853.0189329117063" y="260.0"/>
+          <y:Geometry height="40.0" width="156.060546875" x="629.0959635416666" y="260.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="146.060546875" x="5.0" y="10.6494140625">Harjoituskerran lisääminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="158.060546875" x="-1.0" y="10.6494140625">Harjoituskerran lisääminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -237,13 +226,12 @@
       </data>
     </node>
     <node id="n11">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="180.072265625" x="1192.4825179811507" y="260.0"/>
+          <y:Geometry height="40.0" width="180.072265625" x="986.3969909838938" y="260.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="170.072265625" x="5.0" y="10.6494140625">Harjoituskerran muokkaaminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="183.396484375" x="-1.662109375" y="10.6494140625">Harjoituskerran muokkaaminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -257,13 +245,12 @@
       </data>
     </node>
     <node id="n12">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="41.33984375" x="286.6757130456349" y="175.0"/>
+          <y:Geometry height="40.0" width="41.33984375" x="459.5507130456349" y="175.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="31.33984375" x="5.0" y="10.6494140625">Arvio<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="34.673828125" x="3.3330078125" y="10.6494140625">Arvio<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -277,13 +264,12 @@
       </data>
     </node>
     <node id="n13">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="108.7109375" x="10.000086805555554" y="260.0"/>
+          <y:Geometry height="40.0" width="108.7109375" x="176.19252378034545" y="260.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="98.7109375" x="5.0" y="10.6494140625">Arvion lisääminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="107.365234375" x="0.6728515625" y="10.6494140625">Arvion lisääminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -297,13 +283,12 @@
       </data>
     </node>
     <node id="n14">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="116.052734375" x="128.71133122519842" y="260.0"/>
+          <y:Geometry height="40.0" width="116.052734375" x="306.6753844246032" y="260.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="106.052734375" x="5.0" y="10.6494140625">Arvion poistaminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="116.013671875" x="0.01953125" y="10.6494140625">Arvion poistaminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -317,13 +302,12 @@
       </data>
     </node>
     <node id="n15">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-          <y:Geometry height="40.0" width="132.72265625" x="254.76406870039682" y="260.0"/>
+          <y:Geometry height="40.0" width="132.72265625" x="459.5507130456349" y="260.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="122.72265625" x="5.0" y="10.6494140625">Arvion muokkaaminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="132.701171875" x="0.0107421875" y="10.6494140625">Arvion muokkaaminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -337,13 +321,12 @@
       </data>
     </node>
     <node id="n16">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
           <y:Geometry height="40.0" width="109.373046875" x="1014.4055400545635" y="175.0"/>
           <y:Fill color="#99FF33" color2="#99FF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="99.373046875" x="5.0" y="10.6494140625">Uloskirjautuminen<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="108.68359375" x="0.3447265625" y="10.6494140625">Uloskirjautuminen<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -358,13 +341,12 @@
     </node>
     <node id="n17">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLNoteNode>
-          <y:Geometry height="55.0" width="429.5975563141923" x="314.0066313244048" y="-22.70588235294116"/>
+          <y:Geometry height="55.0" width="450.98175799486455" x="509.28125000000006" y="-22.70588235294116"/>
           <y:Fill color="#FFFF99" color2="#FFFFCC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="412.216796875" x="8.690379719596194" y="10.798828125">Kirjautumissivu ohjaa suoraan järjestelmän etusivulle. Kaikki sivut 
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="35.8525390625" modelName="custom" textColor="#000000" visible="true" width="446.23486328125" x="2.373447356807276" y="9.57373046875">Kirjautumissivu ohjaa suoraan järjestelmän etusivulle. Kaikki sivut 
 kirjautumissivun jälkeen ovat sellaisia, joihin pääsee vain kirjautunut käyttäjä.<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -377,13 +359,12 @@ kirjautumissivun jälkeen ovat sellaisia, joihin pääsee vain kirjautunut käyt
     </node>
     <node id="n18">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLNoteNode>
-          <y:Geometry height="40.0" width="413.7899159663865" x="681.988670963177" y="82.5"/>
+          <y:Geometry height="40.0" width="450.98175799486455" x="681.9886709631771" y="82.5"/>
           <y:Fill color="#FFFF99" color2="#FFFFCC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="398.18359375" x="7.803161108193194" y="10.6494140625">Linkkilistan avulla pystyy navigoimaan kaikkien järjestelmän sivujen välillä.<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="431.0322265625" x="9.974765716182219" y="10.036865234375">Linkkilistan avulla pystyy navigoimaan kaikkien järjestelmän sivujen välillä.<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -395,7 +376,6 @@ kirjautumissivun jälkeen ovat sellaisia, joihin pääsee vain kirjautunut käyt
     </node>
     <node id="n19">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="70.0" width="515.1240885416667" x="509.28125" y="-130.20588235294116"/>
@@ -414,7 +394,6 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </node>
     <edge id="e0" source="n0" target="n1">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="27.5" tx="0.0" ty="-27.5"/>
@@ -426,7 +405,6 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e1" source="n1" target="n2">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="27.5" tx="-13.337890625" ty="-20.0"/>
@@ -438,12 +416,11 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e2" source="n3" target="n2">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-40.27812499999999" sy="20.0" tx="13.337890625" ty="-20.0">
             <y:Point x="576.304017857143" y="145.0"/>
-            <y:Point x="263.3374937996032" y="145.0"/>
+            <y:Point x="380.6958922371032" y="145.0"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -453,12 +430,11 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e3" source="n3" target="n12">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-20.139062499999994" sy="20.0" tx="0.0" ty="-20.0">
             <y:Point x="596.4430803571429" y="160.0"/>
-            <y:Point x="307.3456349206349" y="160.0"/>
+            <y:Point x="480.2206349206349" y="160.0"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -468,7 +444,6 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e4" source="n3" target="n4">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="20.0" tx="0.0" ty="-20.0"/>
@@ -480,12 +455,11 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e5" source="n3" target="n8">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="20.139062499999998" sy="20.0" tx="0.0" ty="-20.0">
             <y:Point x="636.7212053571429" y="152.5"/>
-            <y:Point x="960.3916666666667" y="152.5"/>
+            <y:Point x="765.7257002801119" y="152.5"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -495,12 +469,13 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e6" source="n12" target="n13">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-13.779947916666671" sy="20.0" tx="0.0" ty="-20.0">
-            <y:Point x="293.5656870039682" y="230.0"/>
-            <y:Point x="64.35555555555555" y="230.0"/>
+            <y:Point x="466.4406870039682" y="227.71139705882348"/>
+            <y:Point x="342.9585441468254" y="227.71139705882348"/>
+            <y:Point x="342.9585441468254" y="243.07457983193274"/>
+            <y:Point x="230.54799253034545" y="243.07457983193274"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -510,12 +485,11 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e7" source="n12" target="n14">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="20.0" tx="0.0" ty="-20.0">
-            <y:Point x="307.3456349206349" y="245.0"/>
-            <y:Point x="186.73769841269842" y="245.0"/>
+            <y:Point x="480.2206349206349" y="245.0"/>
+            <y:Point x="364.7017516121032" y="245.0"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -525,10 +499,12 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e8" source="n12" target="n15">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="13.779947916666668" sy="20.0" tx="0.0" ty="-20.0"/>
+          <y:Path sx="13.779947916666668" sy="20.0" tx="0.0" ty="-20.0">
+            <y:Point x="494.0005828373016" y="243.29936974789916"/>
+            <y:Point x="525.9120411706349" y="243.29936974789916"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
@@ -537,12 +513,12 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e9" source="n4" target="n7">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-21.340494791666664" sy="20.0" tx="0.0" ty="-20.0">
-            <y:Point x="595.2416480654763" y="230.0"/>
-            <y:Point x="463.18333333333334" y="230.0"/>
+            <y:Point x="595.2416480654763" y="460.9842436974789"/>
+            <y:Point x="492.2379551820728" y="460.9842436974789"/>
+            <y:Point x="463.18333333333334" y="460.9842436974789"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -552,7 +528,6 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
     </edge>
     <edge id="e10" source="n4" target="n5">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="20.0" tx="0.0" ty="-20.0"/>
@@ -562,14 +537,13 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e11" source="n4" target="n6">
+    <edge id="e11" source="n8" target="n10">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="21.340494791666664" sy="20.0" tx="0.0" ty="-20.0">
-            <y:Point x="637.9226376488095" y="230.0"/>
-            <y:Point x="773.6515873015873" y="230.0"/>
+          <y:Path sx="-29.342447916666657" sy="20.0" tx="0.0" ty="-20.0">
+            <y:Point x="736.3832523634453" y="237.94605567226893"/>
+            <y:Point x="707.1262369791666" y="237.94605567226893"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -577,26 +551,14 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e12" source="n8" target="n10">
+    <edge id="e12" source="n8" target="n9">
       <data key="d8"/>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="-29.342447916666657" sy="20.0" tx="0.0" ty="-20.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e13" source="n8" target="n9">
-      <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="20.0" tx="0.0" ty="-20.0">
-            <y:Point x="960.3916666666667" y="245.0"/>
-            <y:Point x="1100.7809523809524" y="245.0"/>
+            <y:Point x="765.7257002801119" y="237.7363445378151"/>
+            <y:Point x="885.7767507002802" y="237.7363445378151"/>
+            <y:Point x="885.7767507002802" y="245.0"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -604,14 +566,15 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e14" source="n8" target="n11">
+    <edge id="e13" source="n8" target="n11">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="29.342447916666664" sy="20.0" tx="0.0" ty="-20.0">
+            <y:Point x="795.4767417279414" y="230.0"/>
+            <y:Point x="795.0681481967786" y="230.0"/>
             <y:Point x="989.7341145833333" y="230.0"/>
-            <y:Point x="1282.5186507936507" y="230.0"/>
+            <y:Point x="1076.4331237963938" y="230.0"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
@@ -619,14 +582,28 @@ sivujen hierarkkinen järjestys.<y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e15" source="n3" target="n16">
+    <edge id="e14" source="n3" target="n16">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="40.278125" sy="20.0" tx="0.0" ty="-20.0">
             <y:Point x="656.860267857143" y="137.5"/>
             <y:Point x="1069.0920634920635" y="137.5"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="plain"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="n4" target="n6">
+      <data key="d8"/>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="30.716027442227073" sy="14.978093487395086" tx="0.0" ty="0.0">
+            <y:Point x="647.29817029937" y="460.2139128151262"/>
+            <y:Point x="773.6515873015873" y="460.2139128151262"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>

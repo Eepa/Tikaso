@@ -35,7 +35,7 @@ kellonaikaan. Harjoituksella on myos tietty pituus ja sille voi antaa vaikeusast
 Harjoitukseen voi liittaa myos kuvauksen, joka kertoo harjoituksen sisallosta. 
 
 
-5. Arvios
+5. Arvio
 
 Arvio on jarjestelman toinen paatietokohde. Arvio kuvailee jotakin tiettya 
 harjoituskertaa. Arvioon liittyy siis joku tietty laji ja kayttaja. Arviossa 

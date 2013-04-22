@@ -72,3 +72,6 @@ Koodin refaktorointi ja kommentointi.
 
 la 20.04.2013, 1,5h
 Koodin kommentointi ja dokumentaatio.
+
+ma 22.04.2013, 2,5h
+Dokumentaatiota eteenpain.
