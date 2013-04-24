@@ -1,5 +1,5 @@
 <!-- Tarkastustiedosto, joka tarkastaa, onko käyttäjä kirjautunut järjestelmään. 
-Tiedoston avulla luodaan jokaiselle sessiolle myös oma sessio kutsumalla sessiot.php:tä.
+Tiedoston avulla luodaan jokaiselle sessiolle myös oma sessio kutsumalla sessio.php:tä.
 Lisäksi tarkastuksen avulla määritellään kyselijä, joka suorittaa tarvittavia tietokantakyselyita.
 -->
 

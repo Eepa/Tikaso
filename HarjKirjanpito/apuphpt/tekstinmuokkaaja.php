@@ -1,4 +1,4 @@
-<!--Funktio, joka muokkaa annetusta tekstistä viisitoista sanaa pitkän tekstin.-->
+<!--Funktio, joka muokkaa annetusta tekstistä viidentoista sanan pituisen tekstin.-->
 
 <?php
 
