@@ -2,11 +2,9 @@
 lajiin. Lisäämisen onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
 
 <?php
-
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>
-
 
 <?php
 
@@ -14,7 +12,6 @@ $aika = $_POST['harjalku'] . ":00.00";
 
 $kyselynsuoritus = $kyselyita->lisaaHarjoituskerta(
         $_POST['hetu'], $_POST['lajitunnus'], $_POST['harjpvm'], $aika, $_POST['harjkesto'], $_POST['vaikeusaste'], $_POST['harjkuvaus']);
-
 
 if ($kyselynsuoritus) {
 

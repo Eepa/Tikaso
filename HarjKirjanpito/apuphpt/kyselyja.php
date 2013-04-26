@@ -55,7 +55,8 @@ class Kyselyja {
     }
 
     public function haeKayttajanLajitLajinimella($kayttajatunnus) {
-        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
+        $kysely = $this->valmistelut('SELECT lajinimi FROM laji, lajiprofiili WHERE 
+            lajiprofiili.hetu = ? AND lajiprofiili.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
 
         if ($kysely->execute(array($kayttajatunnus))) {
             return $this->palautaTaulukko($kysely);
@@ -111,7 +112,8 @@ class Kyselyja {
         return false;
     }
 
-    public function lisaaHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto, $vaikeusaste, $harjkuvaus) {
+    public function lisaaHarjoituskerta($hetu, $lajitunnus, $harjpvm, $harjalku, 
+            $harjkesto, $vaikeusaste, $harjkuvaus) {
 
         $kysely = $this->valmistelut('INSERT INTO harjoituskerta (hetu,
             lajitunnus, harjpvm, harjalku, harjkesto, vaikeusaste, harjkuvaus)
@@ -126,7 +128,8 @@ class Kyselyja {
 
     public function haeKayttajanHarjoituskertalajit($hetu) {
         $kysely = $this->valmistelut('SELECT DISTINCT lajinimi FROM laji, harjoituskerta 
-            WHERE harjoituskerta.hetu = ? AND harjoituskerta.lajitunnus = laji.lajitunnus ORDER BY lajinimi');
+            WHERE harjoituskerta.hetu = ? AND harjoituskerta.lajitunnus = laji.lajitunnus 
+            ORDER BY lajinimi');
 
         if ($kysely->execute(array($hetu))) {
             return $this->palautaTaulukko($kysely);
@@ -159,7 +162,8 @@ class Kyselyja {
     }
 
     public function haeHarjoituskerratJaNiidenHarjalku($hetu, $lajitunnus, $harjpvm) {
-        $kysely = $this->valmistelut('SELECT harjalku, harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta
+        $kysely = $this->valmistelut('SELECT harjalku, harjkesto, vaikeusaste, harjkuvaus 
+            FROM harjoituskerta
             WHERE hetu = ? AND lajitunnus =? AND harjpvm =? ORDER BY harjalku');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm))) {
@@ -188,7 +192,8 @@ class Kyselyja {
         return null;
     }
 
-    public function muokkaaHarjoituskertaa($hetu, $lajitunnus, $harjpvm, $harjalku, $harjkesto, $vaikeusaste, $harjkuvaus) {
+    public function muokkaaHarjoituskertaa($hetu, $lajitunnus, $harjpvm, $harjalku, 
+            $harjkesto, $vaikeusaste, $harjkuvaus) {
         $kysely = $this->valmistelut('UPDATE harjoituskerta SET harjkesto = ?, vaikeusaste = ? , 
             harjkuvaus = ?
             WHERE hetu = ? AND lajitunnus = ? AND harjpvm = ? AND harjalku = ?');
@@ -200,10 +205,12 @@ class Kyselyja {
         return false;
     }
 
-    public function lisaaKayttajalleArvio($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
+    public function lisaaKayttajalleArvio($hetu, $lajitunnus, $harjpvm, $harjalku, 
+            $arvioijahetu, $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
 
         $kysely = $this->valmistelut('INSERT INTO arvio (hetu, lajitunnus, 
-                  harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, sanallinenarvio) VALUES (?, ?,
+                  harjpvm, harjalku, arvioijahetu, yleisarvosana, tyytyvaisyysarvo, 
+                  sanallinenarvio) VALUES (?, ?,
                   ?, ?, ?, ?, ?, ?)');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $harjalku, $arvioijahetu, $yleisarvosana,
@@ -214,8 +221,10 @@ class Kyselyja {
     }
 
     public function harjoituksetJoillaEiVielaArviota($hetu, $lajitunnus, $harjpvm) {
-        $kysely = $this->valmistelut('SELECT DISTINCT harjalku, harjkesto, vaikeusaste, harjkuvaus FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?
-            AND harjpvm = ? AND harjalku NOT IN (SELECT DISTINCT harjalku FROM arvio WHERE hetu = ? AND lajitunnus = ? AND
+        $kysely = $this->valmistelut('SELECT DISTINCT harjalku, harjkesto, 
+            vaikeusaste, harjkuvaus FROM harjoituskerta WHERE hetu = ? AND lajitunnus = ?
+            AND harjpvm = ? AND harjalku NOT IN (SELECT DISTINCT harjalku 
+            FROM arvio WHERE hetu = ? AND lajitunnus = ? AND
             arvioijahetu = ? AND harjpvm = ?)');
 
         if ($kysely->execute(array($hetu, $lajitunnus, $harjpvm, $hetu, $lajitunnus, $hetu, $harjpvm))) {
@@ -255,7 +264,8 @@ class Kyselyja {
         return false;
     }
 
-    public function muokkaaArviota($hetu, $lajitunnus, $harjpvm, $harjalku, $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
+    public function muokkaaArviota($hetu, $lajitunnus, $harjpvm, $harjalku, 
+            $yleisarvosana, $tyytyvaisyysarvo, $sanallinenarvio) {
 
         $kysely = $this->valmistelut('UPDATE arvio SET yleisarvosana = ?, tyytyvaisyysarvo = ? , 
             sanallinenarvio = ?

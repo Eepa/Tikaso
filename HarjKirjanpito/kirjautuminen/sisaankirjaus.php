@@ -32,13 +32,17 @@ kirjautua sivustolle.-->
 
                 <fieldset class="kirjautuminenfieldset" id="sisaankirjaus">
 
-                    <label class="kirj" for="kayttajatunnus">Käyttäjätunnus:</label> 
+                    
+                        <label class="kirjautuminenlabel" for="kayttajatunnus">Käyttäjätunnus:</label>
 
-                    <input type="text" name="kayttajatunnus" id="kayttajatunnus" maxlength="30" required><br>
+                        <input type="text" name="kayttajatunnus" id="kayttajatunnus" maxlength="30" required><br>
+                    
 
-
-                    <label class="kirj" for="salasana">Salasana:</label> 
-                    <input type="password" name="salasana" id="salasana" maxlength="30" required><br>
+                   
+                        <label class="kirjautuminenlabel" for="salasana">Salasana:</label> 
+                        
+                        <input type="password" name="salasana" id="salasana" maxlength="30" required><br>
+                    
                     <br>
 
                     <input class="kirjnappula" type="submit" value="Kirjaudu">

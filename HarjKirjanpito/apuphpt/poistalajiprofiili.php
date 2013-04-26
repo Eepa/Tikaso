@@ -2,7 +2,6 @@
 onnistumisesta ja epäonnistumisesta ilmoitetaan JavaScript-ilmoituksen avulla. -->
 
 <?php
-
 require_once '../tarkastus.php';
 varmista_kirjautuminen();
 ?>

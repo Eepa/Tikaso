@@ -18,7 +18,6 @@ varmista_kirjautuminen();
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Lajiprofiilin poistaminen</h1>
 
-
         <?php $kayttajanlajitnumero = $kyselyita->haeKayttajanLajitLajinimella($sessio->hetu); ?>
         
          <!--Ohjeet lajiprofiilin poistamista varten.-->

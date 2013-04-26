@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
     </head>
     <footer>
+        
         <p id="footerteksti">
             Harjoituskirjanpitojärjestelmän luoja: Evpa
         </p>

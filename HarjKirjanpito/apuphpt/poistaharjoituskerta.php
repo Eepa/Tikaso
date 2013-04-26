@@ -31,9 +31,7 @@ varmista_kirjautuminen();
             if(r){
                 document.forms['harjoituskerta'].submit();
             } else if(!r){
-                                                                  
                 window.location.href = '../harjoituskerranpoistaminen.php';
-                                                     
             }
         }
         vahvistus();                 
