@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />
+<!--        <link rel="stylesheet" type="text/css" href="tyylitiedostot/linkkilistaTyyli.css" />-->
     </head>
     <footer>
         <p id="footerteksti">
