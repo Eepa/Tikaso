@@ -65,6 +65,5 @@ siirtynyt kyseiselle sivulle. Tästä ominaisuudesta vastataan JavaScript-koodin
 
         <?php } ?>
 
-
     </body>
 </html>

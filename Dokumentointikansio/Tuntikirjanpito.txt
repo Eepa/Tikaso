@@ -78,3 +78,6 @@ Dokumentaatiota eteenpain.
 
 ke 24.04.2013, 1h
 Dokumentaatiota eteenpain, koodin kommentteja.
+
+pe 26.04.2013, 1h
+Viimeistelya ja palautus lauantaina.

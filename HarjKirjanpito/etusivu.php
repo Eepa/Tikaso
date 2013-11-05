@@ -16,7 +16,6 @@ varmista_kirjautuminen();
         <title>Etusivu - harjoituskirjanpitojärjestelmä</title>
     </head>
 
-
     <body>
         <?php require 'linkkilista.php'; ?>
         <h1 class="otsikko">Tervetuloa harjoituskirjanpitojärjestelmään!</h1>
@@ -26,13 +25,10 @@ varmista_kirjautuminen();
             <p>Harjoituskirjanpitojärjestelmässä voit merkata ylös omat treenikertasi
                 ja antaa treeniarvioita itsellesi. <br> Lisäksi voit lisätä itsellesi lajiprofiileita, 
                 joihin liittyen harjoituskertoja lisätään.</p>
-
         </div>
-
 
         <?php require 'apuphpt/footer.php'; ?>
 
     </body>
-
 
 </html>

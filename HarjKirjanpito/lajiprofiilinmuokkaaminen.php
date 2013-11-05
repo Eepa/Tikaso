@@ -41,7 +41,6 @@ varmista_kirjautuminen();
             <br>    
         </div>
 
-
         <!-- Lajiprofiilin valintalomake. Lajiprofiilin valinnan jälkeen palataan samalle sivulle, jolloin 
         muokkauslomake aukeaa.-->
 

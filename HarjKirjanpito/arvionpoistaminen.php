@@ -222,6 +222,6 @@ if (isset($_POST['harjpvm'])) {
                 }
                 ?>
 
-                <?php require 'apuphpt/footer.php'; ?>
-                </body>
-                </html>
+         <?php require 'apuphpt/footer.php'; ?>
+     </body>
+</html>
